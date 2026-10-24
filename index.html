@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +89,7 @@
   <!-- Top Header with Scoreboard & Team Rename -->
   <header>
     <div class="game-title">🎮 Grade 7 ICT Challenge</div>
-    <div class="q-counter" id="q-counter">Question 1 / 35</div>
+    <div class="q-counter" id="q-counter">Question 1 / 50</div>
     <div class="scoreboard">
       <div class="team-card">
         <div class="team-header">
@@ -187,56 +186,71 @@
   </div>
 
   <script>
-    // 35 Questions covering Grade 7 ICT (Unit 1 to Unit 5 fully)
+    // 50 Questions (10 per unit from Unit 1 to Unit 5) based on Grade 7 ICT Textbook
     const questions = [
       // --- UNIT 1: CENTRAL PROCESSING UNIT (CPU) ---
-      { round: "Unit 1: CPU Architecture", q: "Where is the Central Processing Unit (CPU) located inside a computer?", opts: ["On the Hard Disk", "On the Motherboard inside System Unit", "Inside the Power Supply", "On the Monitor Screen"], ans: 1 },
-      { round: "Unit 1: CPU Kitchen Analogy", q: "If the computer is like a hotel kitchen, what does the CPU represent?", opts: ["The Dining Room", "The Hotel Owner", "The Chef", "The Menu Card"], ans: 2 },
+      { round: "Unit 1: CPU Location", q: "Where is the Central Processing Unit (CPU) positioned inside a computer?", opts: ["On the Hard Disk", "On the Motherboard inside System Unit", "Inside the Power Supply", "On the Monitor Screen"], ans: 1 },
+      { round: "Unit 1: CPU Kitchen Analogy", q: "In the hotel kitchen analogy used in the textbook, what does the Central Processing Unit represent?", opts: ["The Dining Room", "The Hotel Owner", "The Chef", "The Menu Card"], ans: 2 },
       { round: "Unit 1: CPU Kitchen Analogy", q: "What does a 'Dual-Core Processor' mean in the kitchen analogy?", opts: ["A kitchen with 2 stoves", "A kitchen with 2 chefs preparing 2 meals at once", "A chef cooking twice as fast", "Two separate hotels"], ans: 1 },
-      { round: "Unit 1: CPU Components", q: "Which part of the CPU performs mathematical calculations and logical comparisons?", opts: ["Control Unit (CU)", "Memory Registers", "Arithmetic and Logical Unit (ALU)", "Hard Disk Drive"], ans: 2 },
-      { round: "Unit 1: CPU Components", q: "Which unit controls all hardware devices and operations of the computer?", opts: ["Control Unit (CU)", "Arithmetic and Logical Unit (ALU)", "Memory Registers", "Solid State Drive"], ans: 0 },
-      { round: "Unit 1: CPU Components", q: "What is the main feature of Memory Registers inside the CPU?", opts: ["Large storage capacity", "Temporary storage with very fast access speed", "Permanent storage for movies", "Controls internet connection"], ans: 1 },
-      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was used in First Generation computers?", opts: ["Transistors", "Integrated Circuits (IC)", "Vacuum Tubes", "Microprocessors"], ans: 2 },
+      { round: "Unit 1: CPU Components", q: "Which part of the CPU performs mathematical and logical functions?", opts: ["Control Unit (CU)", "Memory Registers", "Arithmetic and Logical Unit (ALU)", "Hard Disk Drive"], ans: 2 },
+      { round: "Unit 1: CPU Components", q: "Which unit controls all hardware devices and operations of the computer system?", opts: ["Control Unit (CU)", "Arithmetic and Logical Unit (ALU)", "Memory Registers", "Solid State Drive"], ans: 0 },
+      { round: "Unit 1: Memory Registers", q: "What is the main feature of Memory Registers inside the CPU?", opts: ["Large storage capacity", "Temporary memory store with very fast access speed", "Permanent storage for movies", "Controls internet connection"], ans: 1 },
+      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was used to manufacture First Generation computers?", opts: ["Transistors", "Integrated Circuits (IC)", "Vacuum Tubes", "Microprocessors"], ans: 2 },
       { round: "Unit 1: CPU Evolution", q: "Which electronic technology is used in modern Fourth Generation computers?", opts: ["Vacuum Tubes", "Transistors", "Integrated Circuits (IC)", "Microprocessors"], ans: 3 },
-      { round: "Unit 1: CPU Clock Speed", q: "What unit is used to measure the clock speed of a modern CPU?", opts: ["Megabytes (MB)", "Hertz (Hz) or Gigahertz (GHz)", "Milliseconds", "Watts"], ans: 1 },
+      { round: "Unit 1: Clock Speed", q: "What unit is used to measure the clock speed of a modern CPU?", opts: ["Megabytes (MB)", "Hertz (Hz), MHz, or GHz", "Milliseconds", "Watts"], ans: 1 },
+      { round: "Unit 1: Execution Speed", q: "What is the execution speed of First Generation computers measured in?", opts: ["Milliseconds", "Microseconds", "Nanoseconds", "Picoseconds"], ans: 0 },
 
       // --- UNIT 2: OPERATING SYSTEM & STORAGE ---
-      { round: "Unit 2: Operating System", q: "What is the main role of an Operating System (OS)?", opts: ["Acts as a mediator between user and hardware", "Cools down the processor", "Cleans dust from the lab", "Calculates numbers only"], ans: 0 },
-      { round: "Unit 2: Types of OS", q: "Which of the following is an Operating System used for MOBILE PHONES?", opts: ["Ubuntu", "Windows 10", "Android", "Fedora"], ans: 2 },
-      { round: "Unit 2: Types of OS", q: "Which of the following is an Operating System designed for COMPUTERS?", opts: ["iOS", "Blackberry OS", "Android", "Linux (Ubuntu)"], ans: 3 },
-      { round: "Unit 2: Storage Devices", q: "A Hard Disk Drive belongs to which category of storage devices?", opts: ["Optical Media", "Magnetic Media", "Solid State Media", "Virtual Media"], ans: 1 },
-      { round: "Unit 2: Storage Devices", q: "Which storage device uses LASER BEAMS to read and write data?", opts: ["Compact Disk (CD) / DVD", "Hard Disk", "Pen Drive", "Floppy Disk"], ans: 0 },
-      { round: "Unit 2: Storage Devices", q: "Why are Pen Drives and SSDs called 'Solid State Media Devices'?", opts: ["They are made of heavy metal", "They have no moving parts and read data electronically", "They store data on shiny plates", "They run on magnetic tape"], ans: 1 },
-      { round: "Unit 2: File Management", q: "How do you PERMANENTLY delete a file so it doesn't go to the Recycle Bin?", opts: ["Press 'Delete' key once", "Press 'Shift + Delete' keys together", "Drag it to a folder", "Rename the file"], ans: 1 },
+      { round: "Unit 2: Operating System", q: "What is the main role of an Operating System (OS)?", opts: ["Acts as a mediator and controls hardware/software", "Cools down the processor", "Cleans dust from the lab", "Calculates numbers only"], ans: 0 },
+      { round: "Unit 2: Computer OS", q: "Which of the following is an Operating System used for COMPUTERS?", opts: ["iOS", "Android", "Blackberry OS", "Linux (Ubuntu)"], ans: 3 },
+      { round: "Unit 2: Mobile OS", q: "Which of the following is an Operating System used for MOBILE PHONES?", opts: ["Ubuntu", "Windows 10", "Android", "Fedora"], ans: 2 },
+      { round: "Unit 2: Storage Classification", q: "According to manufacturing technology, into how many categories can computer storage devices be divided?", opts: ["Two categories", "Three categories", "Four categories", "Five categories"], ans: 1 },
+      { round: "Unit 2: Magnetic Media", q: "A Hard Disk Drive belongs to which category of storage devices?", opts: ["Optical Media", "Magnetic Media", "Solid State Media", "Virtual Media"], ans: 1 },
+      { round: "Unit 2: Optical Media", q: "Which storage device uses laser beams to read and write data?", opts: ["Compact Disk (CD) / DVD", "Hard Disk", "Pen Drive", "Floppy Disk"], ans: 0 },
+      { round: "Unit 2: Floppy Disk", q: "What is the storage capacity of a standard floppy disk?", opts: ["1.44 MB", "700 MB", "4.7 GB", "250 MB"], ans: 0 },
+      { round: "Unit 2: File Parts", q: "What are the two main parts that make up a file name in a computer?", opts: ["File Name and File Extension", "Size and Date", "Location and Attribute", "Drive and Folder"], ans: 0 },
+      { round: "Unit 2: Folder Purpose", q: "What is the main purpose of creating a folder?", opts: ["To slow down the computer", "To store related files in order for fast retrieval", "To increase electricity flow", "To delete files automatically"], ans: 1 },
+      { round: "Unit 2: Permanent Deletion", q: "How do you permanently delete a file or folder so it bypasses the Recycle Bin?", opts: ["Press 'Delete' key once", "Press 'Shift + Delete' keys together", "Drag it to a folder", "Rename the file"], ans: 1 },
 
       // --- UNIT 3: SECURITY OF COMPUTER SYSTEM ---
-      { round: "Unit 3: Hardware Security", q: "Which device protects a computer from a sudden loss of electricity?", opts: ["Surge Protector", "Uninterruptible Power Supply (UPS)", "Cooling Fan", "Miniature Circuit Breaker (MCB)"], ans: 1 },
-      { round: "Unit 3: Hardware Security", q: "What device protects the computer system from sudden HIGH VOLTAGE currents?", opts: ["Surge Protector / MCB", "UPS", "Hard Disk", "Biometric Sensor"], ans: 0 },
-      { round: "Unit 3: Hardware Security", q: "Why should we avoid eating food and drinks inside the computer lab?", opts: ["It slows down the CPU", "It attracts ants/insects that can damage hardware", "It deletes software files", "It turns off the screen"], ans: 1 },
-      { round: "Unit 3: Biometric Security", q: "Which of the following is an example of a BIOMETRIC password?", opts: ["A secret 8-letter word", "Fingerprints or Iris/Face recognition", "A PIN number", "A physical key lock"], ans: 1 },
-      { round: "Unit 3: Software Malware", q: "What is 'Malware'?", opts: ["Hardware tools", "Malicious software created to harm data and computers", "An anti-virus program", "A web browser"], ans: 1 },
-      { round: "Unit 3: Malware Types", q: "Which malware spreads automatically across networks WITHOUT human action?", opts: ["Computer Virus", "Computer Worm", "Trojan Horse", "Spyware"], ans: 1 },
-      { round: "Unit 3: Malware Protection", q: "What does 'Keeping Data Backups' mean?", opts: ["Locking the computer room", "Keeping extra copies of important files in a safe place", "Installing new hardware", "Scanning with antivirus"], ans: 1 },
+      { round: "Unit 3: Security Types", q: "Into what two parts can the security of a computer system be divided?", opts: ["Internal and External", "Hardware Security and Software Security", "Input and Output Security", "Manual and Automatic Security"], ans: 1 },
+      { round: "Unit 3: Hardware Threats", q: "Which of the following is a main factor that causes physical damage to hardware devices?", opts: ["Installing antivirus software", "Sudden power failure and high voltage", "Opening text documents", "Typing too fast"], ans: 1 },
+      { round: "Unit 3: UPS", q: "What does UPS stand for and what is its primary function?", opts: ["Unified Power System - cools down the computer", "Uninterrupted Power Supply - supplies backup power during failure", "Universal Processor Speed - speeds up CPU", "Underground Power Source - saves electricity"], ans: 1 },
+      { round: "Unit 3: Lab Etiquette", q: "Why should students remove shoes when entering the computer laboratory?", opts: ["To keep the lab free of sand and dust", "To make typing faster", "To prevent software viruses", "To keep the room warm"], ans: 0 },
+      { round: "Unit 3: Cleaning Lab", q: "How frequently should computers in the laboratory be cleaned to prevent dust accumulation?", opts: ["Every day", "Once a week", "At least once in every three months", "Once a year"], ans: 2 },
+      { round: "Unit 3: Malware Definition", q: "How is malicious software (malware) defined?", opts: ["Helpful software for typing letters", "Software designed to intentionally cause damage to software, data, or networks", "An operating system for mobile phones", "A hardware cooling component"], ans: 1 },
+      { round: "Unit 3: Worms", q: "Which malware spreads across computer networks or the internet WITHOUT human action or a host program?", opts: ["Computer Virus", "Computer Worm", "Trojan Horse", "Spyware"], ans: 1 },
+      { round: "Unit 3: Spyware", q: "What is the specific function of Spyware?", opts: ["To clean disk space", "To secretly collect data about a person's computer or internet usage", "To speed up internet browsing", "To protect against high voltage"], ans: 1 },
+      { round: "Unit 3: Backups", q: "What does keeping backups mean?", opts: ["Shutting down the computer safely", "Keeping extra copies of software components and files in a safe place", "Locking the laboratory door", "Deleting old files permanently"], ans: 1 },
+      { round: "Unit 3: Biometrics", q: "Which of the following is a modern biometric method used for access control?", opts: ["A secret 4-digit PIN", "Fingerprints, voice, face, or iris recognition", "A physical key lock", "A wooden password card"], ans: 1 },
 
       // --- UNIT 4: WORD PROCESSING ---
-      { round: "Unit 4: Word Processing", q: "Which keyboard shortcut creates a NEW blank document in Word?", opts: ["Ctrl + O", "Ctrl + N", "Ctrl + S", "Ctrl + P"], ans: 1 },
-      { round: "Unit 4: Word Processing", q: "Which shortcut key PASTES copied or cut text into a document?", opts: ["Ctrl + C", "Ctrl + X", "Ctrl + V", "Ctrl + Z"], ans: 2 },
-      { round: "Unit 4: Word Processing", q: "To write chemical formulas like H₂O, which formatting tool is used?", opts: ["Superscript", "Subscript", "Strikethrough", "Bold"], ans: 1 },
-      { round: "Unit 4: Word Processing", q: "To write math powers like x², which formatting tool raises the number?", opts: ["Subscript", "Superscript", "Italic", "Highlight"], ans: 1 },
-      { round: "Unit 4: Word Processing", q: "Which alignment distributes text EVENLY between left and right margins?", opts: ["Align Left", "Center", "Align Right", "Justify"], ans: 3 },
-      { round: "Unit 4: Word Processing", q: "What is the intersection of a vertical column and horizontal row in a table?", opts: ["Cell", "Grid", "Border", "Margin"], ans: 0 },
+      { round: "Unit 4: Word Processing", q: "What is word processing?", opts: ["Composing, editing, and/or storing text-based documents", "Calculating complex math equations", "Designing video games", "Browsing internet pages"], ans: 0 },
+      { round: "Unit 4: Software Examples", q: "Which of the following is an example of word processing software?", opts: ["Microsoft Word", "Android OS", "Rapid Typing Tutor", "MS-DOS"], ans: 0 },
+      { round: "Unit 4: Keyboard Groups", q: "Based on their functions, how are the keys on a typical keyboard grouped?", opts: ["Control, Character, Function, Navigation, Numeric keypad", "Input, Process, Output keys", "Upper, Lower, Side keys", "Small, Medium, Large keys"], ans: 0 },
+      { round: "Unit 4: Space Bar", q: "What happens when the Space bar is pressed once?", opts: ["Creates a single empty space between two words", "Moves cursor to the next line", "Deletes a letter", "Opens a new document"], ans: 0 },
+      { round: "Unit 4: Backspace Key", q: "What does the Backspace key do when pressed once?", opts: ["Deletes any character or space to the left of the cursor", "Deletes text to the right of the cursor", "Saves the document", "Prints the page"], ans: 0 },
+      { round: "Unit 4: Touch Typing", q: "What is touch typing?", opts: ["Typing while looking at each key", "The act of typing quickly and accurately without looking at the keys", "Typing using a mobile phone screen", "Using only two fingers to type"], ans: 1 },
+      { round: "Unit 4: Typing Tutors", q: "Which of the following is a downloadable typing tutor software mentioned in the textbook?", opts: ["Rapid Typing Tutor", "Microsoft Paint", "Adobe Photoshop", "Winamp"], ans: 0 },
+      { round: "Unit 4: Sinhala Keyboards", q: "What are the two types of Sinhala keyboards based on the manner of entering characters?", opts: ["Standard Sinhala Keyboard and Phonetics Keyboard", "English and Tamil Keyboard", "Unicode and Non-Unicode Keyboard", "Upper and Lower Keyboard"], ans: 0 },
+      { round: "Unit 4: Standard Sinhala", q: "What is the standard Sinhala keyboard model operated in present computers called?", opts: ["Wijesekara Sinhala Keyboard", "Tamil Unicode Keyboard", "QWERTY Standard Keyboard", "Font Bijay Keyboard"], ans: 0 },
+      { round: "Unit 4: Unicode Advantage", q: "What is a key advantage of using a Unicode font?", opts: ["It requires special installation on every reader's computer", "To read Unicode text, the user does not need the font pre-installed in their computer", "It only works offline", "It cannot be saved as a file"], ans: 1 },
 
       // --- UNIT 5: PROGRAMME DEVELOPMENT & SCRATCH ---
-      { round: "Unit 5: IPO Model", q: "In problem solving, what do the letters 'IPO' stand for?", opts: ["Import, Process, Output", "Input, Process, Output", "Input, Program, Option", "Idea, Plan, Outcome"], ans: 1 },
-      { round: "Unit 5: Flowcharts", q: "Which flowchart shape represents the START or END of an algorithm?", opts: ["Rectangle", "Parallelogram", "Oval / Capsule", "Diamond"], ans: 2 },
-      { round: "Unit 5: Flowcharts", q: "Which flowchart symbol is used for taking INPUT or showing OUTPUT?", opts: ["Rectangle", "Parallelogram", "Diamond", "Circle"], ans: 1 },
-      { round: "Unit 5: Flowcharts", q: "Which flowchart shape performs a calculation or action step (Process)?", opts: ["Rectangle", "Diamond", "Oval", "Parallelogram"], ans: 0 },
-      { round: "Unit 5: Scratch Coding", q: "In Scratch, which block category contains 'say Hello' and 'switch costume'?", opts: ["Motion (Blue)", "Looks (Purple)", "Events (Brown)", "Control (Yellow)"], ans: 1 },
-      { round: "Unit 5: Scratch Coding", q: "In Scratch, which category contains 'when green flag clicked'?", opts: ["Events (Brown)", "Motion (Blue)", "Sensing (Light Blue)", "Operators (Light Green)"], ans: 0 }
+      { round: "Unit 5: Decomposition", q: "What are the advantages of decomposing a complex problem into sub-problems?", opts: ["It makes the problem harder", "It is easy to solve, understand, describe, and analyze", "It increases computer bugs", "It deletes extra files"], ans: 1 },
+      { round: "Unit 5: Control Structures", q: "What are the three types of control structures used in algorithms and flowcharts?", opts: ["Input, Process, Output", "Sequence, Selection, Repetition", "Start, Calculate, Stop", "Line, Circle, Diamond"], ans: 1 },
+      { round: "Unit 5: Sequence", q: "How is a sequence defined in an algorithm?", opts: ["Execution of instructions repeatedly", "Execution of instructions sequentially from top to bottom", "Making a choice based on a condition", "Random execution of steps"], ans: 1 },
+      { round: "Unit 5: Selection", q: "How does a selection control structure make decisions?", opts: ["By looping endlessly", "By making a decision based on whether a condition is true or false", "By deleting variables", "By stopping the program immediately"], ans: 1 },
+      { round: "Unit 5: Repetition", q: "What is a repetition control structure?", opts: ["Execution of instructions once only", "Execution of an instruction or instructions repeatedly until a condition is satisfied", "Changing text fonts", "Opening a new document"], ans: 1 },
+      { round: "Unit 5: Scratch Software", q: "What type of software is Scratch?", opts: ["A commercial word processor", "A visual programme development software that is free and open source", "An operating system for servers", "A hardware diagnostic tool"], ans: 1 },
+      { round: "Unit 5: Variables", q: "In programming, what is a variable used for?", opts: ["To store a value in memory temporarily", "To permanently delete files", "To print documents", "To scan for computer viruses"], ans: 0 },
+      { round: "Unit 5: Bugs", q: "What is a bug in the context of computer programming?", opts: ["A helpful command block", "An error in a program", "An external storage device", "A type of computer virus"], ans: 1 },
+      { round: "Unit 5: Debugging", q: "What is debugging?", opts: ["Creating new errors", "The elimination of bugs in a programme", "Installing an operating system", "Backing up files"], ans: 1 },
+      { round: "Unit 5: Scratch Blocks", q: "In Scratch, which block category contains command blocks pertaining to making a variable and assigning values?", opts: ["Motion", "Looks", "Data", "Sensing"], ans: 2 }
     ];
 
     let currentQIndex = 0;
-    let scores =;
+    let scores = [0, 0, 0, 0]; // Fixed score array initialization bug
     let teamNames = ["Team A", "Team B", "Team C", "Team D"];
     let isRevealed = false;
 
@@ -310,12 +324,12 @@
       const teamObjects = teamNames.map((name, idx) => ({ name: name, score: scores[idx] }));
       teamObjects.sort((a, b) => b.score - a.score);
 
-      const topScore = teamObjects.score;
+      const topScore = teamObjects[0].score;
       const winners = teamObjects.filter(t => t.score === topScore);
 
       if (winners.length === 1) {
-        headline.textContent = `🏆 WINNER: ${winners.name.toUpperCase()}!`;
-        subtext.textContent = `Outstanding Performance with ${winners.score} Points!`;
+        headline.textContent = `🏆 WINNER: ${winners[0].name.toUpperCase()}!`;
+        subtext.textContent = `Outstanding Performance with ${winners[0].score} Points!`;
       } else {
         const winnerNames = winners.map(w => w.name).join(" & ");
         headline.textContent = `🤝 IT'S A TIE!`;
