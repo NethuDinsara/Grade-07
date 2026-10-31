@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -187,7 +186,6 @@
   </div>
 
   <script>
-    // 90 Questions covering Grade 7 ICT (15 Questions per Unit from Unit 6 down to Unit 1)
     const questions = [
       // --- UNIT 6: PRESENTATION SOFTWARE & INTERNET / WEB (15 QUESTIONS) ---
       { round: "Unit 6: Presentation Software", q: "What is an Electronic Presentation software mainly composed of?", opts: ["Pages", "Slides", "Sheets", "Drawings"], ans: 1 },
@@ -293,7 +291,7 @@
     ];
 
     let currentQIndex = 0;
-    let scores = ;
+    let scores = [0, 0, 0, 0];
     let teamNames = ["Team A", "Team B", "Team C", "Team D"];
     let isRevealed = false;
 
@@ -366,12 +364,12 @@
       const teamObjects = teamNames.map((name, idx) => ({ name: name, score: scores[idx] }));
       teamObjects.sort((a, b) => b.score - a.score);
 
-      const topScore = teamObjects.score;
+      const topScore = teamObjects[0].score;
       const winners = teamObjects.filter(t => t.score === topScore);
 
       if (winners.length === 1) {
-        headline.textContent = `🏆 WINNER: ${winners.name.toUpperCase()}!`;
-        subtext.textContent = `Outstanding Performance with ${winners.score} Points!`;
+        headline.textContent = `🏆 WINNER: ${winners[0].name.toUpperCase()}!`;
+        subtext.textContent = `Outstanding Performance with ${winners[0].score} Points!`;
       } else {
         const winnerNames = winners.map(w => w.name).join(" & ");
         headline.textContent = `🤝 IT'S A TIE!`;
@@ -399,7 +397,10 @@
     document.addEventListener('keydown', function(event) {
       if (event.code === 'ArrowRight') nextQuestion();
       if (event.code === 'ArrowLeft') prevQuestion();
-      if (event.code === 'Space') revealAnswer();
+      if (event.code === 'Space') {
+        event.preventDefault();
+        revealAnswer();
+      }
     });
 
     renderQuestion();
