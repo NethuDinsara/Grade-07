@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 7 ICT - Ultimate Classroom Challenge</title>
+  <title>Grade 7 ICT - Kahoot Game (Units 1-6)</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: #0f172a; color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; position: relative; }
@@ -13,25 +14,28 @@
     .game-title { font-size: 1.5rem; font-weight: bold; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
     .q-counter { font-size: 1.2rem; background: #334155; padding: 6px 18px; border-radius: 20px; font-weight: 600; color: #f1f5f9; }
     
-    /* Scoreboard & Team Card */
+    /* Scoreboard & Team Cards */
     .scoreboard { display: flex; gap: 12px; }
-    .team-card { background: #0f172a; padding: 10px 20px; border-radius: 12px; border: 1px solid #475569; text-align: center; min-width: 140px; display: flex; flex-direction: column; justify-content: space-between; }
-    .team-header { display: flex; justify-content: center; align-items: center; gap: 6px; }
-    .team-name { font-size: 1rem; color: #38bdf8; font-weight: bold; text-transform: uppercase; }
-    .rename-btn { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 0.85rem; }
+    .team-card { background: #0f172a; padding: 8px 12px; border-radius: 12px; border: 1px solid #475569; text-align: center; min-width: 110px; display: flex; flex-direction: column; justify-content: space-between; }
+    .team-header { display: flex; justify-content: center; align-items: center; gap: 4px; }
+    .team-name { font-size: 0.85rem; color: #38bdf8; font-weight: bold; text-transform: uppercase; max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .rename-btn { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 0.75rem; }
     .rename-btn:hover { color: #f59e0b; }
-    .team-score { font-size: 1.8rem; font-weight: bold; color: #f59e0b; margin: 4px 0; }
+    .team-score { font-size: 1.4rem; font-weight: bold; color: #f59e0b; margin: 2px 0; }
+    .score-controls { display: flex; justify-content: center; gap: 4px; }
+    .score-btn { background: #334155; color: #fff; border: none; padding: 3px 8px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.85rem; }
+    .score-btn:hover { background: #475569; }
 
     /* Main Question Box */
     main { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1200px; margin: 0 auto; width: 100%; }
     .round-badge { align-self: center; background: #8b5cf6; color: #fff; padding: 6px 22px; border-radius: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); }
     
     .question-box { background: #1e293b; padding: 35px 30px; border-radius: 20px; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.4); margin-bottom: 25px; border: 2px solid #334155; min-height: 140px; display: flex; align-items: center; justify-content: center; }
-    .question-text { font-size: 2rem; font-weight: 700; line-height: 1.35; color: #f8fafc; }
+    .question-text { font-size: 1.8rem; font-weight: 700; line-height: 1.35; color: #f8fafc; }
 
     /* Options Grid (Kahoot Theme) */
     .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
-    .option-card { padding: 22px 20px; border-radius: 16px; display: flex; align-items: center; font-size: 1.4rem; font-weight: 600; cursor: pointer; transition: transform 0.15s ease, opacity 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+    .option-card { padding: 22px 20px; border-radius: 16px; display: flex; align-items: center; font-size: 1.3rem; font-weight: 600; cursor: pointer; transition: transform 0.15s ease, opacity 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
     .option-card:hover { transform: translateY(-3px); }
     
     .shape { font-size: 2rem; margin-right: 18px; opacity: 0.95; }
@@ -76,44 +80,86 @@
     .leaderboard-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 1.2rem; font-weight: 600; }
     .leaderboard-item:last-child { border-bottom: none; }
     .rank-1 { color: #f59e0b; }
+    .rank-2 { color: #94a3b8; }
+    .rank-3 { color: #b45309; }
+    .rank-4 { color: #64748b; }
   </style>
 </head>
 <body>
 
-  <!-- Top Header with Scoreboard (Team 1 Only) -->
+  <!-- Top Header with Scoreboard & Team Rename -->
   <header>
-    <div class="game-title">🎮 Grade 7 ICT Challenge</div>
-    <div class="q-counter" id="q-counter">Question 1 / 50</div>
+    <div class="game-title">🎮 Grade 7 ICT Mega Quiz</div>
+    <div class="q-counter" id="q-counter">Question 1 / 90</div>
     <div class="scoreboard">
       <div class="team-card">
         <div class="team-header">
-          <span class="team-name" id="tname-0">Team 1</span>
-          <button class="rename-btn" onclick="renameTeam()" title="Rename Team">✏️</button>
+          <span class="team-name" id="tname-0">Team A</span>
+          <button class="rename-btn" onclick="renameTeam(0)" title="Rename Team">✏️</button>
         </div>
         <div class="team-score" id="score-0">0</div>
+        <div class="score-controls">
+          <button class="score-btn" onclick="addScore(0, 100)">+100</button>
+          <button class="score-btn" onclick="addScore(0, -50)">-50</button>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-header">
+          <span class="team-name" id="tname-1">Team B</span>
+          <button class="rename-btn" onclick="renameTeam(1)" title="Rename Team">✏️</button>
+        </div>
+        <div class="team-score" id="score-1">0</div>
+        <div class="score-controls">
+          <button class="score-btn" onclick="addScore(1, 100)">+100</button>
+          <button class="score-btn" onclick="addScore(1, -50)">-50</button>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-header">
+          <span class="team-name" id="tname-2">Team C</span>
+          <button class="rename-btn" onclick="renameTeam(2)" title="Rename Team">✏️</button>
+        </div>
+        <div class="team-score" id="score-2">0</div>
+        <div class="score-controls">
+          <button class="score-btn" onclick="addScore(2, 100)">+100</button>
+          <button class="score-btn" onclick="addScore(2, -50)">-50</button>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-header">
+          <span class="team-name" id="tname-3">Team D</span>
+          <button class="rename-btn" onclick="renameTeam(3)" title="Rename Team">✏️</button>
+        </div>
+        <div class="team-score" id="score-3">0</div>
+        <div class="score-controls">
+          <button class="score-btn" onclick="addScore(3, 100)">+100</button>
+          <button class="score-btn" onclick="addScore(3, -50)">-50</button>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- Main Question Screen -->
   <main>
-    <div class="round-badge" id="round-badge">Unit 1: Central Processing Unit</div>
+    <div class="round-badge" id="round-badge">Unit 6: Presentation & Web</div>
     <div class="question-box">
       <div class="question-text" id="question-text">Loading Question...</div>
     </div>
 
-    <!-- Interactive Options Grid -->
     <div class="options-grid">
-      <div class="option-card opt-a" id="opt-0" onclick="checkAnswer(0)">
+      <div class="option-card opt-a" id="opt-0">
         <span class="shape">▲</span><span id="opt-text-0">Option A</span>
       </div>
-      <div class="option-card opt-b" id="opt-1" onclick="checkAnswer(1)">
+      <div class="option-card opt-b" id="opt-1">
         <span class="shape">◆</span><span id="opt-text-1">Option B</span>
       </div>
-      <div class="option-card opt-c" id="opt-2" onclick="checkAnswer(2)">
+      <div class="option-card opt-c" id="opt-2">
         <span class="shape">●</span><span id="opt-text-2">Option C</span>
       </div>
-      <div class="option-card opt-d" id="opt-3" onclick="checkAnswer(3)">
+      <div class="option-card opt-d" id="opt-3">
         <span class="shape">■</span><span id="opt-text-3">Option D</span>
       </div>
     </div>
@@ -141,72 +187,114 @@
   </div>
 
   <script>
-    // 50 Questions (10 per unit from Unit 1 to Unit 5) based on Grade 7 ICT Textbook
+    // 90 Questions covering Grade 7 ICT (15 Questions per Unit from Unit 6 down to Unit 1)
     const questions = [
-      // --- UNIT 1: CENTRAL PROCESSING UNIT (CPU) ---
-      { round: "Unit 1: CPU Location", q: "Where is the Central Processing Unit (CPU) positioned inside a computer?", opts: ["On the Hard Disk", "On the Motherboard inside System Unit", "Inside the Power Supply", "On the Monitor Screen"], ans: 1 },
-      { round: "Unit 1: CPU Kitchen Analogy", q: "In the hotel kitchen analogy used in the textbook, what does the Central Processing Unit represent?", opts: ["The Dining Room", "The Hotel Owner", "The Chef", "The Menu Card"], ans: 2 },
-      { round: "Unit 1: CPU Kitchen Analogy", q: "What does a 'Dual-Core Processor' mean in the kitchen analogy?", opts: ["A kitchen with 2 stoves", "A kitchen with 2 chefs preparing 2 meals at once", "A chef cooking twice as fast", "Two separate hotels"], ans: 1 },
-      { round: "Unit 1: CPU Components", q: "Which part of the CPU performs mathematical and logical functions?", opts: ["Control Unit (CU)", "Memory Registers", "Arithmetic and Logical Unit (ALU)", "Hard Disk Drive"], ans: 2 },
-      { round: "Unit 1: CPU Components", q: "Which unit controls all hardware devices and operations of the computer system?", opts: ["Control Unit (CU)", "Arithmetic and Logical Unit (ALU)", "Memory Registers", "Solid State Drive"], ans: 0 },
-      { round: "Unit 1: Memory Registers", q: "What is the main feature of Memory Registers inside the CPU?", opts: ["Large storage capacity", "Temporary memory store with very fast access speed", "Permanent storage for movies", "Controls internet connection"], ans: 1 },
-      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was used to manufacture First Generation computers?", opts: ["Transistors", "Integrated Circuits (IC)", "Vacuum Tubes", "Microprocessors"], ans: 2 },
-      { round: "Unit 1: CPU Evolution", q: "Which electronic technology is used in modern Fourth Generation computers?", opts: ["Vacuum Tubes", "Transistors", "Integrated Circuits (IC)", "Microprocessors"], ans: 3 },
-      { round: "Unit 1: Clock Speed", q: "What unit is used to measure the clock speed of a modern CPU?", opts: ["Megabytes (MB)", "Hertz (Hz), MHz, or GHz", "Milliseconds", "Watts"], ans: 1 },
-      { round: "Unit 1: Execution Speed", q: "What is the execution speed of First Generation computers measured in?", opts: ["Milliseconds", "Microseconds", "Nanoseconds", "Picoseconds"], ans: 0 },
+      // --- UNIT 6: PRESENTATION SOFTWARE & INTERNET / WEB (15 QUESTIONS) ---
+      { round: "Unit 6: Presentation Software", q: "What is an Electronic Presentation software mainly composed of?", opts: ["Pages", "Slides", "Sheets", "Drawings"], ans: 1 },
+      { round: "Unit 6: Presentation Software", q: "Which tool makes presenting information to an audience attractive and lively?", opts: ["Spreadsheet Software", "Presentation Software", "Antivirus Software", "Database"], ans: 1 },
+      { round: "Unit 6: Presentation Layout", q: "What is the standard layout name for the very first slide in a presentation?", opts: ["Empty Slide", "Title Slide", "Picture Slide", "Double Content Slide"], ans: 1 },
+      { round: "Unit 6: Slide Design", q: "In presentation software, what are the dotted-line boxes used to insert text called?", opts: ["Text Placeholders", "Grid Lines", "Frame Borders", "Cell Margins"], ans: 0 },
+      { round: "Unit 6: Slide Rearranging", q: "How can you reorder slides quickly in presentation software?", opts: ["Cut and Paste / Drag and Drop", "Save As", "Print Preview", "Zoom In"], ans: 0 },
+      { round: "Unit 6: Internet Basics", q: "What is the global network of millions of interconnected computer networks called?", opts: ["Local Area Network", "Intranet", "The Internet", "System Unit"], ans: 2 },
+      { round: "Unit 6: World Wide Web", q: "What does 'WWW' stand for in internet services?", opts: ["World Wide Web", "Wide World Webbing", "Web World Wide", "World Web Wire"], ans: 0 },
+      { round: "Unit 6: Resource Locator", q: "What is the unique web address used to locate a specific web page called?", opts: ["Uniform Resource Locator (URL)", "User Registered Location", "Universal Read Link", "Unique Route Label"], ans: 0 },
+      { round: "Unit 6: Web Browsers", q: "Which application software allows users to open and view web pages?", opts: ["Web Browser (e.g. Chrome)", "Word Processor", "Media Player", "Compiler"], ans: 0 },
+      { round: "Unit 6: Email Basics", q: "In an email address like saman@edupub.gov.lk, what is 'saman'?", opts: ["Domain Name", "Username", "IP Address", "Protocol"], ans: 1 },
+      { round: "Unit 6: Email Headers", q: "In email options, what does 'Bcc' stand for?", opts: ["Blind Carbon Copy", "Basic Carbon Copy", "Backup Contact Copy", "Binary Code Copy"], ans: 0 },
+      { round: "Unit 6: Web Development", q: "Which core coding language is used to build web pages?", opts: ["HTML (HyperText Markup Language)", "Scratch", "Python", "Java"], ans: 0 },
+      { round: "Unit 6: HTML Tags", q: "Which HTML tag is used to create a numbered (ordered) list on a web page?", opts: ["<ul>", "<ol>", "<list>", "<number>"], ans: 1 },
+      { round: "Unit 6: HTML Tags", q: "Which tag is used to insert an image into an HTML web page?", opts: ["<picture>", "<photo>", "<img src>", "<image>"], ans: 2 },
+      { round: "Unit 6: Online Security", q: "How can you identify a SECURE website in your web browser?", opts: ["Address starts with https:// and shows a lock icon", "Address starts with http://", "Site has yellow background", "Site has popup ads"], ans: 0 },
 
-      // --- UNIT 2: OPERATING SYSTEM & STORAGE ---
-      { round: "Unit 2: Operating System", q: "What is the main role of an Operating System (OS)?", opts: ["Acts as a mediator and controls hardware/software", "Cools down the processor", "Cleans dust from the lab", "Calculates numbers only"], ans: 0 },
-      { round: "Unit 2: Computer OS", q: "Which of the following is an Operating System used for COMPUTERS?", opts: ["iOS", "Android", "Blackberry OS", "Linux (Ubuntu)"], ans: 3 },
-      { round: "Unit 2: Mobile OS", q: "Which of the following is an Operating System used for MOBILE PHONES?", opts: ["Ubuntu", "Windows 10", "Android", "Fedora"], ans: 2 },
-      { round: "Unit 2: Storage Classification", q: "According to manufacturing technology, into how many categories can computer storage devices be divided?", opts: ["Two categories", "Three categories", "Four categories", "Five categories"], ans: 1 },
-      { round: "Unit 2: Magnetic Media", q: "A Hard Disk Drive belongs to which category of storage devices?", opts: ["Optical Media", "Magnetic Media", "Solid State Media", "Virtual Media"], ans: 1 },
-      { round: "Unit 2: Optical Media", q: "Which storage device uses laser beams to read and write data?", opts: ["Compact Disk (CD) / DVD", "Hard Disk", "Pen Drive", "Floppy Disk"], ans: 0 },
-      { round: "Unit 2: Floppy Disk", q: "What is the storage capacity of a standard floppy disk?", opts: ["1.44 MB", "700 MB", "4.7 GB", "250 MB"], ans: 0 },
-      { round: "Unit 2: File Parts", q: "What are the two main parts that make up a file name in a computer?", opts: ["File Name and File Extension", "Size and Date", "Location and Attribute", "Drive and Folder"], ans: 0 },
-      { round: "Unit 2: Folder Purpose", q: "What is the main purpose of creating a folder?", opts: ["To slow down the computer", "To store related files in order for fast retrieval", "To increase electricity flow", "To delete files automatically"], ans: 1 },
-      { round: "Unit 2: Permanent Deletion", q: "How do you permanently delete a file or folder so it bypasses the Recycle Bin?", opts: ["Press 'Delete' key once", "Press 'Shift + Delete' keys together", "Drag it to a folder", "Rename the file"], ans: 1 },
+      // --- UNIT 5: PROGRAMME DEVELOPMENT & SCRATCH (15 QUESTIONS) ---
+      { round: "Unit 5: IPO Model", q: "In computer problem solving, what do the letters 'IPO' stand for?", opts: ["Input, Process, Output", "Import, Program, Option", "Idea, Plan, Outcome", "Index, Process, Order"], ans: 0 },
+      { round: "Unit 5: Algorithms", q: "What is a clear, step-by-step set of instructions to solve a problem called?", opts: ["Algorithm", "Hardware", "Database", "Operating System"], ans: 0 },
+      { round: "Unit 5: Flowcharts", q: "What is the visual diagram representation of an algorithm using standard shapes called?", opts: ["Flowchart", "Bar Chart", "Pie Chart", "Mind Map"], ans: 0 },
+      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape represents the START or END of a process?", opts: ["Oval / Capsule", "Rectangle", "Parallelogram", "Diamond"], ans: 0 },
+      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape is used for taking INPUT or displaying OUTPUT?", opts: ["Parallelogram", "Rectangle", "Oval", "Circle"], ans: 0 },
+      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape represents a PROCESS or calculation step?", opts: ["Rectangle", "Diamond", "Parallelogram", "Capsule"], ans: 0 },
+      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape represents a DECISION or condition check?", opts: ["Diamond", "Rectangle", "Oval", "Square"], ans: 0 },
+      { round: "Unit 5: Scratch Basics", q: "In Scratch, what is the graphical character or object that performs actions called?", opts: ["Sprite", "Actor", "Pointer", "Icon"], ans: 0 },
+      { round: "Unit 5: Scratch Basics", q: "What is the default sprite character when you open a new Scratch project?", opts: ["A Cat", "A Dog", "A Robot", "A Star"], ans: 0 },
+      { round: "Unit 5: Scratch Environment", q: "What is the main area where sprites move and interact in Scratch?", opts: ["The Stage", "The Canvas", "The Desktop", "The Terminal"], ans: 0 },
+      { round: "Unit 5: Scratch Blocks", q: "Which color category in Scratch contains blocks like 'move 10 steps'?", opts: ["Motion (Blue)", "Looks (Purple)", "Sound (Pink)", "Control (Yellow)"], ans: 0 },
+      { round: "Unit 5: Scratch Blocks", q: "Which category contains event triggers like 'when green flag clicked'?", opts: ["Events (Brown)", "Motion", "Sensing", "Operators"], ans: 0 },
+      { round: "Unit 5: Scratch Blocks", q: "Which category contains blocks to change sprite costumes or say speech bubbles?", opts: ["Looks (Purple)", "Motion", "Pen", "Data"], ans: 0 },
+      { round: "Unit 5: Scratch Variables", q: "Which block category is used to store values and create custom variables?", opts: ["Data / Variables (Orange)", "Motion", "Looks", "Events"], ans: 0 },
+      { round: "Unit 5: Scratch Backdrops", q: "What is the background image displayed on the Scratch stage called?", opts: ["Backdrop", "Wallpaper", "Poster", "Screen"], ans: 0 },
 
-      // --- UNIT 3: SECURITY OF COMPUTER SYSTEM ---
-      { round: "Unit 3: Security Types", q: "Into what two parts can the security of a computer system be divided?", opts: ["Internal and External", "Hardware Security and Software Security", "Input and Output Security", "Manual and Automatic Security"], ans: 1 },
-      { round: "Unit 3: Hardware Threats", q: "Which of the following is a main factor that causes physical damage to hardware devices?", opts: ["Installing antivirus software", "Sudden power failure and high voltage", "Opening text documents", "Typing too fast"], ans: 1 },
-      { round: "Unit 3: UPS", q: "What does UPS stand for and what is its primary function?", opts: ["Unified Power System - cools down the computer", "Uninterrupted Power Supply - supplies backup power during failure", "Universal Processor Speed - speeds up CPU", "Underground Power Source - saves electricity"], ans: 1 },
-      { round: "Unit 3: Lab Etiquette", q: "Why should students remove shoes when entering the computer laboratory?", opts: ["To keep the lab free of sand and dust", "To make typing faster", "To prevent software viruses", "To keep the room warm"], ans: 0 },
-      { round: "Unit 3: Cleaning Lab", q: "How frequently should computers in the laboratory be cleaned to prevent dust accumulation?", opts: ["Every day", "Once a week", "At least once in every three months", "Once a year"], ans: 2 },
-      { round: "Unit 3: Malware Definition", q: "How is malicious software (malware) defined?", opts: ["Helpful software for typing letters", "Software designed to intentionally cause damage to software, data, or networks", "An operating system for mobile phones", "A hardware cooling component"], ans: 1 },
-      { round: "Unit 3: Worms", q: "Which malware spreads across computer networks or the internet WITHOUT human action or a host program?", opts: ["Computer Virus", "Computer Worm", "Trojan Horse", "Spyware"], ans: 1 },
-      { round: "Unit 3: Spyware", q: "What is the specific function of Spyware?", opts: ["To clean disk space", "To secretly collect data about a person's computer or internet usage", "To speed up internet browsing", "To protect against high voltage"], ans: 1 },
-      { round: "Unit 3: Backups", q: "What does keeping backups mean?", opts: ["Shutting down the computer safely", "Keeping extra copies of software components and files in a safe place", "Locking the laboratory door", "Deleting old files permanently"], ans: 1 },
-      { round: "Unit 3: Biometrics", q: "Which of the following is a modern biometric method used for access control?", opts: ["A secret 4-digit PIN", "Fingerprints, voice, face, or iris recognition", "A physical key lock", "A wooden password card"], ans: 1 },
+      // --- UNIT 4: WORD PROCESSING (15 QUESTIONS) ---
+      { round: "Unit 4: Word Processing", q: "What is the main purpose of Word Processing software?", opts: ["Create and format text documents", "Perform mathematical calculations", "Edit video files", "Browse websites"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which keyboard shortcut creates a NEW blank document in Word?", opts: ["Ctrl + N", "Ctrl + O", "Ctrl + S", "Ctrl + P"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which keyboard shortcut OPENS an existing saved file in Word?", opts: ["Ctrl + O", "Ctrl + N", "Ctrl + S", "Ctrl + V"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which keyboard shortcut SAVES the current active document?", opts: ["Ctrl + S", "Ctrl + P", "Ctrl + C", "Ctrl + Z"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which shortcut opens the PRINT dialog window?", opts: ["Ctrl + P", "Ctrl + S", "Ctrl + N", "Ctrl + A"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which shortcut key COPIES selected text to the clipboard?", opts: ["Ctrl + C", "Ctrl + X", "Ctrl + V", "Ctrl + Z"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which shortcut key CUTS selected text from its original place?", opts: ["Ctrl + X", "Ctrl + C", "Ctrl + V", "Ctrl + Y"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which shortcut key PASTES copied or cut text into a document?", opts: ["Ctrl + V", "Ctrl + C", "Ctrl + X", "Ctrl + S"], ans: 0 },
+      { round: "Unit 4: Shortcuts", q: "Which shortcut UNDOES the previous action performed?", opts: ["Ctrl + Z", "Ctrl + Y", "Ctrl + A", "Ctrl + F"], ans: 0 },
+      { round: "Unit 4: Font Styling", q: "Which font formatting option makes letters darker and thicker?", opts: ["Bold (Ctrl+B)", "Italic (Ctrl+I)", "Underline (Ctrl+U)", "Subscript"], ans: 0 },
+      { round: "Unit 4: Font Styling", q: "Which font formatting option slants text to the right?", opts: ["Italic (Ctrl+I)", "Bold", "Underline", "Strikethrough"], ans: 0 },
+      { round: "Unit 4: Font Styling", q: "To type math powers like x², which formatting feature is used?", opts: ["Superscript", "Subscript", "Highlight", "Case Change"], ans: 0 },
+      { round: "Unit 4: Font Styling", q: "To type chemical formulas like H₂O, which formatting feature is used?", opts: ["Subscript", "Superscript", "Underline", "Italic"], ans: 0 },
+      { round: "Unit 4: Alignment", q: "Which text alignment distributes words evenly between left and right margins?", opts: ["Justify", "Align Left", "Center", "Align Right"], ans: 0 },
+      { round: "Unit 4: Word Tables", q: "In a Word table, what is the intersection box of a row and a column called?", opts: ["Cell", "Grid", "Border", "Margin"], ans: 0 },
 
-      // --- UNIT 4: WORD PROCESSING ---
-      { round: "Unit 4: Word Processing", q: "What is word processing?", opts: ["Composing, editing, and/or storing text-based documents", "Calculating complex math equations", "Designing video games", "Browsing internet pages"], ans: 0 },
-      { round: "Unit 4: Software Examples", q: "Which of the following is an example of word processing software?", opts: ["Microsoft Word", "Android OS", "Rapid Typing Tutor", "MS-DOS"], ans: 0 },
-      { round: "Unit 4: Keyboard Groups", q: "Based on their functions, how are the keys on a typical keyboard grouped?", opts: ["Control, Character, Function, Navigation, Numeric keypad", "Input, Process, Output keys", "Upper, Lower, Side keys", "Small, Medium, Large keys"], ans: 0 },
-      { round: "Unit 4: Space Bar", q: "What happens when the Space bar is pressed once?", opts: ["Creates a single empty space between two words", "Moves cursor to the next line", "Deletes a letter", "Opens a new document"], ans: 0 },
-      { round: "Unit 4: Backspace Key", q: "What does the Backspace key do when pressed once?", opts: ["Deletes any character or space to the left of the cursor", "Deletes text to the right of the cursor", "Saves the document", "Prints the page"], ans: 0 },
-      { round: "Unit 4: Touch Typing", q: "What is touch typing?", opts: ["Typing while looking at each key", "The act of typing quickly and accurately without looking at the keys", "Typing using a mobile phone screen", "Using only two fingers to type"], ans: 1 },
-      { round: "Unit 4: Typing Tutors", q: "Which of the following is a downloadable typing tutor software mentioned in the textbook?", opts: ["Rapid Typing Tutor", "Microsoft Paint", "Adobe Photoshop", "Winamp"], ans: 0 },
-      { round: "Unit 4: Sinhala Keyboards", q: "What are the two types of Sinhala keyboards based on the manner of entering characters?", opts: ["Standard Sinhala Keyboard and Phonetics Keyboard", "English and Tamil Keyboard", "Unicode and Non-Unicode Keyboard", "Upper and Lower Keyboard"], ans: 0 },
-      { round: "Unit 4: Standard Sinhala", q: "What is the standard Sinhala keyboard model operated in present computers called?", opts: ["Wijesekara Sinhala Keyboard", "Tamil Unicode Keyboard", "QWERTY Standard Keyboard", "Font Bijay Keyboard"], ans: 0 },
-      { round: "Unit 4: Unicode Advantage", q: "What is a key advantage of using a Unicode font?", opts: ["It requires special installation on every reader's computer", "To read Unicode text, the user does not need the font pre-installed in their computer", "It only works offline", "It cannot be saved as a file"], ans: 1 },
+      // --- UNIT 3: SECURITY OF COMPUTER SYSTEM (15 QUESTIONS) ---
+      { round: "Unit 3: Hardware Security", q: "What is any physical component of a computer that you can touch and see?", opts: ["Hardware", "Software", "Malware", "Operating System"], ans: 0 },
+      { round: "Unit 3: Hardware Security", q: "Which device provides temporary backup power during sudden blackouts?", opts: ["Uninterruptible Power Supply (UPS)", "Surge Protector", "Cooling Fan", "Hard Disk"], ans: 0 },
+      { round: "Unit 3: Hardware Security", q: "Which device protects hardware from sudden high-voltage power surges?", opts: ["Surge Protector / MCB", "UPS", "RAM", "Graphics Card"], ans: 0 },
+      { round: "Unit 3: Hardware Threat", q: "Why is dust dangerous to computer hardware?", opts: ["Clogs cooling fans and causes overheating", "Deletes files", "Attracts viruses", "Turns screen black"], ans: 0 },
+      { round: "Unit 3: Hardware Threat", q: "Why should we keep food and drinks away from the computer lab?", opts: ["Prevents liquid spills & insect infestation", "Slows internet", "Deletes user passwords", "Distorts sound"], ans: 0 },
+      { round: "Unit 3: Biometrics", q: "Which access method grants entry using physical human traits like fingerprints?", opts: ["Biometric Password", "Text Password", "PIN Code", "Key Lock"], ans: 0 },
+      { round: "Unit 3: Software Malware", q: "What is the general term for malicious software created to cause harm?", opts: ["Malware", "Firmware", "Shareware", "Freeware"], ans: 0 },
+      { round: "Unit 3: Malware Types", q: "Which malware infects host files and requires human action to spread?", opts: ["Computer Virus", "Computer Worm", "Trojan Horse", "Firewall"], ans: 0 },
+      { round: "Unit 3: Malware Types", q: "Which malware spreads across networks automatically WITHOUT human action?", opts: ["Computer Worm", "Computer Virus", "Trojan Horse", "Spyware"], ans: 0 },
+      { round: "Unit 3: Malware Types", q: "Which malware looks like a harmless program but performs harmful actions?", opts: ["Trojan Horse", "Worm", "Virus", "Adware"], ans: 0 },
+      { round: "Unit 3: Malware Types", q: "Which malware secretly tracks internet browsing and steals personal info?", opts: ["Spyware", "Antivirus", "Firewall", "UPS"], ans: 0 },
+      { round: "Unit 3: Data Protection", q: "What is the security process of scrambling data into an unreadable format?", opts: ["Encryption", "Compression", "Defragmentation", "Formatting"], ans: 0 },
+      { round: "Unit 3: Data Protection", q: "What is the practice of storing secondary copies of files in a safe place called?", opts: ["Data Backup", "Data Encryption", "Data Mining", "Data Erasing"], ans: 0 },
+      { round: "Unit 3: Cyber Security", q: "What is an attack that tricks users into sharing passwords via fake emails?", opts: ["Phishing Attack", "Cyber Bullying", "Hacking", "Piracy"], ans: 0 },
+      { round: "Unit 3: Cyber Security", q: "What term describes gaining unauthorized access to a private computer network?", opts: ["Hacking", "Phishing", "Backup", "Encryption"], ans: 0 },
 
-      // --- UNIT 5: PROGRAMME DEVELOPMENT & SCRATCH ---
-      { round: "Unit 5: Decomposition", q: "What are the advantages of decomposing a complex problem into sub-problems?", opts: ["It makes the problem harder", "It is easy to solve, understand, describe, and analyze", "It increases computer bugs", "It deletes extra files"], ans: 1 },
-      { round: "Unit 5: Control Structures", q: "What are the three types of control structures used in algorithms and flowcharts?", opts: ["Input, Process, Output", "Sequence, Selection, Repetition", "Start, Calculate, Stop", "Line, Circle, Diamond"], ans: 1 },
-      { round: "Unit 5: Sequence", q: "How is a sequence defined in an algorithm?", opts: ["Execution of instructions repeatedly", "Execution of instructions sequentially from top to bottom", "Making a choice based on a condition", "Random execution of steps"], ans: 1 },
-      { round: "Unit 5: Selection", q: "How does a selection control structure make decisions?", opts: ["By looping endlessly", "By making a decision based on whether a condition is true or false", "By deleting variables", "By stopping the program immediately"], ans: 1 },
-      { round: "Unit 5: Repetition", q: "What is a repetition control structure?", opts: ["Execution of instructions once only", "Execution of an instruction or instructions repeatedly until a condition is satisfied", "Changing text fonts", "Opening a new document"], ans: 1 },
-      { round: "Unit 5: Scratch Software", q: "What type of software is Scratch?", opts: ["A commercial word processor", "A visual programme development software that is free and open source", "An operating system for servers", "A hardware diagnostic tool"], ans: 1 },
-      { round: "Unit 5: Variables", q: "In programming, what is a variable used for?", opts: ["To store a value in memory temporarily", "To permanently delete files", "To print documents", "To scan for computer viruses"], ans: 0 },
-      { round: "Unit 5: Bugs", q: "What is a bug in the context of computer programming?", opts: ["A helpful command block", "An error in a program", "An external storage device", "A type of computer virus"], ans: 1 },
-      { round: "Unit 5: Debugging", q: "What is debugging?", opts: ["Creating new errors", "The elimination of bugs in a programme", "Installing an operating system", "Backing up files"], ans: 1 },
-      { round: "Unit 5: Scratch Blocks", q: "In Scratch, which block category contains command blocks pertaining to making a variable and assigning values?", opts: ["Motion", "Looks", "Data", "Sensing"], ans: 2 }
+      // --- UNIT 2: OPERATING SYSTEM & STORAGE (15 QUESTIONS) ---
+      { round: "Unit 2: Operating System", q: "What main software acts as a mediator between the user and hardware?", opts: ["Operating System", "Application Software", "Antivirus", "Web Browser"], ans: 0 },
+      { round: "Unit 2: Computer OS", q: "Which of the following is an Operating System used for desktop computers?", opts: ["Microsoft Windows", "Android", "iOS", "Blackberry OS"], ans: 0 },
+      { round: "Unit 2: Mobile OS", q: "Which operating system is designed specifically for smartphones?", opts: ["Android", "Ubuntu", "Fedora", "MS-DOS"], ans: 0 },
+      { round: "Unit 2: Computer OS", q: "Is Linux Ubuntu a Computer OS or a Mobile OS?", opts: ["Computer OS", "Mobile OS", "Hardware Tool", "Web Browser"], ans: 0 },
+      { round: "Unit 2: Mobile OS", q: "Is Apple's iOS primarily a Computer OS or a Mobile OS?", opts: ["Mobile OS", "Computer OS", "Database", "Processor"], ans: 0 },
+      { round: "Unit 2: Storage Categories", q: "Hard Disk Drives belong to which storage technology category?", opts: ["Magnetic Media Devices", "Optical Media Devices", "Solid State Media", "Paper Media"], ans: 0 },
+      { round: "Unit 2: Storage Categories", q: "CDs, DVDs, and Blu-Ray Disks belong to which storage category?", opts: ["Optical Media Devices", "Magnetic Media Devices", "Solid State Media", "Virtual Media"], ans: 0 },
+      { round: "Unit 2: Storage Categories", q: "Pen Drives and Memory Cards belong to which storage category?", opts: ["Solid State Media Devices", "Magnetic Media Devices", "Optical Media Devices", "Tape Media"], ans: 0 },
+      { round: "Unit 2: Solid State Tech", q: "Why do Solid State Media devices operate faster than Hard Disks?", opts: ["They have no moving mechanical parts", "They use magnetic tapes", "They are larger", "They run on gas"], ans: 0 },
+      { round: "Unit 2: Optical Storage", q: "What technology is used to read and write data on CDs and DVDs?", opts: ["Laser Beams", "Magnetic Fields", "Mechanical Needles", "Heat Coils"], ans: 0 },
+      { round: "Unit 2: Optical Capacities", q: "What is the typical storage capacity of a standard CD-ROM?", opts: ["650 MB - 700 MB", "4.7 GB", "25 GB", "1 TB"], ans: 0 },
+      { round: "Unit 2: Optical Capacities", q: "What is the standard capacity of a single-layer DVD?", opts: ["4.7 GB", "700 MB", "1.44 MB", "100 GB"], ans: 0 },
+      { round: "Unit 2: Rewritable Media", q: "Which optical disc type allows writing data onto it MULTIPLE times?", opts: ["CD-RW / DVD-RW", "CD-R", "DVD-R", "ROM"], ans: 0 },
+      { round: "Unit 2: File Deletion", q: "Where do files go when temporarily deleted using the 'Delete' key?", opts: ["Recycle Bin", "Permanently Erased", "Hard Disk Root", "RAM"], ans: 0 },
+      { round: "Unit 2: File Deletion", q: "How do you permanently delete a file to bypass the Recycle Bin?", opts: ["Press 'Shift + Delete'", "Press 'Ctrl + Delete'", "Drag to Folder", "Rename File"], ans: 0 },
+
+      // --- UNIT 1: CENTRAL PROCESSING UNIT (15 QUESTIONS) ---
+      { round: "Unit 1: CPU Architecture", q: "Which internal computer component is known as the 'brain' of the computer?", opts: ["Central Processing Unit (CPU)", "Hard Disk", "Power Supply", "Monitor"], ans: 0 },
+      { round: "Unit 1: CPU Location", q: "Where is the CPU physically mounted inside the computer system unit?", opts: ["On the Motherboard", "On the Power Supply Unit", "Inside the Keyboard", "On the Hard Disk"], ans: 0 },
+      { round: "Unit 1: Kitchen Analogy", q: "In the textbook's hotel kitchen analogy, what does the CPU represent?", opts: ["The Chef preparing meals", "The Kitchen Stoves", "The Dining Area", "The Food Ingredients"], ans: 0 },
+      { round: "Unit 1: Kitchen Analogy", q: "What does a Quad-Core processor mean in the kitchen analogy?", opts: ["Four chefs cooking four meals simultaneously", "Four kitchens in one hotel", "One chef cooking four times faster", "Four dining rooms"], ans: 0 },
+      { round: "Unit 1: CPU Components", q: "Which component of the CPU performs math calculations and logical comparisons?", opts: ["Arithmetic and Logical Unit (ALU)", "Control Unit (CU)", "Memory Registers", "Hard Disk"], ans: 0 },
+      { round: "Unit 1: CPU Components", q: "Which component of the CPU manages and directs all computer operations?", opts: ["Control Unit (CU)", "ALU", "Memory Registers", "RAM"], ans: 0 },
+      { round: "Unit 1: CPU Components", q: "What are the small, ultra-high-speed temporary storage locations inside the CPU?", opts: ["Memory Registers", "Optical Disks", "Hard Drives", "Cache Files"], ans: 0 },
+      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was used in First Generation computers?", opts: ["Vacuum Tubes", "Transistors", "Integrated Circuits", "Microprocessors"], ans: 0 },
+      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was introduced in Second Generation computers?", opts: ["Transistors", "Vacuum Tubes", "Integrated Circuits", "Microprocessors"], ans: 0 },
+      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was introduced in Third Generation computers?", opts: ["Integrated Circuits (IC)", "Vacuum Tubes", "Transistors", "Microprocessors"], ans: 0 },
+      { round: "Unit 1: CPU Evolution", q: "Which electronic technology powers modern Fourth Generation computers?", opts: ["Microprocessors", "Integrated Circuits", "Transistors", "Vacuum Tubes"], ans: 0 },
+      { round: "Unit 1: Execution Speed", q: "In which time unit was the execution speed of First Generation computers measured?", opts: ["Milliseconds", "Microseconds", "Nanoseconds", "Picoseconds"], ans: 0 },
+      { round: "Unit 1: Execution Speed", q: "In which time unit was the execution speed of Third Generation computers measured?", opts: ["Nanoseconds", "Milliseconds", "Microseconds", "Hours"], ans: 0 },
+      { round: "Unit 1: Clock Speed", q: "What unit is used to measure the clock speed of modern CPUs?", opts: ["Hertz (Hz) or Gigahertz (GHz)", "Bytes", "Watts", "Pixels"], ans: 0 },
+      { round: "Unit 1: Clock Speed", q: "How many Hertz (Hz) are equal to 1 Gigahertz (GHz)?", opts: ["1,000,000,000 Hz", "1,000 Hz", "1,000,000 Hz", "100 Hz"], ans: 0 }
     ];
 
     let currentQIndex = 0;
-    let score = 0;
-    let teamName = "Team 1";
+    let scores = ;
+    let teamNames = ["Team A", "Team B", "Team C", "Team D"];
     let isRevealed = false;
 
     function renderQuestion() {
@@ -222,29 +310,6 @@
         const textEl = document.getElementById(`opt-text-${i}`);
         textEl.textContent = q.opts[i];
         optEl.classList.remove("dimmed", "correct-answer");
-      }
-    }
-
-    // Direct interaction when kid clicks an option card
-    function checkAnswer(selectedIdx) {
-      if (isRevealed) return;
-      isRevealed = true;
-      const correctAns = questions[currentQIndex].ans;
-
-      if (selectedIdx === correctAns) {
-        score += 100; // Adds 100 points for correct answer
-      } else {
-        score -= 50;  // Deducts 50 points for wrong answer
-      }
-      document.getElementById("score-0").textContent = score;
-
-      for (let i = 0; i < 4; i++) {
-        const optEl = document.getElementById(`opt-${i}`);
-        if (i === correctAns) {
-          optEl.classList.add("correct-answer");
-        } else {
-          optEl.classList.add("dimmed");
-        }
       }
     }
 
@@ -279,11 +344,16 @@
       }
     }
 
-    function renameTeam() {
-      const newName = prompt(`Enter custom name for Team:`, teamName);
+    function addScore(teamIndex, points) {
+      scores[teamIndex] += points;
+      document.getElementById(`score-${teamIndex}`).textContent = scores[teamIndex];
+    }
+
+    function renameTeam(teamIndex) {
+      const newName = prompt(`Enter custom name for ${teamNames[teamIndex]}:`, teamNames[teamIndex]);
       if (newName && newName.trim() !== "") {
-        teamName = newName.trim();
-        document.getElementById("tname-0").textContent = teamName;
+        teamNames[teamIndex] = newName.trim();
+        document.getElementById(`tname-${teamIndex}`).textContent = teamNames[teamIndex];
       }
     }
 
@@ -293,14 +363,31 @@
       const subtext = document.getElementById("winner-subtext");
       const leaderboardBody = document.getElementById("leaderboard-body");
 
-      headline.textContent = `🏆 WELL DONE!`;
-      subtext.textContent = `You finished the challenge, ${teamName}!`;
+      const teamObjects = teamNames.map((name, idx) => ({ name: name, score: scores[idx] }));
+      teamObjects.sort((a, b) => b.score - a.score);
 
-      leaderboardBody.innerHTML = `
-        <div class="leaderboard-item rank-1">
-          <span>🥇 ${teamName} Final Score</span><span>${score} pts</span>
-        </div>
-      `;
+      const topScore = teamObjects.score;
+      const winners = teamObjects.filter(t => t.score === topScore);
+
+      if (winners.length === 1) {
+        headline.textContent = `🏆 WINNER: ${winners.name.toUpperCase()}!`;
+        subtext.textContent = `Outstanding Performance with ${winners.score} Points!`;
+      } else {
+        const winnerNames = winners.map(w => w.name).join(" & ");
+        headline.textContent = `🤝 IT'S A TIE!`;
+        subtext.textContent = `${winnerNames} tied with ${topScore} Points!`;
+      }
+
+      leaderboardBody.innerHTML = "";
+      const rankClasses = ["rank-1", "rank-2", "rank-3", "rank-4"];
+      const rankLabels = ["1st Place 🥇", "2nd Place 🥈", "3rd Place 🥉", "4th Place 🎗️"];
+
+      teamObjects.forEach((t, i) => {
+        const item = document.createElement("div");
+        item.className = `leaderboard-item ${rankClasses[i]}`;
+        item.innerHTML = `<span>${rankLabels[i]} — ${t.name}</span><span>${t.score} pts</span>`;
+        leaderboardBody.appendChild(item);
+      });
 
       modal.style.display = "flex";
     }
@@ -309,14 +396,12 @@
       document.getElementById("winner-modal").style.display = "none";
     }
 
-    // Keyboard Shortcuts
     document.addEventListener('keydown', function(event) {
       if (event.code === 'ArrowRight') nextQuestion();
       if (event.code === 'ArrowLeft') prevQuestion();
       if (event.code === 'Space') revealAnswer();
     });
 
-    // Initialize Game
     renderQuestion();
   </script>
 </body>
