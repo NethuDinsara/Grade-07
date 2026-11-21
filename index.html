@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Daily Practice Booster - Unit 7 ICT</title>
+  <title>Daily Practice Booster - Complete Unit 7 ICT</title>
   <style>
     :root {
-      --primary: #EC4899;
-      --primary-dark: #DB2777;
-      --primary-light: #FCE7F3;
-      --accent-purple: #8B5CF6;
-      --accent-teal: #06B6D4;
-      --accent-amber: #F59E0B;
-      --bg: #FFF1F7;
+      --primary: #DB2777;
+      --primary-hover: #BE185D;
+      --primary-soft: #FDF2F8;
+      --primary-border: #FBCFE8;
+      --accent-plum: #7E22CE;
+      --bg: #FAF6F8;
       --card: #FFFFFF;
-      --text: #2A1224;
-      --muted: #7C5871;
-      --correct: #10B981;
-      --incorrect: #EF4444;
-      --sinhala-bg: #FEF3C7;
-      --sinhala-text: #92400E;
+      --text: #1F1722;
+      --muted: #6B5B6E;
+      --correct: #059669;
+      --incorrect: #E11D48;
+      --sinhala-bg: #FEF9EC;
+      --sinhala-text: #854D0E;
     }
 
     * { 
@@ -31,7 +30,7 @@
     }
     
     body { 
-      background: linear-gradient(135deg, #FFE4F1 0%, #FFF7FA 48%, #F3E8FF 100%); 
+      background-color: var(--bg);
       color: var(--text); 
       padding: 12px; 
       display: flex; 
@@ -43,9 +42,9 @@
       width: 100%; 
       max-width: 480px; 
       background: var(--card); 
-      border-radius: 24px; 
-      box-shadow: 0 14px 32px rgba(236, 72, 153, 0.14); 
-      border: 2px solid #FBCFE8;
+      border-radius: 22px; 
+      box-shadow: 0 10px 28px rgba(31, 23, 34, 0.06); 
+      border: 1.5px solid #F3E4EC;
       padding: 18px; 
       min-height: 90vh; 
       display: flex; 
@@ -55,8 +54,8 @@
 
     .header { 
       padding-bottom: 12px; 
-      border-bottom: 2px dashed #F9A8D4; 
-      margin-bottom: 16px; 
+      border-bottom: 1.5px solid #F3E4EC; 
+      margin-bottom: 14px; 
     }
     
     .badge-row { 
@@ -68,21 +67,22 @@
     
     .badge { 
       display: inline-block; 
-      padding: 4px 12px; 
-      border-radius: 16px; 
-      font-size: 0.75rem; 
+      padding: 4px 11px; 
+      border-radius: 999px; 
+      font-size: 0.72rem; 
       font-weight: 700; 
       text-transform: uppercase; 
+      letter-spacing: 0.3px;
     }
     
-    .subject-tag { background: linear-gradient(135deg, #FCE7F3, #FBCFE8); color: #BE185D; }
-    .target-tag { background: linear-gradient(135deg, #CCFBF1, #A7F3D0); color: #065F46; }
+    .subject-tag { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
+    .target-tag { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
 
     .tutor-trigger {
       margin-left: auto;
-      background: #FDF2F8;
-      border: 1px solid #FBCFE8;
-      color: #DB2777;
+      background: transparent;
+      border: 1px solid transparent;
+      color: #C4B5C7;
       font-size: 0.9rem;
       padding: 4px 7px;
       cursor: pointer;
@@ -91,15 +91,13 @@
       transition: all 0.15s ease;
     }
     .tutor-trigger:hover {
-      background: #FCE7F3;
-      color: #9D174D;
+      background: var(--primary-soft);
+      color: var(--primary);
     }
     
     .header h1 { 
-      font-size: 1.18rem; 
-      background: linear-gradient(90deg, #DB2777, #8B5CF6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 1.15rem; 
+      color: var(--text);
       font-weight: 800; 
       line-height: 1.3;
     }
@@ -115,42 +113,41 @@
     .topic-pills::-webkit-scrollbar { display: none; }
     .topic-pill {
       flex: 0 0 auto;
-      background: #FDF2F8;
-      color: #9D174D;
-      border: 1.5px solid #FBCFE8;
+      background: #F8F4F7;
+      color: var(--muted);
+      border: 1.5px solid #EADCE5;
       border-radius: 999px;
-      padding: 5px 11px;
+      padding: 5px 12px;
       font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .topic-pill[data-topic="video"] { background: #F5F3FF; color: #6D28D9; border-color: #DDD6FE; }
-    .topic-pill[data-topic="email"] { background: #ECFEFF; color: #0E7490; border-color: #A5F3FC; }
-    .topic-pill[data-topic="html"] { background: #FFFBEB; color: #B45309; border-color: #FDE68A; }
-
+    .topic-pill:hover {
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
     .topic-pill.active {
-      background: linear-gradient(135deg, #EC4899, #8B5CF6);
+      background: var(--primary);
       color: #FFFFFF;
-      border-color: transparent;
-      box-shadow: 0 3px 10px rgba(236, 72, 153, 0.3);
+      border-color: var(--primary);
     }
 
     .quiz-card { 
-      background: linear-gradient(180deg, #FFF9FC 0%, #FFFFFF 100%); 
-      border: 1.5px solid #FBCFE8; 
-      border-radius: 18px; 
-      padding: 14px; 
+      background: #FCFAFB; 
+      border: 1.5px solid #EFE3EA; 
+      border-radius: 16px; 
+      padding: 15px; 
       margin-bottom: 14px; 
-      box-shadow: 0 4px 12px rgba(244, 114, 182, 0.08);
     }
     
     .q-number { 
       font-size: 0.72rem; 
       font-weight: 800; 
-      color: #DB2777; 
+      color: var(--primary); 
       text-transform: uppercase; 
-      margin-bottom: 4px; 
+      margin-bottom: 5px; 
+      letter-spacing: 0.3px;
     }
     
     .q-text { 
@@ -165,9 +162,9 @@
       width: 100%; 
       text-align: left; 
       background: #FFFFFF; 
-      border: 1.5px solid #F5D0FE; 
-      padding: 14px; 
-      border-radius: 13px; 
+      border: 1.5px solid #E5D7E0; 
+      padding: 13px 14px; 
+      border-radius: 12px; 
       margin-bottom: 8px; 
       font-size: 0.92rem; 
       font-weight: 500; 
@@ -176,96 +173,85 @@
       outline: none; 
       color: var(--text);
     }
-    .option-btn:nth-child(1) { border-left: 4px solid #EC4899; }
-    .option-btn:nth-child(2) { border-left: 4px solid #8B5CF6; }
-    .option-btn:nth-child(3) { border-left: 4px solid #06B6D4; }
-    .option-btn:nth-child(4) { border-left: 4px solid #F59E0B; }
     
-    .option-btn:hover { background: #FDF2F8; }
-    .option-btn:active { background: #FCE7F3; transform: scale(0.99); }
+    .option-btn:hover { 
+      background: var(--primary-soft); 
+      border-color: var(--primary-border);
+    }
+    .option-btn:active { 
+      transform: scale(0.99); 
+    }
     
     .option-btn.selected { 
-      border-color: #EC4899 !important; 
-      border-left-width: 6px !important;
-      background: linear-gradient(135deg, #FCE7F3, #F3E8FF) !important; 
-      color: #9D174D !important; 
+      border-color: var(--primary) !important; 
+      background: var(--primary-soft) !important; 
+      color: var(--primary-hover) !important; 
       font-weight: 700 !important; 
     }
 
     .btn-submit { 
       width: 100%; 
-      background: linear-gradient(135deg, #EC4899 0%, #DB2777 55%, #8B5CF6 100%); 
-      color: white; 
-      border: none; 
-      padding: 16px; 
-      border-radius: 15px; 
-      font-weight: 700; 
-      font-size: 1.05rem; 
-      cursor: pointer; 
-      margin-top: 10px; 
-      box-shadow: 0 6px 16px rgba(219, 39, 119, 0.32); 
-    }
-    
-    .btn-whatsapp { 
-      width: 100%; 
-      background: linear-gradient(135deg, #25D366, #10B981); 
+      background: var(--primary); 
       color: white; 
       border: none; 
       padding: 15px; 
       border-radius: 14px; 
       font-weight: 700; 
-      font-size: 1rem; 
+      font-size: 1.02rem; 
+      cursor: pointer; 
+      margin-top: 10px; 
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.22); 
+      transition: background 0.15s ease;
+    }
+    .btn-submit:hover {
+      background: var(--primary-hover);
+    }
+    
+    .btn-whatsapp { 
+      width: 100%; 
+      background: #16A34A; 
+      color: white; 
+      border: none; 
+      padding: 15px; 
+      border-radius: 14px; 
+      font-weight: 700; 
+      font-size: 0.98rem; 
       cursor: pointer; 
       margin-top: 14px; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
       gap: 8px; 
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.28); 
-    }
-
-    .btn-retry {
-      width: 100%;
-      background: #FDF2F8;
-      color: #DB2777;
-      border: 1.5px solid #F9A8D4;
-      padding: 13px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.22); 
     }
 
     .score-banner { 
       text-align: center; 
       padding: 14px 0 16px 0; 
-      border-bottom: 2px dashed #F9A8D4; 
+      border-bottom: 1.5px dashed #E5D7E0; 
       margin-bottom: 16px; 
-      background: linear-gradient(180deg, #FDF2F8, transparent);
+      background: var(--primary-soft);
       border-radius: 16px;
     }
     
     .score-badge { 
-      font-size: 2.8rem; 
+      font-size: 2.6rem; 
       font-weight: 800; 
-      background: linear-gradient(90deg, #EC4899, #8B5CF6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--primary);
     }
-    .target-met { font-size: 0.95rem; font-weight: 700; color: #059669; margin-top: 4px; }
-    .target-missed { font-size: 0.95rem; font-weight: 700; color: #D97706; margin-top: 4px; }
+    .target-met { font-size: 0.92rem; font-weight: 700; color: var(--correct); margin-top: 4px; }
+    .target-missed { font-size: 0.92rem; font-weight: 700; color: #B45309; margin-top: 4px; }
 
     .review-card { 
       background: #FFFFFF; 
-      border-left: 5px solid #EC4899; 
+      border-left: 4px solid var(--primary); 
       padding: 12px 14px; 
       border-radius: 12px; 
       margin-bottom: 12px; 
-      box-shadow: 0 3px 10px rgba(236, 72, 153, 0.06); 
-      border-top: 1px solid #FCE7F3; 
-      border-right: 1px solid #FCE7F3; 
-      border-bottom: 1px solid #FCE7F3; 
+      box-shadow: 0 2px 6px rgba(31, 23, 34, 0.04); 
+      border-top: 1px solid #F3E4EC; 
+      border-right: 1px solid #F3E4EC; 
+      border-bottom: 1px solid #F3E4EC; 
     }
     
     .review-card.correct { border-left-color: var(--correct); }
@@ -274,6 +260,7 @@
     .sinhala-review { 
       background: var(--sinhala-bg); 
       color: var(--sinhala-text); 
+      border: 1px solid #FDE68A;
       padding: 8px 10px; 
       border-radius: 8px; 
       font-size: 0.84rem; 
@@ -285,8 +272,8 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(65, 16, 48, 0.52);
-      backdrop-filter: blur(3px);
+      background: rgba(31, 23, 34, 0.45);
+      backdrop-filter: blur(2px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -297,10 +284,10 @@
       background: #FFFFFF;
       width: 100%;
       max-width: 340px;
-      border-radius: 20px;
-      border: 2px solid #F9A8D4;
+      border-radius: 18px;
+      border: 1.5px solid #F3E4EC;
       padding: 20px;
-      box-shadow: 0 20px 35px rgba(219, 39, 119, 0.22);
+      box-shadow: 0 18px 32px rgba(31, 23, 34, 0.16);
       text-align: center;
     }
     .modal-box h2 {
@@ -319,12 +306,12 @@
       font-size: 1.2rem;
       text-align: center;
       letter-spacing: 6px;
-      border: 1.5px solid #F9A8D4;
+      border: 1.5px solid #E5D7E0;
       border-radius: 12px;
       margin-bottom: 10px;
       outline: none;
     }
-    .pin-input:focus { border-color: #EC4899; }
+    .pin-input:focus { border-color: var(--primary); }
     .modal-actions {
       display: flex;
       gap: 8px;
@@ -338,8 +325,8 @@
       font-size: 0.9rem;
       cursor: pointer;
     }
-    .btn-cancel { background: #FDF2F8; color: var(--muted); }
-    .btn-unlock { background: linear-gradient(135deg, #EC4899, #8B5CF6); color: #FFFFFF; }
+    .btn-cancel { background: #F5EEF2; color: var(--muted); }
+    .btn-unlock { background: var(--primary); color: #FFFFFF; }
 
     /* Tutor Dashboard View */
     .tutor-bar {
@@ -348,12 +335,12 @@
       align-items: center;
       margin-bottom: 14px;
       padding-bottom: 10px;
-      border-bottom: 1.5px solid #FCE7F3;
+      border-bottom: 1.5px solid #F3E4EC;
     }
     .tutor-title {
       font-size: 0.95rem;
       font-weight: 800;
-      color: #DB2777;
+      color: var(--primary);
     }
     .btn-exit-tutor {
       background: #FFE4E6;
@@ -368,41 +355,38 @@
     .subject-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 16px;
     }
     .subject-box {
-      background: #FFF9FC;
-      border: 2px solid #FBCFE8;
+      background: #FCFAFB;
+      border: 1.5px solid #E5D7E0;
       border-radius: 14px;
-      padding: 14px 10px;
+      padding: 12px 8px;
       text-align: center;
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .subject-box[data-sub="video"] { background: #FAF5FF; border-color: #E9D5FF; }
-    .subject-box[data-sub="email"] { background: #F0FDFA; border-color: #99F6E4; }
-    .subject-box[data-sub="html"] { background: #FFFBEB; border-color: #FDE68A; }
+    .subject-box[data-sub="security"] { grid-column: span 2; }
 
     .subject-box.active {
-      border-color: #EC4899;
-      background: linear-gradient(135deg, #FCE7F3, #F3E8FF);
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.16);
+      border-color: var(--primary);
+      background: var(--primary-soft);
     }
     .subject-box-name {
       font-weight: 800;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     .subject-box-count {
-      font-size: 0.74rem;
+      font-size: 0.73rem;
       color: var(--muted);
       font-weight: 600;
     }
     .q-num-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 6px;
       margin-bottom: 16px;
       max-height: 220px;
@@ -411,35 +395,35 @@
     }
     .q-num-btn {
       background: #FFFFFF;
-      border: 1.5px solid #FBCFE8;
+      border: 1.5px solid #E5D7E0;
       border-radius: 8px;
       padding: 8px 4px;
       font-size: 0.82rem;
       font-weight: 700;
-      color: #9D174D;
+      color: var(--text);
       cursor: pointer;
     }
     .q-num-btn.active {
-      background: linear-gradient(135deg, #EC4899, #8B5CF6);
+      background: var(--primary);
       color: #FFFFFF;
-      border-color: transparent;
+      border-color: var(--primary);
     }
     .tutor-detail-card {
-      background: #FFF9FC;
-      border: 1.5px solid #F9A8D4;
+      background: #FCFAFB;
+      border: 1.5px solid #E5D7E0;
       border-radius: 14px;
       padding: 14px;
     }
     .tutor-opt-item {
       background: #FFFFFF;
-      border: 1px solid #FCE7F3;
+      border: 1px solid #EFE3EA;
       padding: 8px 10px;
       border-radius: 8px;
       font-size: 0.86rem;
       margin-bottom: 6px;
     }
     .tutor-opt-item.is-ans {
-      background: #DCFCE7;
+      background: #ECFDF5;
       border-color: #10B981;
       color: #065F46;
       font-weight: 700;
@@ -452,19 +436,20 @@
   <div>
     <div class="header">
       <div class="badge-row">
-        <div class="badge subject-tag" id="subject-tag">UNIT 7 • ICT</div>
+        <div class="badge subject-tag" id="subject-tag">UNIT 7 • COMPLETE</div>
         <div class="badge target-tag">Target: 65%+</div>
         <button type="button" class="tutor-trigger" id="tutor-trigger-btn" aria-label="Tutor Panel">⚙</button>
       </div>
-      <h1 id="title-text">Internet & Communication Booster</h1>
+      <h1 id="title-text">Internet, Communication & Security Booster</h1>
     </div>
 
     <div class="topic-pills" id="topic-pills">
-      <button type="button" class="topic-pill active" data-topic="all">All (20)</button>
+      <button type="button" class="topic-pill active" data-topic="all">All (42)</button>
       <button type="button" class="topic-pill" data-topic="web">1. Web & Net</button>
       <button type="button" class="topic-pill" data-topic="video">2. Video Calls</button>
       <button type="button" class="topic-pill" data-topic="email">3. E-mail</button>
       <button type="button" class="topic-pill" data-topic="html">4. HTML</button>
+      <button type="button" class="topic-pill" data-topic="security">5. Safe & Ethical Net</button>
     </div>
 
     <!-- Quiz Screen -->
@@ -477,15 +462,13 @@
     <div id="screen-results" style="display:none;">
       <div class="score-banner">
         <div style="font-size: 0.85rem; color: var(--muted); font-weight: 600;">Your Score Today</div>
-        <div class="score-badge" id="score-text">0 / 20</div>
+        <div class="score-badge" id="score-text">0 / 42</div>
         <div id="target-feedback"></div>
       </div>
 
       <button class="btn-whatsapp" id="whatsapp-btn-top" type="button">
         <span>📲</span> Send Results to Tutor via WhatsApp
       </button>
-
-      <button class="btn-retry" id="retry-btn" type="button">🔄 Try Again</button>
 
       <div style="margin: 20px 0 10px 0; font-weight: 700; font-size: 0.95rem; color: var(--muted);">Review & Study Tips:</div>
       <div id="review-container"></div>
@@ -494,26 +477,30 @@
     <!-- Tutor Bank Explorer Screen (Local Hardcoded Bank Only) -->
     <div id="screen-tutor" style="display:none;">
       <div class="tutor-bar">
-        <div class="tutor-title">📚 Unit 7 Question Bank</div>
+        <div class="tutor-title">📚 Complete Unit 7 Question Bank</div>
         <button type="button" class="btn-exit-tutor" id="exit-tutor-btn">Close</button>
       </div>
 
       <div class="subject-grid" id="tutor-subject-grid">
         <div class="subject-box active" data-sub="web">
           <div class="subject-box-name">1. Web & Net</div>
-          <div class="subject-box-count" id="count-web">5 Questions</div>
+          <div class="subject-box-count" id="count-web">8 Questions</div>
         </div>
         <div class="subject-box" data-sub="video">
           <div class="subject-box-name">2. Video Calls</div>
-          <div class="subject-box-count" id="count-video">5 Questions</div>
+          <div class="subject-box-count" id="count-video">7 Questions</div>
         </div>
         <div class="subject-box" data-sub="email">
           <div class="subject-box-name">3. E-mail</div>
-          <div class="subject-box-count" id="count-email">5 Questions</div>
+          <div class="subject-box-count" id="count-email">8 Questions</div>
         </div>
         <div class="subject-box" data-sub="html">
           <div class="subject-box-name">4. HTML</div>
-          <div class="subject-box-count" id="count-html">5 Questions</div>
+          <div class="subject-box-count" id="count-html">8 Questions</div>
+        </div>
+        <div class="subject-box" data-sub="security">
+          <div class="subject-box-name">5. Safe & Ethical Net + Online Security</div>
+          <div class="subject-box-count" id="count-security">11 Questions</div>
         </div>
       </div>
 
@@ -545,7 +532,7 @@
   var TARGET_PHONE = "94701543307";
   var TUTOR_CODE = "3307";
 
-  // Hardcoded Unit 7 MCQ Bank (20 non-obvious questions for a 13-year-old)
+  // Complete Unit 7 Hardcoded MCQ Bank (42 questions covering all sections including security & ethics)
   var UNIT_7_BANK = {
     web: [
       {
@@ -617,6 +604,48 @@
         ],
         ans: "Web pages make a Website ➔ Websites make the World Wide Web",
         sinhala: "Web pages ගොඩකින් Website එකක් හැදෙනවා. Websites ගොඩකින් World Wide Web (WWW) හැදෙනවා."
+      },
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "Why does every website on the World Wide Web need its own URL?",
+        options: [
+          "To identify one specific resource among millions on the WWW",
+          "To turn off the computer's monitor",
+          "To replace the need for a web browser",
+          "To stop people from using search engines"
+        ],
+        ans: "To identify one specific resource among millions on the WWW",
+        sinhala: "WWW තුළ වෙබ් අඩවි මිලියන ගණනක් තියෙන නිසා එක් සම්පතක් වෙන් කර හඳුනාගන්න URL (Uniform Resource Locator) භාවිත කරනවා."
+      },
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "A student wants to check a live map, watch a lesson video, and buy a book online. Which single network makes all three services possible?",
+        options: [
+          "The Internet",
+          "A single offline word document",
+          "A local keyboard layout",
+          "A printed timetable"
+        ],
+        ans: "The Internet",
+        sinhala: "Internet හරහා අධ්‍යාපන තොරතුරු, වීඩියෝ, සිතියම්, ඊමේල් සහ භාණ්ඩ මිලදී ගැනීම වැනි සේවා රැසක් ලබාගත හැකියි."
+      },
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "Which clue in a web address and address bar helps you spot a secured website?",
+        options: [
+          "Starting with https and showing the security symbol on the address bar",
+          "Having no letters in the address",
+          "Opening inside a music player",
+          "Being printed on paper"
+        ],
+        ans: "Starting with https and showing the security symbol on the address bar",
+        sinhala: "ආරක්ෂිත (secured) වෙබ් අඩවියක් හඳුනාගන්න 'https' සහ address bar එකේ පෙන්වන සංකේතය (symbol) බලන්න පුළුවන්."
       }
     ],
 
@@ -690,6 +719,34 @@
         ],
         ans: "Video conferencing over the internet cannot happen without an internet connection",
         sinhala: "Internet හරහා Video conferencing කරන්න Computer + Web camera + Internet connection + Software යන සියල්ල තිබිය යුතුයි."
+      },
+      {
+        topic: "video",
+        title: "2. Video Conferencing",
+        type: "mcq",
+        q: "Why does video conferencing help lower the initial cost of holding a meeting across different cities?",
+        options: [
+          "Participants don't have to travel or pay transport expenses to a single hall",
+          "It removes the need for electricity",
+          "It makes web cameras free",
+          "It stops people from speaking"
+        ],
+        ans: "Participants don't have to travel or pay transport expenses to a single hall",
+        sinhala: "එක තැනකට යාමට සිදු නොවන නිසා ප්‍රවාහන වියදම්, කාලය සහ ආරම්භක වියදම් අවම කරගත හැකියි."
+      },
+      {
+        topic: "video",
+        title: "2. Video Conferencing",
+        type: "mcq",
+        q: "Which of these is a complete set of requirements for a video conference?",
+        options: [
+          "Computer, web camera, internet connection, and video conferencing software",
+          "Printer, scanner, ruler, and eraser",
+          "Web camera only, with no internet",
+          "Calculator, notepad, and speaker only"
+        ],
+        ans: "Computer, web camera, internet connection, and video conferencing software",
+        sinhala: "Video conferencing සඳහා Computer, Web camera, Internet connection සහ Video conferencing software අවශ්‍ය වේ."
       }
     ],
 
@@ -763,6 +820,48 @@
         ],
         ans: "To state the topic of the email so the reader knows what it's about",
         sinhala: "Subject කොටසේ ලියන්නේ Email එකේ මාතෘකාව (topic). Compose/New වලින් අලුත් email එකක් ලියන්න පටන් ගන්නවා."
+      },
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "In saman@edupub.gov.lk, which part is the domain name and what does '.lk' indicate?",
+        options: [
+          "'saman' is the domain name; '.lk' means it is in Sri Lanka",
+          "'edupub.gov.lk' is the domain name; '.lk' indicates Sri Lanka",
+          "'@' is the domain name; 'saman' indicates Sri Lanka",
+          "There is no domain name in an email address"
+        ],
+        ans: "'edupub.gov.lk' is the domain name; '.lk' indicates Sri Lanka",
+        sinhala: "'@' සලකුණට පසුව ඇති කොටස (edupub.gov.lk) Domain name එකයි. '.lk' මගින් එය ශ්‍රී ලංකාවට අදාළ බව පෙන්වයි."
+      },
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "When you open your email account, which messages usually appear in a darker colour first?",
+        options: [
+          "Unopened messages in the Inbox",
+          "Messages inside Contacts",
+          "Attachments that were never created",
+          "Messages in the Subject box"
+        ],
+        ans: "Unopened messages in the Inbox",
+        sinhala: "Inbox හි ලැබුණු emails අතරින් තවම කියවා නැති (unopened) emails සාමාන්‍යයෙන් තද පැහැයෙන් (dark colour) පෙන්වයි."
+      },
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "Which email characteristic lets you pass a message you received on to a classmate, or keep saved email addresses handy?",
+        options: [
+          "Forwarding messages and using the address book / Contacts",
+          "Deleting the monitor",
+          "Turning off the internet",
+          "Removing the '@' symbol"
+        ],
+        ans: "Forwarding messages and using the address book / Contacts",
+        sinhala: "ලැබුණු email එකක් වෙනත් අයෙකුට Forward කිරීමටත්, Address book / Contacts මගින් ලිපින සුරැකීමටත් හැකියි."
       }
     ],
 
@@ -836,12 +935,217 @@
         ],
         ans: "Because closing tags use '/' (like </p>) to show where the tag ends",
         sinhala: "HTML tags වල ආරම්භය සහ අවසානය තියෙනවා. අවසන් කරන විට '/' සලකුණ සමඟ tag එක ලියනවා."
+      },
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "Where does the text placed inside <title> tags appear when a webpage opens?",
+        options: [
+          "On the title bar of the web page",
+          "Inside the Trash folder",
+          "On the back of the keyboard",
+          "Inside a video call"
+        ],
+        ans: "On the title bar of the web page",
+        sinhala: "<title> tag එක තුළ ලියන වෙබ් පිටුවේ මාතෘකාව පෙන්වන්නේ Web page එකේ Title bar එකේ."
+      },
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "Which pair of HTML codes is used for headings of different sizes and centering text?",
+        options: [
+          "<h1> to <h6> for headings; <center> to center text",
+          "<html> for video calls; <head> for deleting files",
+          "<p> for Wi-Fi passwords; <b> for scanning viruses",
+          "<u> for closing browsers; <i> for sending emails"
+        ],
+        ans: "<h1> to <h6> for headings; <center> to center text",
+        sinhala: "ශීර්ෂ (headings) ප්‍රමාණ සඳහා <h1> සිට <h6> දක්වාත්, අකුරු මැදට ගැනීමට <center> ද භාවිත කරනවා."
+      },
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "Which simple text-editing software is given as an example for writing basic HTML codes?",
+        options: [
+          "Notepad",
+          "Zoom",
+          "Skype",
+          "Webex"
+        ],
+        ans: "Notepad",
+        sinhala: "සරල HTML කේත ලියා වෙබ් පිටු සෑදීමට Notepad වැනි සරල text editing මෘදුකාංගයක් භාවිත කරන්න පුළුවන්."
+      }
+    ],
+
+    security: [
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Someone logs into another person's account or reads private files on a computer network without permission. What is this called?",
+        options: [
+          "Hacking",
+          "Touch typing",
+          "Formatting a slide",
+          "Composing an email"
+        ],
+        ans: "Hacking",
+        sinhala: "අවසරයකින් තොරව පරිගණකයක හෝ ජාලයක ඇති දත්ත සහ තොරතුරු වලට පිවිසීම Hacking ලෙස හැඳින්වේ."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Why does a computer virus make a computer work slowly?",
+        options: [
+          "It duplicates itself inside the computer and uses memory/time meant for other tasks",
+          "It cleans extra space on the hard disk",
+          "It lowers the screen brightness",
+          "It fixes spelling mistakes"
+        ],
+        ans: "It duplicates itself inside the computer and uses memory/time meant for other tasks",
+        sinhala: "Virus පරිගණකය තුළ පිටපත් වෙමින් (duplicate) අනෙකුත් කාර්යයන්ට අවශ්‍ය මතකය සහ කාලය ගන්නා නිසා පරිගණකය මන්දගාමී වේ."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "A pop-up window suddenly jumps onto your screen with a strange link, or an unknown sender attaches a file. What is the safe rule?",
+        options: [
+          "Do not click pop-ups or open suspicious emails and attachments",
+          "Click every pop-up to see what it offers",
+          "Turn off antivirus so the pop-up loads faster",
+          "Share your password with the sender"
+        ],
+        ans: "Do not click pop-ups or open suspicious emails and attachments",
+        sinhala: "Virus වලින් ආරක්ෂා වීමට සැක සහිත emails, attachments සහ හදිසියේ මතුවන pop-up windows click නොකළ යුතුයි."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "A classmate copies paid software and sells duplicate copies without legal permission. What is this illegal act called?",
+        options: [
+          "Software piracy",
+          "Backing up data",
+          "Video conferencing",
+          "Adding a heading"
+        ],
+        ans: "Software piracy",
+        sinhala: "නීත්‍යානුකූල අවසරයකින් තොරව මෘදුකාංග පිටපත් කිරීම, අනුපිටපත් තබා ගැනීම හෝ විකිණීම Software piracy වේ."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Before installing or downloading a software program, which step helps you stay safe from software piracy?",
+        options: [
+          "Read the licence agreement and use the producer's website or a trusted company",
+          "Download from any random link without checking",
+          "Ignore license rules completely",
+          "Sell copies to friends"
+        ],
+        ans: "Read the licence agreement and use the producer's website or a trusted company",
+        sinhala: "මෘදුකාංග ස්ථාපනයට පෙර Licence agreement කියවා, නිෂ්පාදකයාගේ නිල වෙබ් අඩවියෙන් හෝ විශ්වාසවන්ත ආයතනයකින් ලබාගත යුතුයි."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Someone posts false, insulting information or comments on social media or messages to harass a person. What is this called?",
+        options: [
+          "Cyber bullying",
+          "Encrypting a hard disk",
+          "Creating a bullet list",
+          "Using a web browser"
+        ],
+        ans: "Cyber bullying",
+        sinhala: "Social media, SMS, emails හෝ instant messages හරහා අසත්‍ය හෝ අපහාසාත්මක තොරතුරු පළ කර අපහසුතාවට පත් කිරීම Cyber bullying වේ."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Which set of details is personal identity data that can be stolen or misused online if unprotected?",
+        options: [
+          "Name, address, telephone number, and birthday",
+          "Font color, slide transition, and margins",
+          "Screen resolution and mouse pad",
+          "Web page background color"
+        ],
+        ans: "Name, address, telephone number, and birthday",
+        sinhala: "නම, ලිපිනය, දුරකථන අංකය සහ උපන්දිනය පුද්ගල අනන්‍යතාව පෙන්වන දත්ත වන අතර ඒවා අවසරයකින් තොරව අනිසි ලෙස භාවිත විය හැකියි."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "A fake message pretends to be trusted and tries to trick you into giving bank account or email details. What is this attack called?",
+        options: [
+          "Phishing attack",
+          "Word processing",
+          "Folder sorting",
+          "Zoom hosting"
+        ],
+        ans: "Phishing attack",
+        sinhala: "විශ්වාසවන්ත අයෙකු ලෙස පෙනී සිටිමින් Bank account හෝ Email විස්තර රවටා ලබාගැනීම Phishing attack ලෙස හැඳින්වේ."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Look at the example password 'kanDY#4599' in the online security notes. Why is it stronger than '123456'?",
+        options: [
+          "It is at least 8 characters long and mixes lowercase, uppercase, numbers, and symbols",
+          "It uses only one single letter",
+          "It is written on the outside of the router",
+          "It has no numbers or symbols"
+        ],
+        ans: "It is at least 8 characters long and mixes lowercase, uppercase, numbers, and symbols",
+        sinhala: "ශක්තිමත් මුරපදයක (strong password) අවම වශයෙන් අකුරු 8ක් තිබිය යුතු අතර simple, capital letters, numbers සහ special characters ($, *, #, @) මිශ්‍ර වීම වඩාත් හොඳයි."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Which combination of habits protects your device, files, and home internet connection online?",
+        options: [
+          "Updating antivirus & browsers, keeping backups, encrypting hard disk, and password-protecting Wi-Fi router",
+          "Turning off updates and leaving Wi-Fi open without a password",
+          "Clicking unknown links in emails",
+          "Sharing personal identity details on unsafe sites"
+        ],
+        ans: "Updating antivirus & browsers, keeping backups, encrypting hard disk, and password-protecting Wi-Fi router",
+        sinhala: "Antivirus සහ Browser යාවත්කාලීන කිරීම, Backups තබා ගැනීම, Hard disk encrypt කිරීම සහ Wi-Fi router එකට password යෙදීම ආරක්ෂිත පියවරයි."
+      },
+      {
+        topic: "security",
+        title: "5. Using the Internet Safely & Ethically",
+        type: "mcq",
+        q: "Through which main channels do viruses commonly enter a computer?",
+        options: [
+          "The internet, computer networks, compact disks (CDs), and USB drives",
+          "Only through a clean keyboard",
+          "Only by reading a printed book",
+          "Only by switching off the monitor"
+        ],
+        ans: "The internet, computer networks, compact disks (CDs), and USB drives",
+        sinhala: "Viruses ප්‍රධාන වශයෙන් Internet, computer networks, compact disks සහ USB drives හරහා පරිගණකයට ඇතුළු වේ."
       }
     ]
   };
 
   function getAllQuestions() {
-    return [].concat(UNIT_7_BANK.web, UNIT_7_BANK.video, UNIT_7_BANK.email, UNIT_7_BANK.html);
+    return [].concat(
+      UNIT_7_BANK.web,
+      UNIT_7_BANK.video,
+      UNIT_7_BANK.email,
+      UNIT_7_BANK.html,
+      UNIT_7_BANK.security
+    );
   }
 
   var activeTopic = 'all';
@@ -849,8 +1153,23 @@
   var currentQuestions = getAllQuestions();
   var previousScreen = 'quiz';
   var activeTutorSub = 'web';
+  var isSubmitted = false;
+
+  function updateAllCounts() {
+    var allCount = getAllQuestions().length;
+    var allPill = document.querySelector('.topic-pill[data-topic="all"]');
+    if (allPill) allPill.textContent = 'All (' + allCount + ')';
+
+    var subs = ['web', 'video', 'email', 'html', 'security'];
+    subs.forEach(function(s) {
+      var el = document.getElementById('count-' + s);
+      if (el) el.textContent = (UNIT_7_BANK[s] || []).length + ' Questions';
+    });
+  }
 
   function loadQuizByTopic(topic) {
+    if (isSubmitted) return;
+
     activeTopic = topic;
     userAnswers = {};
 
@@ -862,14 +1181,15 @@
     if (topic === 'all') {
       currentQuestions = getAllQuestions();
       document.getElementById('subject-tag').innerText = 'UNIT 7 • ALL TOPICS';
-      document.getElementById('title-text').innerText = 'Internet & Communication Booster';
+      document.getElementById('title-text').innerText = 'Internet, Communication & Security Booster';
     } else {
       currentQuestions = UNIT_7_BANK[topic] || getAllQuestions();
       var labelMap = {
         web: '1. Internet & Web',
         video: '2. Video Conferencing',
         email: '3. E-mail',
-        html: '4. HTML'
+        html: '4. HTML',
+        security: '5. Safe & Ethical Net'
       };
       document.getElementById('subject-tag').innerText = 'UNIT 7 • ICT';
       document.getElementById('title-text').innerText = labelMap[topic] || 'Unit 7 Practice';
@@ -922,6 +1242,10 @@
   }
 
   function submitAnswers() {
+    isSubmitted = true;
+    var topicPillsEl = document.getElementById('topic-pills');
+    if (topicPillsEl) topicPillsEl.style.display = 'none';
+
     var score = 0;
     var reviewContainer = document.getElementById('review-container');
     reviewContainer.innerHTML = '';
@@ -950,7 +1274,7 @@
 
       var ansDetail = document.createElement('div');
       ansDetail.style.fontSize = '0.85rem';
-      ansDetail.innerHTML = 'Your Answer: <b>' + escapeHtml(uAns) + '</b> | Correct Answer: <b style="color:#DB2777;">' + escapeHtml(q.ans) + '</b>';
+      ansDetail.innerHTML = 'Your Answer: <b>' + escapeHtml(uAns) + '</b> | Correct Answer: <b style="color:var(--primary);">' + escapeHtml(q.ans) + '</b>';
       card.appendChild(ansDetail);
 
       if (q.sinhala) {
@@ -972,7 +1296,7 @@
       feedbackEl.innerText = '🎯 Target Passed (65%+)! Great job! 🌟';
     } else {
       feedbackEl.className = 'target-missed';
-      feedbackEl.innerText = '📖 Good try! Read the yellow study tips below to practice!';
+      feedbackEl.innerText = '📖 Good try! Read the study tips below to practice!';
     }
 
     document.getElementById('screen-quiz').style.display = 'none';
@@ -1103,7 +1427,7 @@
 
     detailSection.innerHTML =
       '<div class="tutor-detail-card">' +
-        '<div style="font-size:0.72rem; font-weight:800; color:#DB2777; text-transform:uppercase; margin-bottom:4px;">' +
+        '<div style="font-size:0.72rem; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:4px;">' +
           escapeHtml(item.title) + ' • Question #' + (index + 1) +
         '</div>' +
         '<div style="font-weight:700; font-size:0.95rem; margin-bottom:10px; line-height:1.4;">' +
@@ -1124,6 +1448,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    updateAllCounts();
     loadQuizByTopic('all');
 
     document.querySelectorAll('.topic-pill').forEach(function(pill) {
@@ -1134,9 +1459,6 @@
 
     document.getElementById('submit-btn').addEventListener('click', submitAnswers);
     document.getElementById('whatsapp-btn-top').addEventListener('click', shareWhatsAppDirect);
-    document.getElementById('retry-btn').addEventListener('click', function() {
-      loadQuizByTopic(activeTopic);
-    });
 
     document.getElementById('tutor-trigger-btn').addEventListener('click', openTutorModal);
     document.getElementById('cancel-pin-btn').addEventListener('click', closeTutorModal);
