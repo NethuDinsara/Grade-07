@@ -6,12 +6,16 @@
   <title>Daily Practice Booster - Unit 7 ICT</title>
   <style>
     :root {
-      --primary: #4F46E5;
-      --primary-light: #EEF2FF;
-      --bg: #F8FAFC;
+      --primary: #EC4899;
+      --primary-dark: #DB2777;
+      --primary-light: #FCE7F3;
+      --accent-purple: #8B5CF6;
+      --accent-teal: #06B6D4;
+      --accent-amber: #F59E0B;
+      --bg: #FFF1F7;
       --card: #FFFFFF;
-      --text: #1E293B;
-      --muted: #64748B;
+      --text: #2A1224;
+      --muted: #7C5871;
       --correct: #10B981;
       --incorrect: #EF4444;
       --sinhala-bg: #FEF3C7;
@@ -27,19 +31,21 @@
     }
     
     body { 
-      background-color: var(--bg); 
+      background: linear-gradient(135deg, #FFE4F1 0%, #FFF7FA 48%, #F3E8FF 100%); 
       color: var(--text); 
       padding: 12px; 
       display: flex; 
       justify-content: center; 
+      min-height: 100vh;
     }
     
     .app-container { 
       width: 100%; 
       max-width: 480px; 
       background: var(--card); 
-      border-radius: 20px; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06); 
+      border-radius: 24px; 
+      box-shadow: 0 14px 32px rgba(236, 72, 153, 0.14); 
+      border: 2px solid #FBCFE8;
       padding: 18px; 
       min-height: 90vh; 
       display: flex; 
@@ -49,7 +55,7 @@
 
     .header { 
       padding-bottom: 12px; 
-      border-bottom: 2px solid #F1F5F9; 
+      border-bottom: 2px dashed #F9A8D4; 
       margin-bottom: 16px; 
     }
     
@@ -69,28 +75,31 @@
       text-transform: uppercase; 
     }
     
-    .subject-tag { background: var(--primary-light); color: var(--primary); }
-    .target-tag { background: #DCFCE7; color: #166534; }
+    .subject-tag { background: linear-gradient(135deg, #FCE7F3, #FBCFE8); color: #BE185D; }
+    .target-tag { background: linear-gradient(135deg, #CCFBF1, #A7F3D0); color: #065F46; }
 
     .tutor-trigger {
       margin-left: auto;
-      background: transparent;
-      border: none;
-      color: #CBD5E1;
+      background: #FDF2F8;
+      border: 1px solid #FBCFE8;
+      color: #DB2777;
       font-size: 0.9rem;
-      padding: 4px 6px;
+      padding: 4px 7px;
       cursor: pointer;
       border-radius: 8px;
       line-height: 1;
-      transition: color 0.15s ease;
+      transition: all 0.15s ease;
     }
     .tutor-trigger:hover {
-      color: #94A3B8;
+      background: #FCE7F3;
+      color: #9D174D;
     }
     
     .header h1 { 
-      font-size: 1.15rem; 
-      color: var(--text); 
+      font-size: 1.18rem; 
+      background: linear-gradient(90deg, #DB2777, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-weight: 800; 
       line-height: 1.3;
     }
@@ -106,33 +115,40 @@
     .topic-pills::-webkit-scrollbar { display: none; }
     .topic-pill {
       flex: 0 0 auto;
-      background: #F1F5F9;
-      color: var(--muted);
-      border: 1.5px solid #E2E8F0;
+      background: #FDF2F8;
+      color: #9D174D;
+      border: 1.5px solid #FBCFE8;
       border-radius: 999px;
       padding: 5px 11px;
       font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
+      transition: all 0.15s ease;
     }
+    .topic-pill[data-topic="video"] { background: #F5F3FF; color: #6D28D9; border-color: #DDD6FE; }
+    .topic-pill[data-topic="email"] { background: #ECFEFF; color: #0E7490; border-color: #A5F3FC; }
+    .topic-pill[data-topic="html"] { background: #FFFBEB; color: #B45309; border-color: #FDE68A; }
+
     .topic-pill.active {
-      background: var(--primary);
+      background: linear-gradient(135deg, #EC4899, #8B5CF6);
       color: #FFFFFF;
-      border-color: var(--primary);
+      border-color: transparent;
+      box-shadow: 0 3px 10px rgba(236, 72, 153, 0.3);
     }
 
     .quiz-card { 
-      background: #F8FAFC; 
-      border: 1.5px solid #E2E8F0; 
-      border-radius: 16px; 
+      background: linear-gradient(180deg, #FFF9FC 0%, #FFFFFF 100%); 
+      border: 1.5px solid #FBCFE8; 
+      border-radius: 18px; 
       padding: 14px; 
       margin-bottom: 14px; 
+      box-shadow: 0 4px 12px rgba(244, 114, 182, 0.08);
     }
     
     .q-number { 
       font-size: 0.72rem; 
       font-weight: 800; 
-      color: var(--primary); 
+      color: #DB2777; 
       text-transform: uppercase; 
       margin-bottom: 4px; 
     }
@@ -142,49 +158,57 @@
       font-size: 0.95rem; 
       margin-bottom: 12px; 
       line-height: 1.45; 
+      color: var(--text);
     }
 
     .option-btn { 
       width: 100%; 
       text-align: left; 
       background: #FFFFFF; 
-      border: 1.5px solid #CBD5E1; 
+      border: 1.5px solid #F5D0FE; 
       padding: 14px; 
-      border-radius: 12px; 
+      border-radius: 13px; 
       margin-bottom: 8px; 
       font-size: 0.92rem; 
       font-weight: 500; 
       cursor: pointer; 
       transition: all 0.15s ease; 
       outline: none; 
+      color: var(--text);
     }
+    .option-btn:nth-child(1) { border-left: 4px solid #EC4899; }
+    .option-btn:nth-child(2) { border-left: 4px solid #8B5CF6; }
+    .option-btn:nth-child(3) { border-left: 4px solid #06B6D4; }
+    .option-btn:nth-child(4) { border-left: 4px solid #F59E0B; }
     
-    .option-btn:active { background: #F1F5F9; }
+    .option-btn:hover { background: #FDF2F8; }
+    .option-btn:active { background: #FCE7F3; transform: scale(0.99); }
     
     .option-btn.selected { 
-      border-color: var(--primary) !important; 
-      background: var(--primary-light) !important; 
-      color: var(--primary) !important; 
+      border-color: #EC4899 !important; 
+      border-left-width: 6px !important;
+      background: linear-gradient(135deg, #FCE7F3, #F3E8FF) !important; 
+      color: #9D174D !important; 
       font-weight: 700 !important; 
     }
 
     .btn-submit { 
       width: 100%; 
-      background: var(--primary); 
+      background: linear-gradient(135deg, #EC4899 0%, #DB2777 55%, #8B5CF6 100%); 
       color: white; 
       border: none; 
       padding: 16px; 
-      border-radius: 14px; 
+      border-radius: 15px; 
       font-weight: 700; 
       font-size: 1.05rem; 
       cursor: pointer; 
       margin-top: 10px; 
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); 
+      box-shadow: 0 6px 16px rgba(219, 39, 119, 0.32); 
     }
     
     .btn-whatsapp { 
       width: 100%; 
-      background: #25D366; 
+      background: linear-gradient(135deg, #25D366, #10B981); 
       color: white; 
       border: none; 
       padding: 15px; 
@@ -197,14 +221,14 @@
       align-items: center; 
       justify-content: center; 
       gap: 8px; 
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); 
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.28); 
     }
 
     .btn-retry {
       width: 100%;
-      background: #EEF2FF;
-      color: var(--primary);
-      border: 1.5px solid #C7D2FE;
+      background: #FDF2F8;
+      color: #DB2777;
+      border: 1.5px solid #F9A8D4;
       padding: 13px;
       border-radius: 14px;
       font-weight: 700;
@@ -215,25 +239,33 @@
 
     .score-banner { 
       text-align: center; 
-      padding: 12px 0 16px 0; 
-      border-bottom: 2px dashed #E2E8F0; 
+      padding: 14px 0 16px 0; 
+      border-bottom: 2px dashed #F9A8D4; 
       margin-bottom: 16px; 
+      background: linear-gradient(180deg, #FDF2F8, transparent);
+      border-radius: 16px;
     }
     
-    .score-badge { font-size: 2.8rem; font-weight: 800; color: var(--primary); }
-    .target-met { font-size: 0.95rem; font-weight: 700; color: var(--correct); margin-top: 4px; }
+    .score-badge { 
+      font-size: 2.8rem; 
+      font-weight: 800; 
+      background: linear-gradient(90deg, #EC4899, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .target-met { font-size: 0.95rem; font-weight: 700; color: #059669; margin-top: 4px; }
     .target-missed { font-size: 0.95rem; font-weight: 700; color: #D97706; margin-top: 4px; }
 
     .review-card { 
       background: #FFFFFF; 
-      border-left: 5px solid var(--primary); 
+      border-left: 5px solid #EC4899; 
       padding: 12px 14px; 
-      border-radius: 10px; 
+      border-radius: 12px; 
       margin-bottom: 12px; 
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04); 
-      border-top: 1px solid #F1F5F9; 
-      border-right: 1px solid #F1F5F9; 
-      border-bottom: 1px solid #F1F5F9; 
+      box-shadow: 0 3px 10px rgba(236, 72, 153, 0.06); 
+      border-top: 1px solid #FCE7F3; 
+      border-right: 1px solid #FCE7F3; 
+      border-bottom: 1px solid #FCE7F3; 
     }
     
     .review-card.correct { border-left-color: var(--correct); }
@@ -253,7 +285,8 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(65, 16, 48, 0.52);
+      backdrop-filter: blur(3px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -264,9 +297,10 @@
       background: #FFFFFF;
       width: 100%;
       max-width: 340px;
-      border-radius: 18px;
+      border-radius: 20px;
+      border: 2px solid #F9A8D4;
       padding: 20px;
-      box-shadow: 0 20px 35px rgba(0,0,0,0.18);
+      box-shadow: 0 20px 35px rgba(219, 39, 119, 0.22);
       text-align: center;
     }
     .modal-box h2 {
@@ -285,12 +319,12 @@
       font-size: 1.2rem;
       text-align: center;
       letter-spacing: 6px;
-      border: 1.5px solid #CBD5E1;
+      border: 1.5px solid #F9A8D4;
       border-radius: 12px;
       margin-bottom: 10px;
       outline: none;
     }
-    .pin-input:focus { border-color: var(--primary); }
+    .pin-input:focus { border-color: #EC4899; }
     .modal-actions {
       display: flex;
       gap: 8px;
@@ -304,8 +338,8 @@
       font-size: 0.9rem;
       cursor: pointer;
     }
-    .btn-cancel { background: #F1F5F9; color: var(--muted); }
-    .btn-unlock { background: var(--primary); color: #FFFFFF; }
+    .btn-cancel { background: #FDF2F8; color: var(--muted); }
+    .btn-unlock { background: linear-gradient(135deg, #EC4899, #8B5CF6); color: #FFFFFF; }
 
     /* Tutor Dashboard View */
     .tutor-bar {
@@ -314,16 +348,16 @@
       align-items: center;
       margin-bottom: 14px;
       padding-bottom: 10px;
-      border-bottom: 1.5px solid #F1F5F9;
+      border-bottom: 1.5px solid #FCE7F3;
     }
     .tutor-title {
       font-size: 0.95rem;
       font-weight: 800;
-      color: var(--primary);
+      color: #DB2777;
     }
     .btn-exit-tutor {
-      background: #FEE2E2;
-      color: #B91C1C;
+      background: #FFE4E6;
+      color: #BE123C;
       border: none;
       padding: 6px 12px;
       border-radius: 10px;
@@ -338,17 +372,22 @@
       margin-bottom: 16px;
     }
     .subject-box {
-      background: #F8FAFC;
-      border: 2px solid #E2E8F0;
+      background: #FFF9FC;
+      border: 2px solid #FBCFE8;
       border-radius: 14px;
       padding: 14px 10px;
       text-align: center;
       cursor: pointer;
       transition: all 0.15s ease;
     }
+    .subject-box[data-sub="video"] { background: #FAF5FF; border-color: #E9D5FF; }
+    .subject-box[data-sub="email"] { background: #F0FDFA; border-color: #99F6E4; }
+    .subject-box[data-sub="html"] { background: #FFFBEB; border-color: #FDE68A; }
+
     .subject-box.active {
-      border-color: var(--primary);
-      background: var(--primary-light);
+      border-color: #EC4899;
+      background: linear-gradient(135deg, #FCE7F3, #F3E8FF);
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.16);
     }
     .subject-box-name {
       font-weight: 800;
@@ -372,28 +411,28 @@
     }
     .q-num-btn {
       background: #FFFFFF;
-      border: 1.5px solid #CBD5E1;
+      border: 1.5px solid #FBCFE8;
       border-radius: 8px;
       padding: 8px 4px;
       font-size: 0.82rem;
       font-weight: 700;
-      color: var(--text);
+      color: #9D174D;
       cursor: pointer;
     }
     .q-num-btn.active {
-      background: var(--primary);
+      background: linear-gradient(135deg, #EC4899, #8B5CF6);
       color: #FFFFFF;
-      border-color: var(--primary);
+      border-color: transparent;
     }
     .tutor-detail-card {
-      background: #F8FAFC;
-      border: 1.5px solid #CBD5E1;
+      background: #FFF9FC;
+      border: 1.5px solid #F9A8D4;
       border-radius: 14px;
       padding: 14px;
     }
     .tutor-opt-item {
       background: #FFFFFF;
-      border: 1px solid #E2E8F0;
+      border: 1px solid #FCE7F3;
       padding: 8px 10px;
       border-radius: 8px;
       font-size: 0.86rem;
@@ -911,7 +950,7 @@
 
       var ansDetail = document.createElement('div');
       ansDetail.style.fontSize = '0.85rem';
-      ansDetail.innerHTML = 'Your Answer: <b>' + escapeHtml(uAns) + '</b> | Correct Answer: <b style="color:var(--primary);">' + escapeHtml(q.ans) + '</b>';
+      ansDetail.innerHTML = 'Your Answer: <b>' + escapeHtml(uAns) + '</b> | Correct Answer: <b style="color:#DB2777;">' + escapeHtml(q.ans) + '</b>';
       card.appendChild(ansDetail);
 
       if (q.sinhala) {
@@ -1064,7 +1103,7 @@
 
     detailSection.innerHTML =
       '<div class="tutor-detail-card">' +
-        '<div style="font-size:0.72rem; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:4px;">' +
+        '<div style="font-size:0.72rem; font-weight:800; color:#DB2777; text-transform:uppercase; margin-bottom:4px;">' +
           escapeHtml(item.title) + ' • Question #' + (index + 1) +
         '</div>' +
         '<div style="font-weight:700; font-size:0.95rem; margin-bottom:10px; line-height:1.4;">' +
