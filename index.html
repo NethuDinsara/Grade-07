@@ -2,408 +2,1117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 7 ICT - Kahoot Game (Units 1-6)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Daily Practice Booster - Unit 7 ICT</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: #0f172a; color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; position: relative; }
-    
-    /* Top Header & Scoreboard */
-    header { display: flex; justify-content: space-between; align-items: center; background: #1e293b; padding: 15px 25px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); margin-bottom: 20px; border: 1px solid #334155; }
-    .game-title { font-size: 1.5rem; font-weight: bold; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
-    .q-counter { font-size: 1.2rem; background: #334155; padding: 6px 18px; border-radius: 20px; font-weight: 600; color: #f1f5f9; }
-    
-    /* Scoreboard & Team Cards */
-    .scoreboard { display: flex; gap: 12px; }
-    .team-card { background: #0f172a; padding: 8px 12px; border-radius: 12px; border: 1px solid #475569; text-align: center; min-width: 110px; display: flex; flex-direction: column; justify-content: space-between; }
-    .team-header { display: flex; justify-content: center; align-items: center; gap: 4px; }
-    .team-name { font-size: 0.85rem; color: #38bdf8; font-weight: bold; text-transform: uppercase; max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .rename-btn { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 0.75rem; }
-    .rename-btn:hover { color: #f59e0b; }
-    .team-score { font-size: 1.4rem; font-weight: bold; color: #f59e0b; margin: 2px 0; }
-    .score-controls { display: flex; justify-content: center; gap: 4px; }
-    .score-btn { background: #334155; color: #fff; border: none; padding: 3px 8px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.85rem; }
-    .score-btn:hover { background: #475569; }
-
-    /* Main Question Box */
-    main { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1200px; margin: 0 auto; width: 100%; }
-    .round-badge { align-self: center; background: #8b5cf6; color: #fff; padding: 6px 22px; border-radius: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); }
-    
-    .question-box { background: #1e293b; padding: 35px 30px; border-radius: 20px; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.4); margin-bottom: 25px; border: 2px solid #334155; min-height: 140px; display: flex; align-items: center; justify-content: center; }
-    .question-text { font-size: 1.8rem; font-weight: 700; line-height: 1.35; color: #f8fafc; }
-
-    /* Options Grid (Kahoot Theme) */
-    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
-    .option-card { padding: 22px 20px; border-radius: 16px; display: flex; align-items: center; font-size: 1.3rem; font-weight: 600; cursor: pointer; transition: transform 0.15s ease, opacity 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
-    .option-card:hover { transform: translateY(-3px); }
-    
-    .shape { font-size: 2rem; margin-right: 18px; opacity: 0.95; }
-    .opt-a { background-color: #e21b3c; color: white; }
-    .opt-b { background-color: #1368ce; color: white; }
-    .opt-c { background-color: #d89e00; color: white; }
-    .opt-d { background-color: #26890c; color: white; }
-
-    .dimmed { opacity: 0.2; transform: scale(0.98); }
-    .correct-answer { transform: scale(1.03); outline: 4px solid #ffffff; box-shadow: 0 0 35px rgba(255,255,255,0.8); animation: pulse 1s infinite alternate; }
-
-    @keyframes pulse {
-      from { box-shadow: 0 0 15px rgba(255,255,255,0.4); }
-      to { box-shadow: 0 0 35px rgba(255,255,255,0.95); }
+    :root {
+      --primary: #4F46E5;
+      --primary-light: #EEF2FF;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --text: #1E293B;
+      --muted: #64748B;
+      --correct: #10B981;
+      --incorrect: #EF4444;
+      --sinhala-bg: #FEF3C7;
+      --sinhala-text: #92400E;
     }
 
-    /* Footer Controls */
-    footer { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; background: #1e293b; padding: 15px 25px; border-radius: 16px; border: 1px solid #334155; }
-    .control-btn { padding: 12px 26px; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
-    .btn-nav { background: #475569; color: white; }
-    .btn-nav:hover { background: #64748b; }
-    .btn-reveal { background: #f59e0b; color: #0f172a; font-size: 1.25rem; padding: 12px 36px; }
-    .btn-reveal:hover { background: #d97706; }
-    .btn-finish { background: #ec4899; color: white; }
-    .btn-finish:hover { background: #db2777; }
-
-    /* Winner Popup Modal */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
-    .modal-content { background: #1e293b; border: 3px solid #f59e0b; border-radius: 24px; padding: 40px; text-align: center; max-width: 650px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.6); animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      -webkit-tap-highlight-color: transparent; 
+    }
     
-    @keyframes modalPop {
-      0% { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    body { 
+      background-color: var(--bg); 
+      color: var(--text); 
+      padding: 12px; 
+      display: flex; 
+      justify-content: center; 
+    }
+    
+    .app-container { 
+      width: 100%; 
+      max-width: 480px; 
+      background: var(--card); 
+      border-radius: 20px; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06); 
+      padding: 18px; 
+      min-height: 90vh; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between; 
     }
 
-    .trophy-icon { font-size: 4.5rem; margin-bottom: 10px; animation: bounce 1s infinite alternate; }
-    @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+    .header { 
+      padding-bottom: 12px; 
+      border-bottom: 2px solid #F1F5F9; 
+      margin-bottom: 16px; 
+    }
     
-    .winner-title { font-size: 2.2rem; color: #f59e0b; font-weight: bold; margin-bottom: 8px; }
-    .winner-subtitle { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 25px; }
-    .leaderboard-list { margin-bottom: 30px; text-align: left; background: #0f172a; border-radius: 16px; padding: 15px 20px; border: 1px solid #334155; }
-    .leaderboard-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 1.2rem; font-weight: 600; }
-    .leaderboard-item:last-child { border-bottom: none; }
-    .rank-1 { color: #f59e0b; }
-    .rank-2 { color: #94a3b8; }
-    .rank-3 { color: #b45309; }
-    .rank-4 { color: #64748b; }
+    .badge-row { 
+      display: flex; 
+      gap: 6px; 
+      margin-bottom: 8px; 
+      align-items: center;
+    }
+    
+    .badge { 
+      display: inline-block; 
+      padding: 4px 12px; 
+      border-radius: 16px; 
+      font-size: 0.75rem; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+    }
+    
+    .subject-tag { background: var(--primary-light); color: var(--primary); }
+    .target-tag { background: #DCFCE7; color: #166534; }
+
+    .tutor-trigger {
+      margin-left: auto;
+      background: transparent;
+      border: none;
+      color: #CBD5E1;
+      font-size: 0.9rem;
+      padding: 4px 6px;
+      cursor: pointer;
+      border-radius: 8px;
+      line-height: 1;
+      transition: color 0.15s ease;
+    }
+    .tutor-trigger:hover {
+      color: #94A3B8;
+    }
+    
+    .header h1 { 
+      font-size: 1.15rem; 
+      color: var(--text); 
+      font-weight: 800; 
+      line-height: 1.3;
+    }
+
+    .topic-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .topic-pills::-webkit-scrollbar { display: none; }
+    .topic-pill {
+      flex: 0 0 auto;
+      background: #F1F5F9;
+      color: var(--muted);
+      border: 1.5px solid #E2E8F0;
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .topic-pill.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .quiz-card { 
+      background: #F8FAFC; 
+      border: 1.5px solid #E2E8F0; 
+      border-radius: 16px; 
+      padding: 14px; 
+      margin-bottom: 14px; 
+    }
+    
+    .q-number { 
+      font-size: 0.72rem; 
+      font-weight: 800; 
+      color: var(--primary); 
+      text-transform: uppercase; 
+      margin-bottom: 4px; 
+    }
+    
+    .q-text { 
+      font-weight: 600; 
+      font-size: 0.95rem; 
+      margin-bottom: 12px; 
+      line-height: 1.45; 
+    }
+
+    .option-btn { 
+      width: 100%; 
+      text-align: left; 
+      background: #FFFFFF; 
+      border: 1.5px solid #CBD5E1; 
+      padding: 14px; 
+      border-radius: 12px; 
+      margin-bottom: 8px; 
+      font-size: 0.92rem; 
+      font-weight: 500; 
+      cursor: pointer; 
+      transition: all 0.15s ease; 
+      outline: none; 
+    }
+    
+    .option-btn:active { background: #F1F5F9; }
+    
+    .option-btn.selected { 
+      border-color: var(--primary) !important; 
+      background: var(--primary-light) !important; 
+      color: var(--primary) !important; 
+      font-weight: 700 !important; 
+    }
+
+    .btn-submit { 
+      width: 100%; 
+      background: var(--primary); 
+      color: white; 
+      border: none; 
+      padding: 16px; 
+      border-radius: 14px; 
+      font-weight: 700; 
+      font-size: 1.05rem; 
+      cursor: pointer; 
+      margin-top: 10px; 
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); 
+    }
+    
+    .btn-whatsapp { 
+      width: 100%; 
+      background: #25D366; 
+      color: white; 
+      border: none; 
+      padding: 15px; 
+      border-radius: 14px; 
+      font-weight: 700; 
+      font-size: 1rem; 
+      cursor: pointer; 
+      margin-top: 14px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); 
+    }
+
+    .btn-retry {
+      width: 100%;
+      background: #EEF2FF;
+      color: var(--primary);
+      border: 1.5px solid #C7D2FE;
+      padding: 13px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .score-banner { 
+      text-align: center; 
+      padding: 12px 0 16px 0; 
+      border-bottom: 2px dashed #E2E8F0; 
+      margin-bottom: 16px; 
+    }
+    
+    .score-badge { font-size: 2.8rem; font-weight: 800; color: var(--primary); }
+    .target-met { font-size: 0.95rem; font-weight: 700; color: var(--correct); margin-top: 4px; }
+    .target-missed { font-size: 0.95rem; font-weight: 700; color: #D97706; margin-top: 4px; }
+
+    .review-card { 
+      background: #FFFFFF; 
+      border-left: 5px solid var(--primary); 
+      padding: 12px 14px; 
+      border-radius: 10px; 
+      margin-bottom: 12px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04); 
+      border-top: 1px solid #F1F5F9; 
+      border-right: 1px solid #F1F5F9; 
+      border-bottom: 1px solid #F1F5F9; 
+    }
+    
+    .review-card.correct { border-left-color: var(--correct); }
+    .review-card.incorrect { border-left-color: var(--incorrect); }
+    
+    .sinhala-review { 
+      background: var(--sinhala-bg); 
+      color: var(--sinhala-text); 
+      padding: 8px 10px; 
+      border-radius: 8px; 
+      font-size: 0.84rem; 
+      margin-top: 8px; 
+      line-height: 1.45; 
+    }
+
+    /* Tutor Passcode Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 1000;
+    }
+    .modal-box {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 340px;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.18);
+      text-align: center;
+    }
+    .modal-box h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .modal-box p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .pin-input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.2rem;
+      text-align: center;
+      letter-spacing: 6px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    .pin-input:focus { border-color: var(--primary); }
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-modal {
+      flex: 1;
+      padding: 11px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .btn-cancel { background: #F1F5F9; color: var(--muted); }
+    .btn-unlock { background: var(--primary); color: #FFFFFF; }
+
+    /* Tutor Dashboard View */
+    .tutor-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid #F1F5F9;
+    }
+    .tutor-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .btn-exit-tutor {
+      background: #FEE2E2;
+      color: #B91C1C;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .subject-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .subject-box {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 14px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .subject-box.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .subject-box-name {
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .subject-box-count {
+      font-size: 0.74rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .q-num-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 16px;
+      max-height: 220px;
+      overflow-y: auto;
+      padding: 4px;
+    }
+    .q-num-btn {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 8px 4px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .q-num-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+    .tutor-detail-card {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .tutor-opt-item {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      margin-bottom: 6px;
+    }
+    .tutor-opt-item.is-ans {
+      background: #DCFCE7;
+      border-color: #10B981;
+      color: #065F46;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Header with Scoreboard & Team Rename -->
-  <header>
-    <div class="game-title">🎮 Grade 7 ICT Mega Quiz</div>
-    <div class="q-counter" id="q-counter">Question 1 / 90</div>
-    <div class="scoreboard">
-      <div class="team-card">
-        <div class="team-header">
-          <span class="team-name" id="tname-0">Team A</span>
-          <button class="rename-btn" onclick="renameTeam(0)" title="Rename Team">✏️</button>
-        </div>
-        <div class="team-score" id="score-0">0</div>
-        <div class="score-controls">
-          <button class="score-btn" onclick="addScore(0, 100)">+100</button>
-          <button class="score-btn" onclick="addScore(0, -50)">-50</button>
-        </div>
+<div class="app-container">
+  <div>
+    <div class="header">
+      <div class="badge-row">
+        <div class="badge subject-tag" id="subject-tag">UNIT 7 • ICT</div>
+        <div class="badge target-tag">Target: 65%+</div>
+        <button type="button" class="tutor-trigger" id="tutor-trigger-btn" aria-label="Tutor Panel">⚙</button>
       </div>
-
-      <div class="team-card">
-        <div class="team-header">
-          <span class="team-name" id="tname-1">Team B</span>
-          <button class="rename-btn" onclick="renameTeam(1)" title="Rename Team">✏️</button>
-        </div>
-        <div class="team-score" id="score-1">0</div>
-        <div class="score-controls">
-          <button class="score-btn" onclick="addScore(1, 100)">+100</button>
-          <button class="score-btn" onclick="addScore(1, -50)">-50</button>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-header">
-          <span class="team-name" id="tname-2">Team C</span>
-          <button class="rename-btn" onclick="renameTeam(2)" title="Rename Team">✏️</button>
-        </div>
-        <div class="team-score" id="score-2">0</div>
-        <div class="score-controls">
-          <button class="score-btn" onclick="addScore(2, 100)">+100</button>
-          <button class="score-btn" onclick="addScore(2, -50)">-50</button>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-header">
-          <span class="team-name" id="tname-3">Team D</span>
-          <button class="rename-btn" onclick="renameTeam(3)" title="Rename Team">✏️</button>
-        </div>
-        <div class="team-score" id="score-3">0</div>
-        <div class="score-controls">
-          <button class="score-btn" onclick="addScore(3, 100)">+100</button>
-          <button class="score-btn" onclick="addScore(3, -50)">-50</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Question Screen -->
-  <main>
-    <div class="round-badge" id="round-badge">Unit 6: Presentation & Web</div>
-    <div class="question-box">
-      <div class="question-text" id="question-text">Loading Question...</div>
+      <h1 id="title-text">Internet & Communication Booster</h1>
     </div>
 
-    <div class="options-grid">
-      <div class="option-card opt-a" id="opt-0">
-        <span class="shape">▲</span><span id="opt-text-0">Option A</span>
-      </div>
-      <div class="option-card opt-b" id="opt-1">
-        <span class="shape">◆</span><span id="opt-text-1">Option B</span>
-      </div>
-      <div class="option-card opt-c" id="opt-2">
-        <span class="shape">●</span><span id="opt-text-2">Option C</span>
-      </div>
-      <div class="option-card opt-d" id="opt-3">
-        <span class="shape">■</span><span id="opt-text-3">Option D</span>
-      </div>
+    <div class="topic-pills" id="topic-pills">
+      <button type="button" class="topic-pill active" data-topic="all">All (20)</button>
+      <button type="button" class="topic-pill" data-topic="web">1. Web & Net</button>
+      <button type="button" class="topic-pill" data-topic="video">2. Video Calls</button>
+      <button type="button" class="topic-pill" data-topic="email">3. E-mail</button>
+      <button type="button" class="topic-pill" data-topic="html">4. HTML</button>
     </div>
-  </main>
 
-  <!-- Control Buttons -->
-  <footer>
-    <button class="control-btn btn-nav" onclick="prevQuestion()">◄ Previous</button>
-    <button class="control-btn btn-reveal" onclick="revealAnswer()">Show Answer 👁️</button>
-    <button class="control-btn btn-finish" onclick="showWinnerModal()">Finish Game 🏆</button>
-    <button class="control-btn btn-nav" onclick="nextQuestion()">Next Question ►</button>
-  </footer>
+    <!-- Quiz Screen -->
+    <div id="screen-quiz">
+      <div id="quiz-container"></div>
+      <button class="btn-submit" id="submit-btn" type="button">Done! Submit Answers</button>
+    </div>
 
-  <!-- Winner Pop-up Modal -->
-  <div class="modal-overlay" id="winner-modal">
-    <div class="modal-content">
-      <div class="trophy-icon">🏆</div>
-      <div class="winner-title" id="winner-headline">CHAMPIONS!</div>
-      <div class="winner-subtitle" id="winner-subtext">Great job Grade 7 ICT students!</div>
-      <div class="leaderboard-list" id="leaderboard-body">
-        <!-- Ranks generated dynamically -->
+    <!-- Results & Review Screen -->
+    <div id="screen-results" style="display:none;">
+      <div class="score-banner">
+        <div style="font-size: 0.85rem; color: var(--muted); font-weight: 600;">Your Score Today</div>
+        <div class="score-badge" id="score-text">0 / 20</div>
+        <div id="target-feedback"></div>
       </div>
-      <button class="control-btn btn-reveal" onclick="closeWinnerModal()">Close & Continue</button>
+
+      <button class="btn-whatsapp" id="whatsapp-btn-top" type="button">
+        <span>📲</span> Send Results to Tutor via WhatsApp
+      </button>
+
+      <button class="btn-retry" id="retry-btn" type="button">🔄 Try Again</button>
+
+      <div style="margin: 20px 0 10px 0; font-weight: 700; font-size: 0.95rem; color: var(--muted);">Review & Study Tips:</div>
+      <div id="review-container"></div>
+    </div>
+
+    <!-- Tutor Bank Explorer Screen (Local Hardcoded Bank Only) -->
+    <div id="screen-tutor" style="display:none;">
+      <div class="tutor-bar">
+        <div class="tutor-title">📚 Unit 7 Question Bank</div>
+        <button type="button" class="btn-exit-tutor" id="exit-tutor-btn">Close</button>
+      </div>
+
+      <div class="subject-grid" id="tutor-subject-grid">
+        <div class="subject-box active" data-sub="web">
+          <div class="subject-box-name">1. Web & Net</div>
+          <div class="subject-box-count" id="count-web">5 Questions</div>
+        </div>
+        <div class="subject-box" data-sub="video">
+          <div class="subject-box-name">2. Video Calls</div>
+          <div class="subject-box-count" id="count-video">5 Questions</div>
+        </div>
+        <div class="subject-box" data-sub="email">
+          <div class="subject-box-name">3. E-mail</div>
+          <div class="subject-box-count" id="count-email">5 Questions</div>
+        </div>
+        <div class="subject-box" data-sub="html">
+          <div class="subject-box-name">4. HTML</div>
+          <div class="subject-box-count" id="count-html">5 Questions</div>
+        </div>
+      </div>
+
+      <div id="tutor-qnum-section">
+        <div style="font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:6px;" id="tutor-qnum-label">Select Question Number:</div>
+        <div class="q-num-grid" id="tutor-qnum-grid"></div>
+      </div>
+
+      <div id="tutor-detail-section" style="display:none;"></div>
     </div>
   </div>
+</div>
 
-  <script>
-    const questions = [
-      // --- UNIT 6: PRESENTATION SOFTWARE & INTERNET / WEB (15 QUESTIONS) ---
-      { round: "Unit 6: Presentation Software", q: "What is an Electronic Presentation software mainly composed of?", opts: ["Pages", "Slides", "Sheets", "Drawings"], ans: 1 },
-      { round: "Unit 6: Presentation Software", q: "Which tool makes presenting information to an audience attractive and lively?", opts: ["Spreadsheet Software", "Presentation Software", "Antivirus Software", "Database"], ans: 1 },
-      { round: "Unit 6: Presentation Layout", q: "What is the standard layout name for the very first slide in a presentation?", opts: ["Empty Slide", "Title Slide", "Picture Slide", "Double Content Slide"], ans: 1 },
-      { round: "Unit 6: Slide Design", q: "In presentation software, what are the dotted-line boxes used to insert text called?", opts: ["Text Placeholders", "Grid Lines", "Frame Borders", "Cell Margins"], ans: 0 },
-      { round: "Unit 6: Slide Rearranging", q: "How can you reorder slides quickly in presentation software?", opts: ["Cut and Paste / Drag and Drop", "Save As", "Print Preview", "Zoom In"], ans: 0 },
-      { round: "Unit 6: Internet Basics", q: "What is the global network of millions of interconnected computer networks called?", opts: ["Local Area Network", "Intranet", "The Internet", "System Unit"], ans: 2 },
-      { round: "Unit 6: World Wide Web", q: "What does 'WWW' stand for in internet services?", opts: ["World Wide Web", "Wide World Webbing", "Web World Wide", "World Web Wire"], ans: 0 },
-      { round: "Unit 6: Resource Locator", q: "What is the unique web address used to locate a specific web page called?", opts: ["Uniform Resource Locator (URL)", "User Registered Location", "Universal Read Link", "Unique Route Label"], ans: 0 },
-      { round: "Unit 6: Web Browsers", q: "Which application software allows users to open and view web pages?", opts: ["Web Browser (e.g. Chrome)", "Word Processor", "Media Player", "Compiler"], ans: 0 },
-      { round: "Unit 6: Email Basics", q: "In an email address like saman@edupub.gov.lk, what is 'saman'?", opts: ["Domain Name", "Username", "IP Address", "Protocol"], ans: 1 },
-      { round: "Unit 6: Email Headers", q: "In email options, what does 'Bcc' stand for?", opts: ["Blind Carbon Copy", "Basic Carbon Copy", "Backup Contact Copy", "Binary Code Copy"], ans: 0 },
-      { round: "Unit 6: Web Development", q: "Which core coding language is used to build web pages?", opts: ["HTML (HyperText Markup Language)", "Scratch", "Python", "Java"], ans: 0 },
-      { round: "Unit 6: HTML Tags", q: "Which HTML tag is used to create a numbered (ordered) list on a web page?", opts: ["<ul>", "<ol>", "<list>", "<number>"], ans: 1 },
-      { round: "Unit 6: HTML Tags", q: "Which tag is used to insert an image into an HTML web page?", opts: ["<picture>", "<photo>", "<img src>", "<image>"], ans: 2 },
-      { round: "Unit 6: Online Security", q: "How can you identify a SECURE website in your web browser?", opts: ["Address starts with https:// and shows a lock icon", "Address starts with http://", "Site has yellow background", "Site has popup ads"], ans: 0 },
+<!-- Passcode Modal -->
+<div class="modal-backdrop" id="tutor-modal">
+  <div class="modal-box">
+    <h2>Tutor Access</h2>
+    <p>Enter 4-digit tutor code to inspect the question bank.</p>
+    <input type="password" inputmode="numeric" maxlength="4" class="pin-input" id="tutor-pin-input" placeholder="••••">
+    <div id="tutor-pin-error" style="color:var(--incorrect); font-size:0.8rem; font-weight:600; margin-bottom:10px; display:none;">Incorrect code. Try again.</div>
+    <div class="modal-actions">
+      <button type="button" class="btn-modal btn-cancel" id="cancel-pin-btn">Cancel</button>
+      <button type="button" class="btn-modal btn-unlock" id="unlock-pin-btn">Unlock</button>
+    </div>
+  </div>
+</div>
 
-      // --- UNIT 5: PROGRAMME DEVELOPMENT & SCRATCH (15 QUESTIONS) ---
-      { round: "Unit 5: IPO Model", q: "In computer problem solving, what do the letters 'IPO' stand for?", opts: ["Input, Process, Output", "Import, Program, Option", "Idea, Plan, Outcome", "Index, Process, Order"], ans: 0 },
-      { round: "Unit 5: Algorithms", q: "What is a clear, step-by-step set of instructions to solve a problem called?", opts: ["Algorithm", "Hardware", "Database", "Operating System"], ans: 0 },
-      { round: "Unit 5: Flowcharts", q: "What is the visual diagram representation of an algorithm using standard shapes called?", opts: ["Flowchart", "Bar Chart", "Pie Chart", "Mind Map"], ans: 0 },
-      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape represents the START or END of a process?", opts: ["Oval / Capsule", "Rectangle", "Parallelogram", "Diamond"], ans: 0 },
-      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape is used for taking INPUT or displaying OUTPUT?", opts: ["Parallelogram", "Rectangle", "Oval", "Circle"], ans: 0 },
-      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape represents a PROCESS or calculation step?", opts: ["Rectangle", "Diamond", "Parallelogram", "Capsule"], ans: 0 },
-      { round: "Unit 5: Flowchart Symbols", q: "Which flowchart shape represents a DECISION or condition check?", opts: ["Diamond", "Rectangle", "Oval", "Square"], ans: 0 },
-      { round: "Unit 5: Scratch Basics", q: "In Scratch, what is the graphical character or object that performs actions called?", opts: ["Sprite", "Actor", "Pointer", "Icon"], ans: 0 },
-      { round: "Unit 5: Scratch Basics", q: "What is the default sprite character when you open a new Scratch project?", opts: ["A Cat", "A Dog", "A Robot", "A Star"], ans: 0 },
-      { round: "Unit 5: Scratch Environment", q: "What is the main area where sprites move and interact in Scratch?", opts: ["The Stage", "The Canvas", "The Desktop", "The Terminal"], ans: 0 },
-      { round: "Unit 5: Scratch Blocks", q: "Which color category in Scratch contains blocks like 'move 10 steps'?", opts: ["Motion (Blue)", "Looks (Purple)", "Sound (Pink)", "Control (Yellow)"], ans: 0 },
-      { round: "Unit 5: Scratch Blocks", q: "Which category contains event triggers like 'when green flag clicked'?", opts: ["Events (Brown)", "Motion", "Sensing", "Operators"], ans: 0 },
-      { round: "Unit 5: Scratch Blocks", q: "Which category contains blocks to change sprite costumes or say speech bubbles?", opts: ["Looks (Purple)", "Motion", "Pen", "Data"], ans: 0 },
-      { round: "Unit 5: Scratch Variables", q: "Which block category is used to store values and create custom variables?", opts: ["Data / Variables (Orange)", "Motion", "Looks", "Events"], ans: 0 },
-      { round: "Unit 5: Scratch Backdrops", q: "What is the background image displayed on the Scratch stage called?", opts: ["Backdrop", "Wallpaper", "Poster", "Screen"], ans: 0 },
+<script>
+  var TARGET_PHONE = "94701543307";
+  var TUTOR_CODE = "3307";
 
-      // --- UNIT 4: WORD PROCESSING (15 QUESTIONS) ---
-      { round: "Unit 4: Word Processing", q: "What is the main purpose of Word Processing software?", opts: ["Create and format text documents", "Perform mathematical calculations", "Edit video files", "Browse websites"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which keyboard shortcut creates a NEW blank document in Word?", opts: ["Ctrl + N", "Ctrl + O", "Ctrl + S", "Ctrl + P"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which keyboard shortcut OPENS an existing saved file in Word?", opts: ["Ctrl + O", "Ctrl + N", "Ctrl + S", "Ctrl + V"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which keyboard shortcut SAVES the current active document?", opts: ["Ctrl + S", "Ctrl + P", "Ctrl + C", "Ctrl + Z"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which shortcut opens the PRINT dialog window?", opts: ["Ctrl + P", "Ctrl + S", "Ctrl + N", "Ctrl + A"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which shortcut key COPIES selected text to the clipboard?", opts: ["Ctrl + C", "Ctrl + X", "Ctrl + V", "Ctrl + Z"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which shortcut key CUTS selected text from its original place?", opts: ["Ctrl + X", "Ctrl + C", "Ctrl + V", "Ctrl + Y"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which shortcut key PASTES copied or cut text into a document?", opts: ["Ctrl + V", "Ctrl + C", "Ctrl + X", "Ctrl + S"], ans: 0 },
-      { round: "Unit 4: Shortcuts", q: "Which shortcut UNDOES the previous action performed?", opts: ["Ctrl + Z", "Ctrl + Y", "Ctrl + A", "Ctrl + F"], ans: 0 },
-      { round: "Unit 4: Font Styling", q: "Which font formatting option makes letters darker and thicker?", opts: ["Bold (Ctrl+B)", "Italic (Ctrl+I)", "Underline (Ctrl+U)", "Subscript"], ans: 0 },
-      { round: "Unit 4: Font Styling", q: "Which font formatting option slants text to the right?", opts: ["Italic (Ctrl+I)", "Bold", "Underline", "Strikethrough"], ans: 0 },
-      { round: "Unit 4: Font Styling", q: "To type math powers like x², which formatting feature is used?", opts: ["Superscript", "Subscript", "Highlight", "Case Change"], ans: 0 },
-      { round: "Unit 4: Font Styling", q: "To type chemical formulas like H₂O, which formatting feature is used?", opts: ["Subscript", "Superscript", "Underline", "Italic"], ans: 0 },
-      { round: "Unit 4: Alignment", q: "Which text alignment distributes words evenly between left and right margins?", opts: ["Justify", "Align Left", "Center", "Align Right"], ans: 0 },
-      { round: "Unit 4: Word Tables", q: "In a Word table, what is the intersection box of a row and a column called?", opts: ["Cell", "Grid", "Border", "Margin"], ans: 0 },
-
-      // --- UNIT 3: SECURITY OF COMPUTER SYSTEM (15 QUESTIONS) ---
-      { round: "Unit 3: Hardware Security", q: "What is any physical component of a computer that you can touch and see?", opts: ["Hardware", "Software", "Malware", "Operating System"], ans: 0 },
-      { round: "Unit 3: Hardware Security", q: "Which device provides temporary backup power during sudden blackouts?", opts: ["Uninterruptible Power Supply (UPS)", "Surge Protector", "Cooling Fan", "Hard Disk"], ans: 0 },
-      { round: "Unit 3: Hardware Security", q: "Which device protects hardware from sudden high-voltage power surges?", opts: ["Surge Protector / MCB", "UPS", "RAM", "Graphics Card"], ans: 0 },
-      { round: "Unit 3: Hardware Threat", q: "Why is dust dangerous to computer hardware?", opts: ["Clogs cooling fans and causes overheating", "Deletes files", "Attracts viruses", "Turns screen black"], ans: 0 },
-      { round: "Unit 3: Hardware Threat", q: "Why should we keep food and drinks away from the computer lab?", opts: ["Prevents liquid spills & insect infestation", "Slows internet", "Deletes user passwords", "Distorts sound"], ans: 0 },
-      { round: "Unit 3: Biometrics", q: "Which access method grants entry using physical human traits like fingerprints?", opts: ["Biometric Password", "Text Password", "PIN Code", "Key Lock"], ans: 0 },
-      { round: "Unit 3: Software Malware", q: "What is the general term for malicious software created to cause harm?", opts: ["Malware", "Firmware", "Shareware", "Freeware"], ans: 0 },
-      { round: "Unit 3: Malware Types", q: "Which malware infects host files and requires human action to spread?", opts: ["Computer Virus", "Computer Worm", "Trojan Horse", "Firewall"], ans: 0 },
-      { round: "Unit 3: Malware Types", q: "Which malware spreads across networks automatically WITHOUT human action?", opts: ["Computer Worm", "Computer Virus", "Trojan Horse", "Spyware"], ans: 0 },
-      { round: "Unit 3: Malware Types", q: "Which malware looks like a harmless program but performs harmful actions?", opts: ["Trojan Horse", "Worm", "Virus", "Adware"], ans: 0 },
-      { round: "Unit 3: Malware Types", q: "Which malware secretly tracks internet browsing and steals personal info?", opts: ["Spyware", "Antivirus", "Firewall", "UPS"], ans: 0 },
-      { round: "Unit 3: Data Protection", q: "What is the security process of scrambling data into an unreadable format?", opts: ["Encryption", "Compression", "Defragmentation", "Formatting"], ans: 0 },
-      { round: "Unit 3: Data Protection", q: "What is the practice of storing secondary copies of files in a safe place called?", opts: ["Data Backup", "Data Encryption", "Data Mining", "Data Erasing"], ans: 0 },
-      { round: "Unit 3: Cyber Security", q: "What is an attack that tricks users into sharing passwords via fake emails?", opts: ["Phishing Attack", "Cyber Bullying", "Hacking", "Piracy"], ans: 0 },
-      { round: "Unit 3: Cyber Security", q: "What term describes gaining unauthorized access to a private computer network?", opts: ["Hacking", "Phishing", "Backup", "Encryption"], ans: 0 },
-
-      // --- UNIT 2: OPERATING SYSTEM & STORAGE (15 QUESTIONS) ---
-      { round: "Unit 2: Operating System", q: "What main software acts as a mediator between the user and hardware?", opts: ["Operating System", "Application Software", "Antivirus", "Web Browser"], ans: 0 },
-      { round: "Unit 2: Computer OS", q: "Which of the following is an Operating System used for desktop computers?", opts: ["Microsoft Windows", "Android", "iOS", "Blackberry OS"], ans: 0 },
-      { round: "Unit 2: Mobile OS", q: "Which operating system is designed specifically for smartphones?", opts: ["Android", "Ubuntu", "Fedora", "MS-DOS"], ans: 0 },
-      { round: "Unit 2: Computer OS", q: "Is Linux Ubuntu a Computer OS or a Mobile OS?", opts: ["Computer OS", "Mobile OS", "Hardware Tool", "Web Browser"], ans: 0 },
-      { round: "Unit 2: Mobile OS", q: "Is Apple's iOS primarily a Computer OS or a Mobile OS?", opts: ["Mobile OS", "Computer OS", "Database", "Processor"], ans: 0 },
-      { round: "Unit 2: Storage Categories", q: "Hard Disk Drives belong to which storage technology category?", opts: ["Magnetic Media Devices", "Optical Media Devices", "Solid State Media", "Paper Media"], ans: 0 },
-      { round: "Unit 2: Storage Categories", q: "CDs, DVDs, and Blu-Ray Disks belong to which storage category?", opts: ["Optical Media Devices", "Magnetic Media Devices", "Solid State Media", "Virtual Media"], ans: 0 },
-      { round: "Unit 2: Storage Categories", q: "Pen Drives and Memory Cards belong to which storage category?", opts: ["Solid State Media Devices", "Magnetic Media Devices", "Optical Media Devices", "Tape Media"], ans: 0 },
-      { round: "Unit 2: Solid State Tech", q: "Why do Solid State Media devices operate faster than Hard Disks?", opts: ["They have no moving mechanical parts", "They use magnetic tapes", "They are larger", "They run on gas"], ans: 0 },
-      { round: "Unit 2: Optical Storage", q: "What technology is used to read and write data on CDs and DVDs?", opts: ["Laser Beams", "Magnetic Fields", "Mechanical Needles", "Heat Coils"], ans: 0 },
-      { round: "Unit 2: Optical Capacities", q: "What is the typical storage capacity of a standard CD-ROM?", opts: ["650 MB - 700 MB", "4.7 GB", "25 GB", "1 TB"], ans: 0 },
-      { round: "Unit 2: Optical Capacities", q: "What is the standard capacity of a single-layer DVD?", opts: ["4.7 GB", "700 MB", "1.44 MB", "100 GB"], ans: 0 },
-      { round: "Unit 2: Rewritable Media", q: "Which optical disc type allows writing data onto it MULTIPLE times?", opts: ["CD-RW / DVD-RW", "CD-R", "DVD-R", "ROM"], ans: 0 },
-      { round: "Unit 2: File Deletion", q: "Where do files go when temporarily deleted using the 'Delete' key?", opts: ["Recycle Bin", "Permanently Erased", "Hard Disk Root", "RAM"], ans: 0 },
-      { round: "Unit 2: File Deletion", q: "How do you permanently delete a file to bypass the Recycle Bin?", opts: ["Press 'Shift + Delete'", "Press 'Ctrl + Delete'", "Drag to Folder", "Rename File"], ans: 0 },
-
-      // --- UNIT 1: CENTRAL PROCESSING UNIT (15 QUESTIONS) ---
-      { round: "Unit 1: CPU Architecture", q: "Which internal computer component is known as the 'brain' of the computer?", opts: ["Central Processing Unit (CPU)", "Hard Disk", "Power Supply", "Monitor"], ans: 0 },
-      { round: "Unit 1: CPU Location", q: "Where is the CPU physically mounted inside the computer system unit?", opts: ["On the Motherboard", "On the Power Supply Unit", "Inside the Keyboard", "On the Hard Disk"], ans: 0 },
-      { round: "Unit 1: Kitchen Analogy", q: "In the textbook's hotel kitchen analogy, what does the CPU represent?", opts: ["The Chef preparing meals", "The Kitchen Stoves", "The Dining Area", "The Food Ingredients"], ans: 0 },
-      { round: "Unit 1: Kitchen Analogy", q: "What does a Quad-Core processor mean in the kitchen analogy?", opts: ["Four chefs cooking four meals simultaneously", "Four kitchens in one hotel", "One chef cooking four times faster", "Four dining rooms"], ans: 0 },
-      { round: "Unit 1: CPU Components", q: "Which component of the CPU performs math calculations and logical comparisons?", opts: ["Arithmetic and Logical Unit (ALU)", "Control Unit (CU)", "Memory Registers", "Hard Disk"], ans: 0 },
-      { round: "Unit 1: CPU Components", q: "Which component of the CPU manages and directs all computer operations?", opts: ["Control Unit (CU)", "ALU", "Memory Registers", "RAM"], ans: 0 },
-      { round: "Unit 1: CPU Components", q: "What are the small, ultra-high-speed temporary storage locations inside the CPU?", opts: ["Memory Registers", "Optical Disks", "Hard Drives", "Cache Files"], ans: 0 },
-      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was used in First Generation computers?", opts: ["Vacuum Tubes", "Transistors", "Integrated Circuits", "Microprocessors"], ans: 0 },
-      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was introduced in Second Generation computers?", opts: ["Transistors", "Vacuum Tubes", "Integrated Circuits", "Microprocessors"], ans: 0 },
-      { round: "Unit 1: CPU Evolution", q: "Which electronic technology was introduced in Third Generation computers?", opts: ["Integrated Circuits (IC)", "Vacuum Tubes", "Transistors", "Microprocessors"], ans: 0 },
-      { round: "Unit 1: CPU Evolution", q: "Which electronic technology powers modern Fourth Generation computers?", opts: ["Microprocessors", "Integrated Circuits", "Transistors", "Vacuum Tubes"], ans: 0 },
-      { round: "Unit 1: Execution Speed", q: "In which time unit was the execution speed of First Generation computers measured?", opts: ["Milliseconds", "Microseconds", "Nanoseconds", "Picoseconds"], ans: 0 },
-      { round: "Unit 1: Execution Speed", q: "In which time unit was the execution speed of Third Generation computers measured?", opts: ["Nanoseconds", "Milliseconds", "Microseconds", "Hours"], ans: 0 },
-      { round: "Unit 1: Clock Speed", q: "What unit is used to measure the clock speed of modern CPUs?", opts: ["Hertz (Hz) or Gigahertz (GHz)", "Bytes", "Watts", "Pixels"], ans: 0 },
-      { round: "Unit 1: Clock Speed", q: "How many Hertz (Hz) are equal to 1 Gigahertz (GHz)?", opts: ["1,000,000,000 Hz", "1,000 Hz", "1,000,000 Hz", "100 Hz"], ans: 0 }
-    ];
-
-    let currentQIndex = 0;
-    let scores = [0, 0, 0, 0];
-    let teamNames = ["Team A", "Team B", "Team C", "Team D"];
-    let isRevealed = false;
-
-    function renderQuestion() {
-      isRevealed = false;
-      const q = questions[currentQIndex];
-      
-      document.getElementById("round-badge").textContent = q.round;
-      document.getElementById("q-counter").textContent = `Question ${currentQIndex + 1} / ${questions.length}`;
-      document.getElementById("question-text").textContent = q.q;
-
-      for (let i = 0; i < 4; i++) {
-        const optEl = document.getElementById(`opt-${i}`);
-        const textEl = document.getElementById(`opt-text-${i}`);
-        textEl.textContent = q.opts[i];
-        optEl.classList.remove("dimmed", "correct-answer");
+  // Hardcoded Unit 7 MCQ Bank (20 non-obvious questions for a 13-year-old)
+  var UNIT_7_BANK = {
+    web: [
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "Two laptops in your house share a printer through Wi-Fi, while one of them also loads a YouTube video. Which label fits BOTH?",
+        options: [
+          "Only the laptop with YouTube is a computer network",
+          "The home setup is a computer network; YouTube uses the Internet",
+          "The printer turns the whole Internet into a Web Browser",
+          "A Web Browser connects the two laptops together"
+        ],
+        ans: "The home setup is a computer network; YouTube uses the Internet",
+        sinhala: "පරිගණක 2ක් හෝ වැඩි ගණනක් සම්බන්ධ වීම Computer Network එකක්. ඒ වගේ ජාල ගොඩක එකතුව තමයි Internet. වෙබ් අඩවි බලන්නේ Web Browser එකෙන්."
+      },
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "Imagine the Internet is a giant city of roads, and the World Wide Web (WWW) is one huge library inside it. What is the URL in this picture?",
+        options: [
+          "The librarian who opens the doors",
+          "The exact shelf-and-book address to find one specific page",
+          "The building that holds all the city's electricity",
+          "The table where you read the book"
+        ],
+        ans: "The exact shelf-and-book address to find one specific page",
+        sinhala: "WWW (World Wide Web) කියන්නේ Internet එකේ තියෙන ප්‍රධාන සේවාවක්. URL එක කියන්නේ වෙබ් පිටුවක් හෝ සම්පතක් හරියටම හඳුනාගන්නා ලිපිනය."
+      },
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "Your friend says, 'I typed a website address into Chrome, so I opened the Internet!' Why is that slightly mixed up?",
+        options: [
+          "Chrome is a web page, not a web browser",
+          "Chrome is a Web Browser that displays websites, not the Internet itself",
+          "The Internet only works on Firefox, not Chrome",
+          "A website has no web pages inside it"
+        ],
+        ans: "Chrome is a Web Browser that displays websites, not the Internet itself",
+        sinhala: "Chrome, Firefox කියන්නේ Web Browser (Application Software). ඒවායින් තමයි Websites පෙන්වන්නේ. Websites ගොඩකින් WWW හැදෙනවා."
+      },
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "If a school has 15 connected computers in its lab, what does it become—and what would make it part of the Internet?",
+        options: [
+          "A Web Browser; adding a mouse connects it to the Internet",
+          "A Computer Network; connecting that network to other networks joins the Internet",
+          "The World Wide Web; adding one more computer makes it the WWW",
+          "A URL; giving the lab a name makes it a URL"
+        ],
+        ans: "A Computer Network; connecting that network to other networks joins the Internet",
+        sinhala: "පරිගණක 2කට වඩා සම්බන්ධ වීම Computer Network එකක්. එවැනි ජාල රාශියක එකතුව තමයි Internet එක."
+      },
+      {
+        topic: "web",
+        title: "1. Internet & Web Foundations",
+        type: "mcq",
+        q: "Which pair correctly matches 'what is made of what' on the web?",
+        options: [
+          "Web pages make a Browser ➔ Browsers make a Website",
+          "Web pages make a Website ➔ Websites make the World Wide Web",
+          "URLs make a Network ➔ Networks make a Web page",
+          "Websites make a URL ➔ URLs make the Internet"
+        ],
+        ans: "Web pages make a Website ➔ Websites make the World Wide Web",
+        sinhala: "Web pages ගොඩකින් Website එකක් හැදෙනවා. Websites ගොඩකින් World Wide Web (WWW) හැදෙනවා."
       }
+    ],
+
+    video: [
+      {
+        topic: "video",
+        title: "2. Video Conferencing",
+        type: "mcq",
+        q: "You are in Kandy and your cousin is in Jaffna. You talk live with video on Zoom. Why is this video conferencing instead of a regular phone call?",
+        options: [
+          "It uses video technology over the internet between people far apart",
+          "It requires both people to sit in the same room",
+          "It only sends text messages without sound or video",
+          "It does not need an internet connection"
+        ],
+        ans: "It uses video technology over the internet between people far apart",
+        sinhala: "දුර සිටින දෙදෙනෙකු හෝ කණ්ඩායම් දෙකක් අතර Internet හරහා Video තාක්ෂණයෙන් සාකච්ඡා කිරීම තමයි Video Conferencing."
+      },
+      {
+        topic: "video",
+        title: "2. Video Conferencing",
+        type: "mcq",
+        q: "Your team wants to run a Zoom meeting from a desktop PC that has NO built-in camera. Which item from the checklist is missing?",
+        options: [
+          "Web camera",
+          "A printed map",
+          "A CD drive",
+          "A word processor"
+        ],
+        ans: "Web camera",
+        sinhala: "Video Conference එකකට Computer, Web camera, Internet connection සහ Video conferencing software (Zoom, Skype, GoToMeeting, Webex) අවශ්‍යයි."
+      },
+      {
+        topic: "video",
+        title: "2. Video Conferencing",
+        type: "mcq",
+        q: "A science club needs to hold a quick meeting with judges in three towns before tomorrow's contest. Which advantage matters MOST here?",
+        options: [
+          "It can be quickly arranged without travel time or transport costs",
+          "It turns off the internet automatically",
+          "It replaces the need for any software",
+          "It prints paper tickets for everyone"
+        ],
+        ans: "It can be quickly arranged without travel time or transport costs",
+        sinhala: "ගමන් වියදම් සහ කාලය ඉතිරි වීම, ආරම්භක වියදම් අඩු වීම සහ ඉක්මනින් සංවිධානය කළ හැකි වීම Video Conferencing වල වාසි."
+      },
+      {
+        topic: "video",
+        title: "2. Video Conferencing",
+        type: "mcq",
+        q: "Spot the odd one out: Zoom, Skype, GoToMeeting, Webex, and Google Chrome.",
+        options: [
+          "Zoom",
+          "GoToMeeting",
+          "Webex",
+          "Google Chrome"
+        ],
+        ans: "Google Chrome",
+        sinhala: "Zoom, Skype, GoToMeeting, Webex කියන්නේ Video conferencing software උදාහරණ. Chrome කියන්නේ Web browser එකක්."
+      },
+      {
+        topic: "video",
+        title: "2. Video Conferencing",
+        type: "mcq",
+        q: "If a student has a computer, a web camera, and Zoom installed, what happens if the Wi-Fi router is switched off?",
+        options: [
+          "Video conferencing still works using the camera alone",
+          "Video conferencing over the internet cannot happen without an internet connection",
+          "Zoom turns into an offline calculator",
+          "The web camera sends video through the power cable"
+        ],
+        ans: "Video conferencing over the internet cannot happen without an internet connection",
+        sinhala: "Internet හරහා Video conferencing කරන්න Computer + Web camera + Internet connection + Software යන සියල්ල තිබිය යුතුයි."
+      }
+    ],
+
+    email: [
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "In the email address saman@edupub.gov.lk, what would happen if someone left out the '@' sign and wrote samanedupub.gov.lk?",
+        options: [
+          "It would send twice as fast",
+          "The username and domain name wouldn't be separated properly by '@'",
+          "It would automatically go to the Trash folder",
+          "It would turn into a website URL"
+        ],
+        ans: "The username and domain name wouldn't be separated properly by '@'",
+        sinhala: "Email ලිපිනයක Username සහ Domain name එක වෙන් කරන්නේ '@' සලකුණෙන් (උදා: saman@edupub.gov.lk)."
+      },
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "You email a project to your teacher (To) and your partner (Cc), while secretly adding a mentor in Bcc. Who can see the mentor's email address?",
+        options: [
+          "Both the teacher and your partner",
+          "Only the teacher",
+          "Nobody—not even the mentor",
+          "Only the mentor (Bcc); To and Cc cannot see Bcc addresses"
+        ],
+        ans: "Only the mentor (Bcc); To and Cc cannot see Bcc addresses",
+        sinhala: "Bcc (Blind Carbon Copy) හි ඇති ලිපින To සහ Cc අයට පේන්නේ නැහැ. නමුත් Bcc කෙනාට To සහ Cc ලිපින පේනවා."
+      },
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "You want to send a photo of your robot along with your email message. Which feature do you use?",
+        options: [
+          "Attachment",
+          "Trash",
+          "Sent",
+          "Junk/Spam"
+        ],
+        ans: "Attachment",
+        sinhala: "Photos, videos, audio වැනි ගොනු (files) email එකකට අමුණා යැවීමට Attachment භාවිත කරනවා."
+      },
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "You accidentally clicked Delete on an important email yesterday. Before it's gone for good, where should you look first?",
+        options: [
+          "Contacts",
+          "Trash",
+          "Compose/New",
+          "Sent"
+        ],
+        ans: "Trash",
+        sinhala: "මකා දැමූ (deleted) emails තාවකාලිකව තැන්පත් වෙන්නේ Trash ෆෝල්ඩරයේ. Inbox = ලැබුණු ඒවා, Sent = යැවූ ඒවා, Junk/Spam = අනවශ්‍ය ඒවා."
+      },
+      {
+        topic: "email",
+        title: "3. Electronic Mail (E-mail)",
+        type: "mcq",
+        q: "Why do people fill in the 'Subject' box before clicking Send?",
+        options: [
+          "To store the receiver's phone number",
+          "To state the topic of the email so the reader knows what it's about",
+          "To hide the email from the Sent folder",
+          "To compress video files"
+        ],
+        ans: "To state the topic of the email so the reader knows what it's about",
+        sinhala: "Subject කොටසේ ලියන්නේ Email එකේ මාතෘකාව (topic). Compose/New වලින් අලුත් email එකක් ලියන්න පටන් ගන්නවා."
+      }
+    ],
+
+    html: [
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "What does HTML stand for, and what is it used to build?",
+        options: [
+          "HyperText Markup Language — used to create web pages",
+          "High Transfer Mail Link — used to send emails",
+          "Home Tool Media List — used for video calls",
+          "Host Terminal Main Loop — used for Wi-Fi passwords"
+        ],
+        ans: "HyperText Markup Language — used to create web pages",
+        sinhala: "HTML කියන්නේ HyperText Markup Language. වෙබ් පිටු (web pages) නිර්මාණය කිරීමට භාවිත කරන භාෂාවයි."
+      },
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "HTML tags sit inside '<' and '>'. Which slash symbol marks a closing tag?",
+        options: [
+          "Backslash (\\)",
+          "Forward slash (/)",
+          "Colon (:)",
+          "Asterisk (*)"
+        ],
+        ans: "Forward slash (/)",
+        sinhala: "HTML codes ලියන්නේ '<' සහ '>' සලකුණු මැද. අවසන් කරන (closing) tag එකක '/' සලකුණ යොදනවා."
+      },
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "Which order shows the basic HTML page structure from the Unit 7 notes?",
+        options: [
+          "<body> ➔ <head> ➔ <html>",
+          "<html> ➔ <head> ➔ <body>",
+          "<head> ➔ <html> ➔ <body>",
+          "<html> ➔ <body> ➔ <head>"
+        ],
+        ans: "<html> ➔ <head> ➔ <body>",
+        sinhala: "HTML පිටුවක මූලික ව්‍යුහය: <html> ➔ <head> (සමඟ <title>) ➔ <body> (පිටුවේ පෙනෙන දේ)."
+      },
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "If you put text inside <head> instead of <body>, where will it NOT show up?",
+        options: [
+          "It won't show up as visible page content in the main <body> area",
+          "It won't show up in your HTML code file",
+          "It won't show up on your computer screen at all",
+          "It won't show up in a text editor"
+        ],
+        ans: "It won't show up as visible page content in the main <body> area",
+        sinhala: "වෙබ් පිටුවේ පෙනෙන ප්‍රධාන කොටස තියෙන්නේ <body> තුළ. <title> වැනි දේ <head> කොටසට අදාළයි."
+      },
+      {
+        topic: "html",
+        title: "4. HTML Web Development",
+        type: "mcq",
+        q: "A student writes <p>Hello<p> instead of closing with a slash. Why is that a classic HTML slip-up?",
+        options: [
+          "Because <p> only works inside <title>",
+          "Because closing tags use '/' (like </p>) to show where the tag ends",
+          "Because HTML tags must use square brackets [p]",
+          "Because <p> cannot hold letters"
+        ],
+        ans: "Because closing tags use '/' (like </p>) to show where the tag ends",
+        sinhala: "HTML tags වල ආරම්භය සහ අවසානය තියෙනවා. අවසන් කරන විට '/' සලකුණ සමඟ tag එක ලියනවා."
+      }
+    ]
+  };
+
+  function getAllQuestions() {
+    return [].concat(UNIT_7_BANK.web, UNIT_7_BANK.video, UNIT_7_BANK.email, UNIT_7_BANK.html);
+  }
+
+  var activeTopic = 'all';
+  var userAnswers = {};
+  var currentQuestions = getAllQuestions();
+  var previousScreen = 'quiz';
+  var activeTutorSub = 'web';
+
+  function loadQuizByTopic(topic) {
+    activeTopic = topic;
+    userAnswers = {};
+
+    var pills = document.querySelectorAll('.topic-pill');
+    pills.forEach(function(p) {
+      p.classList.toggle('active', p.getAttribute('data-topic') === topic);
+    });
+
+    if (topic === 'all') {
+      currentQuestions = getAllQuestions();
+      document.getElementById('subject-tag').innerText = 'UNIT 7 • ALL TOPICS';
+      document.getElementById('title-text').innerText = 'Internet & Communication Booster';
+    } else {
+      currentQuestions = UNIT_7_BANK[topic] || getAllQuestions();
+      var labelMap = {
+        web: '1. Internet & Web',
+        video: '2. Video Conferencing',
+        email: '3. E-mail',
+        html: '4. HTML'
+      };
+      document.getElementById('subject-tag').innerText = 'UNIT 7 • ICT';
+      document.getElementById('title-text').innerText = labelMap[topic] || 'Unit 7 Practice';
     }
 
-    function revealAnswer() {
-      if (isRevealed) return;
-      isRevealed = true;
-      const correctAns = questions[currentQIndex].ans;
+    document.getElementById('screen-results').style.display = 'none';
+    document.getElementById('screen-tutor').style.display = 'none';
+    document.getElementById('screen-quiz').style.display = 'block';
+    previousScreen = 'quiz';
 
-      for (let i = 0; i < 4; i++) {
-        const optEl = document.getElementById(`opt-${i}`);
-        if (i === correctAns) {
-          optEl.classList.add("correct-answer");
-        } else {
-          optEl.classList.add("dimmed");
-        }
-      }
-    }
+    renderQuestions();
+  }
 
-    function nextQuestion() {
-      if (currentQIndex < questions.length - 1) {
-        currentQIndex++;
-        renderQuestion();
-      } else {
-        showWinnerModal();
-      }
-    }
+  function renderQuestions() {
+    var container = document.getElementById('quiz-container');
+    container.innerHTML = '';
 
-    function prevQuestion() {
-      if (currentQIndex > 0) {
-        currentQIndex--;
-        renderQuestion();
-      }
-    }
+    currentQuestions.forEach(function(q, idx) {
+      var card = document.createElement('div');
+      card.className = 'quiz-card';
 
-    function addScore(teamIndex, points) {
-      scores[teamIndex] += points;
-      document.getElementById(`score-${teamIndex}`).textContent = scores[teamIndex];
-    }
+      var qNum = document.createElement('div');
+      qNum.className = 'q-number';
+      qNum.textContent = 'Question ' + (idx + 1) + ' of ' + currentQuestions.length + ' • ' + q.title;
+      card.appendChild(qNum);
 
-    function renameTeam(teamIndex) {
-      const newName = prompt(`Enter custom name for ${teamNames[teamIndex]}:`, teamNames[teamIndex]);
-      if (newName && newName.trim() !== "") {
-        teamNames[teamIndex] = newName.trim();
-        document.getElementById(`tname-${teamIndex}`).textContent = teamNames[teamIndex];
-      }
-    }
+      var qText = document.createElement('div');
+      qText.className = 'q-text';
+      qText.textContent = q.q;
+      card.appendChild(qText);
 
-    function showWinnerModal() {
-      const modal = document.getElementById("winner-modal");
-      const headline = document.getElementById("winner-headline");
-      const subtext = document.getElementById("winner-subtext");
-      const leaderboardBody = document.getElementById("leaderboard-body");
-
-      const teamObjects = teamNames.map((name, idx) => ({ name: name, score: scores[idx] }));
-      teamObjects.sort((a, b) => b.score - a.score);
-
-      const topScore = teamObjects[0].score;
-      const winners = teamObjects.filter(t => t.score === topScore);
-
-      if (winners.length === 1) {
-        headline.textContent = `🏆 WINNER: ${winners[0].name.toUpperCase()}!`;
-        subtext.textContent = `Outstanding Performance with ${winners[0].score} Points!`;
-      } else {
-        const winnerNames = winners.map(w => w.name).join(" & ");
-        headline.textContent = `🤝 IT'S A TIE!`;
-        subtext.textContent = `${winnerNames} tied with ${topScore} Points!`;
-      }
-
-      leaderboardBody.innerHTML = "";
-      const rankClasses = ["rank-1", "rank-2", "rank-3", "rank-4"];
-      const rankLabels = ["1st Place 🥇", "2nd Place 🥈", "3rd Place 🥉", "4th Place 🎗️"];
-
-      teamObjects.forEach((t, i) => {
-        const item = document.createElement("div");
-        item.className = `leaderboard-item ${rankClasses[i]}`;
-        item.innerHTML = `<span>${rankLabels[i]} — ${t.name}</span><span>${t.score} pts</span>`;
-        leaderboardBody.appendChild(item);
+      var group = document.createElement('div');
+      q.options.forEach(function(opt) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-btn';
+        btn.textContent = opt;
+        btn.onclick = function() {
+          userAnswers[idx] = opt;
+          var siblings = group.querySelectorAll('.option-btn');
+          siblings.forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+        };
+        group.appendChild(btn);
       });
+      card.appendChild(group);
 
-      modal.style.display = "flex";
+      container.appendChild(card);
+    });
+  }
+
+  function submitAnswers() {
+    var score = 0;
+    var reviewContainer = document.getElementById('review-container');
+    reviewContainer.innerHTML = '';
+
+    currentQuestions.forEach(function(q, idx) {
+      var uAns = userAnswers[idx] || 'Not answered';
+      var isCorrect = uAns.toString().trim().toLowerCase() === q.ans.toString().trim().toLowerCase();
+      if (isCorrect) score++;
+
+      var card = document.createElement('div');
+      card.className = 'review-card ' + (isCorrect ? 'correct' : 'incorrect');
+
+      var status = document.createElement('div');
+      status.style.fontSize = '0.78rem';
+      status.style.fontWeight = '800';
+      status.style.color = isCorrect ? 'var(--correct)' : 'var(--incorrect)';
+      status.textContent = isCorrect ? '✓ Correct' : '✗ Needs Practice';
+      card.appendChild(status);
+
+      var text = document.createElement('div');
+      text.style.fontWeight = '600';
+      text.style.fontSize = '0.9rem';
+      text.style.margin = '4px 0';
+      text.textContent = q.q;
+      card.appendChild(text);
+
+      var ansDetail = document.createElement('div');
+      ansDetail.style.fontSize = '0.85rem';
+      ansDetail.innerHTML = 'Your Answer: <b>' + escapeHtml(uAns) + '</b> | Correct Answer: <b style="color:var(--primary);">' + escapeHtml(q.ans) + '</b>';
+      card.appendChild(ansDetail);
+
+      if (q.sinhala) {
+        var sinhalaBox = document.createElement('div');
+        sinhalaBox.className = 'sinhala-review';
+        sinhalaBox.innerHTML = '💡 <b>Study Tip:</b> ' + escapeHtml(q.sinhala);
+        card.appendChild(sinhalaBox);
+      }
+
+      reviewContainer.appendChild(card);
+    });
+
+    var percentage = Math.round((score / currentQuestions.length) * 100);
+    document.getElementById('score-text').innerText = score + ' / ' + currentQuestions.length + ' (' + percentage + '%)';
+    
+    var feedbackEl = document.getElementById('target-feedback');
+    if (percentage >= 65) {
+      feedbackEl.className = 'target-met';
+      feedbackEl.innerText = '🎯 Target Passed (65%+)! Great job! 🌟';
+    } else {
+      feedbackEl.className = 'target-missed';
+      feedbackEl.innerText = '📖 Good try! Read the yellow study tips below to practice!';
     }
 
-    function closeWinnerModal() {
-      document.getElementById("winner-modal").style.display = "none";
-    }
+    document.getElementById('screen-quiz').style.display = 'none';
+    document.getElementById('screen-results').style.display = 'block';
+    previousScreen = 'results';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-    document.addEventListener('keydown', function(event) {
-      if (event.code === 'ArrowRight') nextQuestion();
-      if (event.code === 'ArrowLeft') prevQuestion();
-      if (event.code === 'Space') {
-        event.preventDefault();
-        revealAnswer();
+  function shareWhatsAppDirect() {
+    var wrongReport = [];
+    var correctCount = 0;
+
+    currentQuestions.forEach(function(q, idx) {
+      var uAns = userAnswers[idx] || 'Not answered';
+      var isCorrect = uAns.toString().trim().toLowerCase() === q.ans.toString().trim().toLowerCase();
+      if (isCorrect) {
+        correctCount++;
+      } else {
+        wrongReport.push("Q" + (idx + 1) + ": " + q.q + "\n  ❌ Answer: " + uAns + "\n  ✅ Correct: " + q.ans);
       }
     });
 
-    renderQuestion();
-  </script>
+    var percentage = Math.round((correctCount / currentQuestions.length) * 100);
+    var text = "📊 *Unit 7 ICT Practice Report*\n\n" +
+               "📌 *Topic:* " + activeTopic.toUpperCase() + "\n" +
+               "🎯 *Score:* " + correctCount + "/" + currentQuestions.length + " (" + percentage + "%)\n" +
+               "🏆 *Target 65%+ Status:* " + (percentage >= 65 ? "MET ✅" : "NEEDS PRACTICE ⚠️") + "\n\n";
+
+    if (wrongReport.length > 0) {
+      text += "📝 *Mistakes & Insights:*\n" + wrongReport.join("\n\n") + "\n\n";
+    } else {
+      text += "🌟 *Outstanding:* 100% correct answers today!\n\n";
+    }
+
+    var waUrl = "https://api.whatsapp.com/send?phone=" + TARGET_PHONE + "&text=" + encodeURIComponent(text);
+    window.location.href = waUrl;
+  }
+
+  /* ================= TUTOR MODE (LOCAL HARDCODED BANK ONLY) ================= */
+  function openTutorModal() {
+    var modal = document.getElementById('tutor-modal');
+    var pinInput = document.getElementById('tutor-pin-input');
+    var pinErr = document.getElementById('tutor-pin-error');
+    pinInput.value = '';
+    pinErr.style.display = 'none';
+    modal.style.display = 'flex';
+    setTimeout(function() { pinInput.focus(); }, 50);
+  }
+
+  function closeTutorModal() {
+    document.getElementById('tutor-modal').style.display = 'none';
+  }
+
+  function checkTutorPin() {
+    var val = document.getElementById('tutor-pin-input').value.trim();
+    if (val === TUTOR_CODE) {
+      closeTutorModal();
+      enterTutorMode();
+    } else {
+      document.getElementById('tutor-pin-error').style.display = 'block';
+      document.getElementById('tutor-pin-input').value = '';
+      document.getElementById('tutor-pin-input').focus();
+    }
+  }
+
+  function enterTutorMode() {
+    if (document.getElementById('screen-results').style.display === 'block') {
+      previousScreen = 'results';
+    } else {
+      previousScreen = 'quiz';
+    }
+    document.getElementById('screen-quiz').style.display = 'none';
+    document.getElementById('screen-results').style.display = 'none';
+    document.getElementById('screen-tutor').style.display = 'block';
+    selectTutorSubject(activeTutorSub);
+  }
+
+  function exitTutorMode() {
+    document.getElementById('screen-tutor').style.display = 'none';
+    if (previousScreen === 'results') {
+      document.getElementById('screen-results').style.display = 'block';
+    } else {
+      document.getElementById('screen-quiz').style.display = 'block';
+    }
+  }
+
+  function selectTutorSubject(sub) {
+    activeTutorSub = sub;
+    var boxes = document.querySelectorAll('.subject-box');
+    boxes.forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-sub') === sub);
+    });
+
+    document.getElementById('tutor-detail-section').style.display = 'none';
+    document.getElementById('tutor-qnum-section').style.display = 'block';
+
+    var list = UNIT_7_BANK[sub] || [];
+    var qnumGrid = document.getElementById('tutor-qnum-grid');
+    document.getElementById('tutor-qnum-label').textContent = sub.toUpperCase() + ' — Select Question (1–' + list.length + '):';
+    qnumGrid.innerHTML = '';
+
+    list.forEach(function(item, index) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'q-num-btn';
+      btn.textContent = index + 1;
+      btn.onclick = function() {
+        var allNums = qnumGrid.querySelectorAll('.q-num-btn');
+        allNums.forEach(function(nb) { nb.classList.remove('active'); });
+        btn.classList.add('active');
+        showTutorQuestionDetail(index, item);
+      };
+      qnumGrid.appendChild(btn);
+    });
+  }
+
+  function showTutorQuestionDetail(index, item) {
+    var detailSection = document.getElementById('tutor-detail-section');
+    detailSection.style.display = 'block';
+
+    var optsHtml = '';
+    (item.options || []).forEach(function(opt) {
+      var isAns = String(opt).trim().toLowerCase() === String(item.ans).trim().toLowerCase();
+      optsHtml += '<div class="tutor-opt-item' + (isAns ? ' is-ans' : '') + '">' +
+                  (isAns ? '✅ ' : '• ') + escapeHtml(opt) +
+                  '</div>';
+    });
+
+    detailSection.innerHTML =
+      '<div class="tutor-detail-card">' +
+        '<div style="font-size:0.72rem; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:4px;">' +
+          escapeHtml(item.title) + ' • Question #' + (index + 1) +
+        '</div>' +
+        '<div style="font-weight:700; font-size:0.95rem; margin-bottom:10px; line-height:1.4;">' +
+          escapeHtml(item.q) +
+        '</div>' +
+        '<div style="margin-bottom:10px;">' + optsHtml + '</div>' +
+        '<div style="font-size:0.86rem; margin-bottom:6px;">Correct Answer: <b style="color:var(--correct);">' + escapeHtml(item.ans) + '</b></div>' +
+        (item.sinhala ? '<div class="sinhala-review">💡 <b>Study Tip:</b> ' + escapeHtml(item.sinhala) + '</div>' : '') +
+      '</div>';
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    loadQuizByTopic('all');
+
+    document.querySelectorAll('.topic-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        loadQuizByTopic(pill.getAttribute('data-topic'));
+      });
+    });
+
+    document.getElementById('submit-btn').addEventListener('click', submitAnswers);
+    document.getElementById('whatsapp-btn-top').addEventListener('click', shareWhatsAppDirect);
+    document.getElementById('retry-btn').addEventListener('click', function() {
+      loadQuizByTopic(activeTopic);
+    });
+
+    document.getElementById('tutor-trigger-btn').addEventListener('click', openTutorModal);
+    document.getElementById('cancel-pin-btn').addEventListener('click', closeTutorModal);
+    document.getElementById('unlock-pin-btn').addEventListener('click', checkTutorPin);
+    document.getElementById('tutor-pin-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkTutorPin();
+    });
+    document.getElementById('exit-tutor-btn').addEventListener('click', exitTutorMode);
+
+    document.querySelectorAll('.subject-box').forEach(function(box) {
+      box.addEventListener('click', function() {
+        selectTutorSubject(box.getAttribute('data-sub'));
+      });
+    });
+  });
+</script>
 </body>
 </html>
