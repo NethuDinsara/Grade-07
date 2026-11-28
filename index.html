@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Daily Practice Booster - Complete Unit 7 ICT</title>
+  <title>Daily Practice Booster - Grade 7 ICT Full Syllabus</title>
   <style>
     :root {
       --primary: #DB2777;
       --primary-hover: #BE185D;
       --primary-soft: #FDF2F8;
       --primary-border: #FBCFE8;
-      --accent-plum: #7E22CE;
       --bg: #FAF6F8;
       --card: #FFFFFF;
       --text: #1F1722;
@@ -362,12 +361,12 @@
       background: #FCFAFB;
       border: 1.5px solid #E5D7E0;
       border-radius: 14px;
-      padding: 12px 8px;
+      padding: 11px 8px;
       text-align: center;
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .subject-box[data-sub="security"] { grid-column: span 2; }
+    .subject-box[data-sub="u7"] { grid-column: span 2; }
 
     .subject-box.active {
       border-color: var(--primary);
@@ -375,12 +374,12 @@
     }
     .subject-box-name {
       font-weight: 800;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       color: var(--text);
       margin-bottom: 3px;
     }
     .subject-box-count {
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       color: var(--muted);
       font-weight: 600;
     }
@@ -436,20 +435,22 @@
   <div>
     <div class="header">
       <div class="badge-row">
-        <div class="badge subject-tag" id="subject-tag">UNIT 7 • COMPLETE</div>
+        <div class="badge subject-tag" id="subject-tag">GRADE 7 ICT • FULL SYLLABUS</div>
         <div class="badge target-tag">Target: 65%+</div>
         <button type="button" class="tutor-trigger" id="tutor-trigger-btn" aria-label="Tutor Panel">⚙</button>
       </div>
-      <h1 id="title-text">Internet, Communication & Security Booster</h1>
+      <h1 id="title-text">Complete Syllabus Practice Booster</h1>
     </div>
 
     <div class="topic-pills" id="topic-pills">
-      <button type="button" class="topic-pill active" data-topic="all">All (42)</button>
-      <button type="button" class="topic-pill" data-topic="web">1. Web & Net</button>
-      <button type="button" class="topic-pill" data-topic="video">2. Video Calls</button>
-      <button type="button" class="topic-pill" data-topic="email">3. E-mail</button>
-      <button type="button" class="topic-pill" data-topic="html">4. HTML</button>
-      <button type="button" class="topic-pill" data-topic="security">5. Safe & Ethical Net</button>
+      <button type="button" class="topic-pill active" data-topic="all">All (77)</button>
+      <button type="button" class="topic-pill" data-topic="u1">1. CPU</button>
+      <button type="button" class="topic-pill" data-topic="u2">2. OS & Storage</button>
+      <button type="button" class="topic-pill" data-topic="u3">3. System Security</button>
+      <button type="button" class="topic-pill" data-topic="u4">4. Word Proc.</button>
+      <button type="button" class="topic-pill" data-topic="u5">5. Programming</button>
+      <button type="button" class="topic-pill" data-topic="u6">6. Presentations</button>
+      <button type="button" class="topic-pill" data-topic="u7">7. Internet & Net</button>
     </div>
 
     <!-- Quiz Screen -->
@@ -462,7 +463,7 @@
     <div id="screen-results" style="display:none;">
       <div class="score-banner">
         <div style="font-size: 0.85rem; color: var(--muted); font-weight: 600;">Your Score Today</div>
-        <div class="score-badge" id="score-text">0 / 42</div>
+        <div class="score-badge" id="score-text">0 / 77</div>
         <div id="target-feedback"></div>
       </div>
 
@@ -477,30 +478,38 @@
     <!-- Tutor Bank Explorer Screen (Local Hardcoded Bank Only) -->
     <div id="screen-tutor" style="display:none;">
       <div class="tutor-bar">
-        <div class="tutor-title">📚 Complete Unit 7 Question Bank</div>
+        <div class="tutor-title">📚 Grade 7 ICT Question Bank</div>
         <button type="button" class="btn-exit-tutor" id="exit-tutor-btn">Close</button>
       </div>
 
       <div class="subject-grid" id="tutor-subject-grid">
-        <div class="subject-box active" data-sub="web">
-          <div class="subject-box-name">1. Web & Net</div>
-          <div class="subject-box-count" id="count-web">8 Questions</div>
+        <div class="subject-box active" data-sub="u1">
+          <div class="subject-box-name">1. Central Processing Unit</div>
+          <div class="subject-box-count" id="count-u1">10 Questions</div>
         </div>
-        <div class="subject-box" data-sub="video">
-          <div class="subject-box-name">2. Video Calls</div>
-          <div class="subject-box-count" id="count-video">7 Questions</div>
+        <div class="subject-box" data-sub="u2">
+          <div class="subject-box-name">2. Operating System</div>
+          <div class="subject-box-count" id="count-u2">11 Questions</div>
         </div>
-        <div class="subject-box" data-sub="email">
-          <div class="subject-box-name">3. E-mail</div>
-          <div class="subject-box-count" id="count-email">8 Questions</div>
+        <div class="subject-box" data-sub="u3">
+          <div class="subject-box-name">3. System Security</div>
+          <div class="subject-box-count" id="count-u3">11 Questions</div>
         </div>
-        <div class="subject-box" data-sub="html">
-          <div class="subject-box-name">4. HTML</div>
-          <div class="subject-box-count" id="count-html">8 Questions</div>
+        <div class="subject-box" data-sub="u4">
+          <div class="subject-box-name">4. Word Processing</div>
+          <div class="subject-box-count" id="count-u4">11 Questions</div>
         </div>
-        <div class="subject-box" data-sub="security">
-          <div class="subject-box-name">5. Safe & Ethical Net + Online Security</div>
-          <div class="subject-box-count" id="count-security">11 Questions</div>
+        <div class="subject-box" data-sub="u5">
+          <div class="subject-box-name">5. Programme Development</div>
+          <div class="subject-box-count" id="count-u5">12 Questions</div>
+        </div>
+        <div class="subject-box" data-sub="u6">
+          <div class="subject-box-name">6. Presentation Software</div>
+          <div class="subject-box-count" id="count-u6">11 Questions</div>
+        </div>
+        <div class="subject-box" data-sub="u7">
+          <div class="subject-box-name">7. Using Internet for Information & Communication</div>
+          <div class="subject-box-count" id="count-u7">13 Questions</div>
         </div>
       </div>
 
@@ -532,12 +541,954 @@
   var TARGET_PHONE = "94701543307";
   var TUTOR_CODE = "3307";
 
-  // Complete Unit 7 Hardcoded MCQ Bank (42 questions covering all sections including security & ethics)
-  var UNIT_7_BANK = {
-    web: [
+  // Full Grade 7 ICT Syllabus MCQ Bank (Units 1 to 7, 77 non-obvious teen-friendly questions)
+  var FULL_SYLLABUS_BANK = {
+    u1: [
       {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "If you look at the outside of a desktop computer, you can't see the CPU. Where is it actually fixed?",
+        options: [
+          "On the motherboard inside the system unit",
+          "Inside the computer monitor",
+          "On the outer front panel of the keyboard",
+          "Inside the wall power socket"
+        ],
+        ans: "On the motherboard inside the system unit",
+        sinhala: "CPU එක පිටතින් පෙනෙන්නේ නැහැ. එය System unit එක ඇතුළේ Motherboard එක මත සවි කර තිබෙනවා."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "In the textbook's hotel kitchen story, a dual-core processor is like having two chefs. What does that let the computer do better?",
+        options: [
+          "Handle two tasks at the same time instead of just one",
+          "Store twice as many movies on a pen drive",
+          "Print pages in two different colours",
+          "Turn off the cooling fan automatically"
+        ],
+        ans: "Handle two tasks at the same time instead of just one",
+        sinhala: "Dual-core processor එකක් කියන්නේ කුස්සියක Chef ලා දෙදෙනෙකු සිටිනවා වගේ—එකවර වැඩ දෙකක් කරන්න පුළුවන්."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "A program checks whether 8 is greater than 5 and also adds 12 + 4. Which part of the CPU does both of those jobs?",
+        options: [
+          "Arithmetic and Logical Unit (ALU)",
+          "Control Unit (CU)",
+          "Hard Disk Drive",
+          "Power Supply"
+        ],
+        ans: "Arithmetic and Logical Unit (ALU)",
+        sinhala: "ALU (Arithmetic & Logical Unit) මගින් ගණිතමය (+, -, ×, ÷) සහ තාර්කික (සංසන්දන, උදා: 3 > 2) කාර්යයන් ඉටු කරයි."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "Which CPU component acts like a traffic controller so data goes to the right place at the right time?",
+        options: [
+          "Control Unit (CU)",
+          "Memory Registers",
+          "DVD Drive",
+          "Cooling Fan"
+        ],
+        ans: "Control Unit (CU)",
+        sinhala: "Control Unit (CU) මගින් දත්ත නිවැරදි තැනට නිවැරදි වේලාවට යැවීම සහ hardware පාලනය කිරීම සිදු කරයි."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "Why do Memory Registers inside the CPU hold less data than a hard disk, yet matter so much while a program runs?",
+        options: [
+          "They store active data/instructions temporarily with very high access speed",
+          "They keep files permanently after unplugging power",
+          "They connect the computer to Wi-Fi",
+          "They display pictures on the screen"
+        ],
+        ans: "They store active data/instructions temporarily with very high access speed",
+        sinhala: "Memory Registers වල ධාරිතාව අඩු වුණත්, දත්ත ලබාගැනීමේ වේගය (access speed) ඉතා ඉහළයි; CPU භාවිත කරන දත්ත තාවකාලිකව තබා ගනී."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "First-generation computers filled a whole room and used around 18,000 vacuum tubes. What was a big headache they caused?",
+        options: [
+          "Heavy power use and lots of heat needing a cooling system",
+          "Being too small to see on a desk",
+          "Running without any electricity",
+          "Having no speed limit at all"
+        ],
+        ans: "Heavy power use and lots of heat needing a cooling system",
+        sinhala: "පළමු පරම්පරාවේ (Vacuum tube) පරිගණක විශාල තාපයක් පිට කළ නිසා සිසිලන පද්ධති සහ විශාල විදුලි බලයක් අවශ්‍ය වුණා."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "Match the electronic technology to the computer generation: Vacuum tube ➔ Transistor ➔ Integrated circuit ➔ ?",
+        options: [
+          "Microprocessor (Fourth Generation)",
+          "Floppy disk (Second Generation)",
+          "Laser beam (First Generation)",
+          "Touch screen (Third Generation)"
+        ],
+        ans: "Microprocessor (Fourth Generation)",
+        sinhala: "පරම්පරා 4: 1st Vacuum tube, 2nd Transistor, 3rd Integrated circuit (IC), 4th Microprocessor."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "If a modern processor has a clock speed of 2.5 GHz, how many hertz is 1 gigahertz equal to?",
+        options: [
+          "1,000,000,000 Hz",
+          "1,000 Hz",
+          "1,000,000 Hz",
+          "100 Hz"
+        ],
+        ans: "1,000,000,000 Hz",
+        sinhala: "1 KHz = 1,000 Hz, 1 MHz = 1,000,000 Hz, 1 GHz = 1,000,000,000 Hz."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "Putting time units in order from smallest fraction of a second to largest among these choices gives:",
+        options: [
+          "Picosecond < Nanosecond < Microsecond < Millisecond",
+          "Millisecond < Microsecond < Nanosecond < Picosecond",
+          "Microsecond < Picosecond < Millisecond < Nanosecond",
+          "Nanosecond < Millisecond < Microsecond < Picosecond"
+        ],
+        ans: "Picosecond < Nanosecond < Microsecond < Millisecond",
+        sinhala: "1 ms = 0.001 s, 1 µs = 0.000001 s, 1 ns = 0.000000001 s, 1 ps = 0.000000000001 s."
+      },
+      {
+        topic: "u1",
+        title: "Unit 1: Central Processing Unit",
+        type: "mcq",
+        q: "Whatever app you open on a computer, what is the CPU always doing behind the scenes?",
+        options: [
+          "Executing instructions from a computer programme to process data",
+          "Replacing the operating system",
+          "Saving paper in the printer",
+          "Turning off the keyboard"
+        ],
+        ans: "Executing instructions from a computer programme to process data",
+        sinhala: "CPU එකේ ප්‍රධාන කාර්යය වන්නේ වැඩසටහනක උපදෙස් අනුව දත්ත සැකසීමයි (execute instructions and process data)."
+      }
+    ],
+
+    u2: [
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "Why does the textbook call the operating system a 'mediator' when you use a computer?",
+        options: [
+          "It connects you with the computer and manages hardware, memory, storage, and files",
+          "It is a physical cable inside the mouse",
+          "It only works when no software is installed",
+          "It is a type of optical disc"
+        ],
+        ans: "It connects you with the computer and manages hardware, memory, storage, and files",
+        sinhala: "Operating System (OS) එක මිනිසා සහ පරිගණකය අතර මැදිහත්කරුවෙකු ලෙස ක්‍රියා කරමින් hardware, memory, storage සහ files කළමනාකරණය කරයි."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "Which group contains ONLY operating systems made for computers?",
+        options: [
+          "Microsoft Windows, Apple Macintosh (Mac OS), Ubuntu, Fedora",
+          "Android, iOS, Blackberry OS, Windows Mobile OS",
+          "MS Word, Ubuntu, Android, iOS",
+          "Fedora, Android, iOS, MS-DOS"
+        ],
+        ans: "Microsoft Windows, Apple Macintosh (Mac OS), Ubuntu, Fedora",
+        sinhala: "පරිගණක සඳහා: MS-DOS, Microsoft Windows, Mac OS, Linux (Ubuntu, Fedora). දුරකථන සඳහා: Android, iOS, Blackberry OS, Windows Mobile OS."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "Which group contains ONLY operating systems used on mobile phones?",
+        options: [
+          "Android, iOS, Blackberry OS, Windows Mobile OS",
+          "Ubuntu, Fedora, Windows 10, Mac OS",
+          "Mac OS, iOS, Ubuntu, Windows 10",
+          "Fedora, Android, Windows Mobile OS, MS-DOS"
+        ],
+        ans: "Android, iOS, Blackberry OS, Windows Mobile OS",
+        sinhala: "Android, iOS (iPhone OS), Blackberry OS සහ Windows Mobile OS ජංගම දුරකථන සඳහා භාවිත වන OS වේ."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "A hard disk has a magnetised platter and a moving metal head. Which storage family does it belong to?",
+        options: [
+          "Magnetic media devices",
+          "Optical media devices",
+          "Solid state media devices",
+          "Paper media devices"
+        ],
+        ans: "Magnetic media devices",
+        sinhala: "Hard disk, magnetic tape සහ floppy disk යනු Magnetic media devices වේ."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "What makes a pen drive or SSD a 'solid state' device compared to a hard disk or CD?",
+        options: [
+          "It reads and writes data electronically with no moving parts",
+          "It uses laser beams on a shiny plastic disc",
+          "It stores data on magnetic tape",
+          "It only holds 1.44 MB"
+        ],
+        ans: "It reads and writes data electronically with no moving parts",
+        sinhala: "Solid state media (Pen drive, SSD, Memory card) වල චලනය වන කොටස් (moving parts) නැහැ; ඉලෙක්ට්‍රොනිකව වේගයෙන් දත්ත ලියයි/කියවයි."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "Which storage devices use laser beams to read and write data?",
+        options: [
+          "Optical media devices such as CD, DVD, and Blu-ray discs",
+          "Magnetic tapes and zip disks",
+          "Pen drives and memory cards",
+          "CPU registers"
+        ],
+        ans: "Optical media devices such as CD, DVD, and Blu-ray discs",
+        sinhala: "Optical media devices (CD, DVD, Blu-ray) වල දත්ත කියවීමට සහ ලිවීමට Laser beams භාවිත කරයි."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "In the file name 'sportmeet.docx', what does the '.docx' part tell you?",
+        options: [
+          "The file extension that shows the application software type (word processing)",
+          "The size of the pen drive",
+          "The date the folder was created",
+          "The name of the computer lab"
+        ],
+        ans: "The file extension that shows the application software type (word processing)",
+        sinhala: "File name එකෙන් ගොනුව හඳුනාගන්නවා; File extension (.docx) එකෙන් එය සෑදූ application software එක පෙන්වයි."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "Inside a 'workbook' folder, you have 'chapter 1' and 'chapter 2' folders. What are those smaller folders called?",
+        options: [
+          "Sub-folders",
+          "File extensions",
+          "Optical discs",
+          "Surge protectors"
+        ],
+        ans: "Sub-folders",
+        sinhala: "ප්‍රධාන ෆෝල්ඩරයක් (Main folder) තුළ ඇති ෆෝල්ඩර Sub-folders ලෙස හැඳින්වේ."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "What happens if you select a folder on a pen drive and press Delete, compared to pressing Shift + Delete anywhere?",
+        options: [
+          "Both delete it permanently and it cannot be recovered easily",
+          "Both send it to the Recycle Bin so you can restore it",
+          "Pen drive deletes temporarily; hard disk deletes permanently",
+          "Neither deletes the folder"
+        ],
+        ans: "Both delete it permanently and it cannot be recovered easily",
+        sinhala: "Hard disk එකක Delete කළොත් තාවකාලිකව (temporarily) මැකෙනවා; නමුත් Pen drive එකක Delete කළත්, Shift + Delete එබුවත් ස්ථිරවම (permanently) මැකෙනවා."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "When you save a brand-new file for the very first time, which command window opens even if you click Save?",
+        options: [
+          "Save As",
+          "Delete",
+          "Rename",
+          "Properties"
+        ],
+        ans: "Save As",
+        sinhala: "ගොනුවක් (file) පළමු වරට save කරන විට Save As window එක විවෘත වේ."
+      },
+      {
+        topic: "u2",
+        title: "Unit 2: Operating System & Storage",
+        type: "mcq",
+        q: "Where do you right-click and choose 'Properties' to check a file's size, location, and created/modified dates?",
+        options: [
+          "On the relevant file or folder",
+          "On the blank desktop wallpaper only",
+          "Inside the keyboard settings",
+          "On the power cable"
+        ],
+        ans: "On the relevant file or folder",
+        sinhala: "File හෝ Folder එකක් මත Right-click කර Properties තේරීමෙන් size, type, location, created/modified date වැනි ලක්ෂණ බැලිය හැකියි."
+      }
+    ],
+
+    u3: [
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "Locking the computer lab door protects physical equipment, while keeping backups protects files. Which two security parts are those?",
+        options: [
+          "Hardware security and software security",
+          "Input security and output security",
+          "Monitor security and cable security",
+          "Sound security and colour security"
+        ],
+        ans: "Hardware security and software security",
+        sinhala: "පරිගණක පද්ධතියේ ආරක්ෂාව Hardware security සහ Software security ලෙස කොටස් දෙකකට බෙදේ."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "The lights go out suddenly while you are typing a school project. Why is a UPS helpful here?",
+        options: [
+          "It keeps supplying power for a short time so you can save your work and shut down safely",
+          "It removes dust from the keyboard",
+          "It blocks all computer viruses",
+          "It stores 2 TB of videos permanently"
+        ],
+        ans: "It keeps supplying power for a short time so you can save your work and shut down safely",
+        sinhala: "UPS (Uninterrupted Power Supply) මගින් හදිසි විදුලි බිඳවැටීමකදී කෙටි වේලාවකට විදුලිය සපයා වැඩ save කර shut down කිරීමට ඉඩ සලසයි."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "Which devices help protect computers from sudden high voltage current or lightning?",
+        options: [
+          "Surge protector, fuse, or MCB (Mini Circuit Breaker)",
+          "Web camera and microphone",
+          "Folder and file extension",
+          "Slide transition and clip art"
+        ],
+        ans: "Surge protector, fuse, or MCB (Mini Circuit Breaker)",
+        sinhala: "අධි වෝල්ටීයතා ධාරා (high voltage) සහ අකුණු වලින් ආරක්ෂා වීමට Surge protector, Fuse හෝ MCB භාවිත කරයි."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "Why does the computer lab ban food and drinks, and ask students to leave shoes outside?",
+        options: [
+          "Food crumbs attract ants/insects, moisture can cause short circuits, and shoes bring sand and dust",
+          "Food makes the monitor too bright",
+          "Shoes slow down the internet speed",
+          "Drinks delete the operating system"
+        ],
+        ans: "Food crumbs attract ants/insects, moisture can cause short circuits, and shoes bring sand and dust",
+        sinhala: "ආහාර කැබලි වලට කුහුඹුවන්/කෘමීන් ඒම, තෙතමනයෙන් short circuit ඇතිවීම සහ පාවහන් වලින් වැලි/දූවිලි ඒම වැළැක්වීමට මෙසේ කරයි."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "How often should computers in the lab be cleaned to stop dust from building up on circuits?",
+        options: [
+          "At least once every three months",
+          "Once every five years",
+          "Only when the computer breaks",
+          "Never"
+        ],
+        ans: "At least once every three months",
+        sinhala: "පරිගණක පරිපථ මත දූවිලි බැඳීම වැළැක්වීමට අවම වශයෙන් මාස තුනකට වරක්වත් පිරිසිදු කළ යුතුයි."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "Which of these is a physical way to protect computers from theft?",
+        options: [
+          "Lockable lab doors and windows, locking the system unit, and CCTV cameras",
+          "Using italic font in Word",
+          "Adding a slide design",
+          "Opening a new folder"
+        ],
+        ans: "Lockable lab doors and windows, locking the system unit, and CCTV cameras",
+        sinhala: "සොරකමෙන් ආරක්ෂා වීමට දොර ජනෙල් අගුළු දැමීම, System unit lock කිරීම සහ CCTV කැමරා භාවිතය යොදා ගනී."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "A program looks helpful at first glance, but once you start using it, it secretly harms your system. What type of malware is that?",
+        options: [
+          "Trojan horse",
+          "Computer worm",
+          "Antivirus",
+          "Spreadsheet"
+        ],
+        ans: "Trojan horse",
+        sinhala: "මුලින් ප්‍රයෝජනවත් මෘදුකාංගයක් ලෙස පෙනී සිට භාවිත කරන විට රහසිගතව හානි කරන්නේ Trojan horse වේ."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "How does a computer worm spread differently from a typical virus?",
+        options: [
+          "It spreads across networks or the internet without needing human action or a host program",
+          "It only moves on a printed sheet of paper",
+          "It fixes broken keys on a keyboard",
+          "It can only exist inside a monitor"
+        ],
+        ans: "It spreads across networks or the internet without needing human action or a host program",
+        sinhala: "Computer worm එකක් මිනිස් මැදිහත්වීමකින් හෝ host program එකකින් තොරව ජාල හෝ Internet හරහා පැතිරෙයි."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "Which malware secretly watches how you use your computer or internet and sends that data to someone else without you knowing?",
+        options: [
+          "Spyware",
+          "UPS",
+          "CD-R",
+          "Text box"
+        ],
+        ans: "Spyware",
+        sinhala: "Spyware මගින් පරිගණක හෝ Internet භාවිතය පිළිබඳ තොරතුරු රහසිගතව රැස් කර වෙනත් පාර්ශ්වයකට යවයි."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "Why do we keep backups on a CD, DVD, external hard disk, or another folder/drive?",
+        options: [
+          "So we have a copy if the original file or software is lost or damaged",
+          "To make the screen larger",
+          "To type faster with ten fingers",
+          "To change font colours"
+        ],
+        ans: "So we have a copy if the original file or software is lost or damaged",
+        sinhala: "මුල් පිටපතට හානි වුවහොත් හෝ නැති වුවහොත් නැවත ලබාගැනීමට Backups තබා ගනී."
+      },
+      {
+        topic: "u3",
+        title: "Unit 3: Security of Computer System",
+        type: "mcq",
+        q: "Unlocking a phone or laptop using your fingerprint, face, voice, or iris is an example of:",
+        options: [
+          "Biometric access control",
+          "Magnetic storage",
+          "Slide transition",
+          "Word count"
+        ],
+        ans: "Biometric access control",
+        sinhala: "ඇඟිලි සලකුණු, මුහුණ, කටහඬ හෝ iris හඳුනාගැනීම Biometric ආරක්ෂක ක්‍රමය වේ."
+      }
+    ],
+
+    u4: [
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "According to the textbook, what is word processing?",
+        options: [
+          "Composing, editing, and/or storing a text-based document in any style",
+          "Drawing only 3D cartoons",
+          "Connecting two routers together",
+          "Scanning a room with CCTV"
+        ],
+        ans: "Composing, editing, and/or storing a text-based document in any style",
+        sinhala: "පෙළ ආශ්‍රිත ලේඛනයක් (text-based document) සැකසීම, සංස්කරණය කිරීම සහ/හෝ ගබඩා කිරීම Word processing වේ."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "Which of these is word processing software rather than an operating system or typing tutor?",
+        options: [
+          "LibreOffice Writer (or Microsoft Word / OpenOffice Writer)",
+          "Android",
+          "Rapid Typing Tutor",
+          "Zoom"
+        ],
+        ans: "LibreOffice Writer (or Microsoft Word / OpenOffice Writer)",
+        sinhala: "MS Word, OpenOffice Writer, LibreOffice Writer, Corel WordPerfect, iWork Pages යනු Word processing software වේ."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "Where do you press to move around on a webpage or edit text using keys like Home, End, Page Up, Page Down, Delete, Insert, and arrows?",
+        options: [
+          "Navigation keys",
+          "Numeric keypad only",
+          "Function keys only",
+          "Power button"
+        ],
+        ans: "Navigation keys",
+        sinhala: "Arrow keys, Home, End, Page Up, Page Down, Delete, Insert යනු Navigation keys වේ."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "What happens when you press the Enter key once while typing a document?",
+        options: [
+          "The cursor moves down to the next line",
+          "It deletes the character to the left",
+          "It types a capital letter permanently",
+          "It opens the Save As box"
+        ],
+        ans: "The cursor moves down to the next line",
+        sinhala: "Enter key එක වරක් එබූ විට cursor එක ඊළඟ පේළියට (next line) ගමන් කරයි."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "If your cursor is right after the letter 't' in 'cat', what does pressing Backspace once remove?",
+        options: [
+          "The character immediately to the left of the cursor ('t')",
+          "The entire paragraph above",
+          "Nothing at all",
+          "The whole document"
+        ],
+        ans: "The character immediately to the left of the cursor ('t')",
+        sinhala: "Backspace key එක එබූ විට cursor එකට වම් පස ඇති අකුර, ඉඩ හෝ අංකය මැකී යයි."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "Why should your hands stay raised above the keys instead of resting your wrists or palms on the table while typing?",
+        options: [
+          "To prevent numbness, pain, or long-term finger/hand injury",
+          "To make the keyboard glow in the dark",
+          "To turn off Caps Lock",
+          "To save battery in the mouse"
+        ],
+        ans: "To prevent numbness, pain, or long-term finger/hand injury",
+        sinhala: "Typing කරන විට අත්ල හෝ මැණික් කටුව මේසය මත තැබීමෙන් ඇඟිලි හිරිවැටීම සහ දිගුකාලීන ආබාධ ඇති විය හැකියි."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "Which keys do your left-hand and right-hand fingers start on in proper keyboarding position?",
+        options: [
+          "Left hand on A, S, D, F and right hand on J, K, L (and home row)",
+          "Both hands on F1 to F12",
+          "Left hand on number pad only",
+          "Right hand on Esc only"
+        ],
+        ans: "Left hand on A, S, D, F and right hand on J, K, L (and home row)",
+        sinhala: "Typing ආරම්භ කරන විට වම් අතේ ඇඟිලි A, S, D, F මතත් දකුණු අතේ ඇඟිලි J, K, L මතත් තබා ගත යුතුයි."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "What is 'touch typing'?",
+        options: [
+          "Typing quickly and accurately without looking at the keys",
+          "Typing only with a touchscreen stylus",
+          "Looking down at every single key before pressing",
+          "Using voice commands instead of typing"
+        ],
+        ans: "Typing quickly and accurately without looking at the keys",
+        sinhala: "Keyboard එකේ keys දෙස නොබලා වේගයෙන් සහ නිවැරදිව type කිරීම Touch typing වේ."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "Why is a Phonetics Sinhala keyboard easier for someone who already texts by sound on a phone?",
+        options: [
+          "It types based on Sinhala sounds without needing to memorize key positions",
+          "It automatically translates English to Tamil",
+          "It does not use the keyboard at all",
+          "It only works on printers"
+        ],
+        ans: "It types based on Sinhala sounds without needing to memorize key positions",
+        sinhala: "Phonetics keyboard එක සිංහල ශබ්ද අනුව භාවිත කරන නිසා අකුරු තියෙන තැන් කටපාඩම් කිරීම අවශ්‍ය නැහැ."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "What is the standard Sinhala keyboard layout used on modern computers and Unicode systems?",
+        options: [
+          "Wijesekara Sinhala Keyboard (Standard Sinhala Keyboard)",
+          "Numeric Keypad Layout",
+          "Function Key Layout",
+          "Slide Sorter Layout"
+        ],
+        ans: "Wijesekara Sinhala Keyboard (Standard Sinhala Keyboard)",
+        sinhala: "වර්තමාන පරිගණක සහ Unicode පද්ධති වල භාවිත වන සම්මත සිංහල යතුරුපුවරුව Wijesekara Sinhala Keyboard වේ."
+      },
+      {
+        topic: "u4",
+        title: "Unit 4: Word Processing",
+        type: "mcq",
+        q: "You send a Sinhala letter typed in a Unicode font to a friend's computer. What is true about reading it?",
+        options: [
+          "Your friend doesn't need a special Unicode font pre-installed just to read it, unlike some non-Unicode fonts",
+          "It can never be opened on another computer",
+          "It turns into numbers automatically",
+          "It deletes the file after reading once"
+        ],
+        ans: "Your friend doesn't need a special Unicode font pre-installed just to read it, unlike some non-Unicode fonts",
+        sinhala: "Unicode font එකෙන් සකසා ඇති ලිපියක් කියවීමට අනෙක් පරිගණකයේ එම font එක install කර තිබීම අත්‍යවශ්‍ය නොවේ."
+      }
+    ],
+
+    u5: [
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "To solve 5 × 6 + 4 ÷ 2, breaking it into multiplication, addition, and division steps is an example of:",
+        options: [
+          "Decomposing a complex problem into smaller sub-problems",
+          "Creating a computer virus",
+          "Formatting a word document",
+          "Hiding a presentation slide"
+        ],
+        ans: "Decomposing a complex problem into smaller sub-problems",
+        sinhala: "සංකීර්ණ ගැටලුවක් කුඩා උප-ගැටලු වලට කඩා විසඳීම Decomposition වේ."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "Covering a textbook step by step from top to bottom follows which flowchart control structure?",
+        options: [
+          "Sequence",
+          "Selection",
+          "Repetition",
+          "Bug elimination"
+        ],
+        ans: "Sequence",
+        sinhala: "උපදෙස් ඉහළ සිට පහළට පිළිවෙළින් ක්‍රියාත්මක වීම Sequence වේ."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "A ceiling fan switch is on: if electricity is there, the fan runs; if not, it doesn't. Which control structure is that?",
+        options: [
+          "Selection",
+          "Sequence",
+          "Repetition",
+          "File extension"
+        ],
+        ans: "Selection",
+        sinhala: "කොන්දේසියක් (condition) පරීක්ෂා කර true හෝ false අනුව මාර්ගය තෝරා ගැනීම Selection වේ."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "Dropping coins into a money till over and over until the till is full shows which control structure?",
+        options: [
+          "Repetition",
+          "Sequence",
+          "Selection",
+          "Word count"
+        ],
+        ans: "Repetition",
+        sinhala: "කොන්දේසියක් සම්පූර්ණ වන තෙක් කාර්යයක් නැවත නැවත සිදු වීම Repetition වේ."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "In the textbook's 'writing with a pen until ink finishes' example, what are the two ways a repetition condition can be checked?",
+        options: [
+          "Checking before repetition starts, or checking after doing it once",
+          "Checking only once a year, or never checking",
+          "Checking on the monitor, or on the printer",
+          "Checking with a ruler, or with a pen cap"
+        ],
+        ans: "Checking before repetition starts, or checking after doing it once",
+        sinhala: "Repetition වලදී කොන්දේසිය පටන් ගැනීමට පෙර හෝ වරක් ක්‍රියාත්මක වීමෙන් පසු පරීක්ෂා කළ හැකියි."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "In Scratch, where do you drag and snap command blocks together to build your program?",
+        options: [
+          "Script Area",
+          "Stage maximize tool",
+          "Thumbnail view only",
+          "Trash folder"
+        ],
+        ans: "Script Area",
+        sinhala: "Scratch හි command blocks ඇද දමා වැඩසටහන් නිර්මාණය කරන ප්‍රදේශය Script Area වේ."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "What is the X, Y coordinate at the center of the Scratch stage, and what are the four corner ranges shown in the book?",
+        options: [
+          "(0, 0) at center; corners from (-240, -180) to (240, 180)",
+          "(100, 100) at center; corners from (0, 0) to (10, 10)",
+          "(-10, 10) at center; corners from (-50, -50) to (50, 50)",
+          "There are no X and Y coordinates on the stage"
+        ],
+        ans: "(0, 0) at center; corners from (-240, -180) to (240, 180)",
+        sinhala: "Scratch Stage හි මධ්‍යය (0, 0) වන අතර X අක්ෂය -240 සිට 240 දක්වාත් Y අක්ෂය -180 සිට 180 දක්වාත් පවතී."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "You have red juice in Cup A and orange juice in Cup B and want to swap them. Why do you need empty Cup C?",
+        options: [
+          "To hold one liquid temporarily while swapping—just like a temporary variable",
+          "To mix both juices into one cup permanently",
+          "To measure the weight of the table",
+          "To turn juice into solid ice"
+        ],
+        ans: "To hold one liquid temporarily while swapping—just like a temporary variable",
+        sinhala: "Variables මතකයේ අගයක් තාවකාලිකව ගබඩා කරයි; අගයන් මාරු කිරීමට අමතර variable එකක් (C vessel / marks) භාවිත කරයි."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "When assigning a value to a variable in the textbook style (such as age = 12), where do the variable name and value go?",
+        options: [
+          "Variable name on the left of '=' and value on the right of '='",
+          "Value on the left of '=' and variable name on the right of '='",
+          "Both on the right of '='",
+          "Neither uses an '=' sign"
+        ],
+        ans: "Variable name on the left of '=' and value on the right of '='",
+        sinhala: "Variable එකකට අගයක් පවරන විට '=' සලකුණට වමෙන් variable නමත් දකුණෙන් අගයත් ලියයි (උදා: age = 12)."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "In the Scratch program that randomly changes sprite size using 'set X to pick random 1 to 10' and 'change size by (X * 10)', what size change does X add?",
+        options: [
+          "Between 10 and 100 (since X is 1 to 10 multiplied by 10)",
+          "Always 1",
+          "Between 100 and 1,000",
+          "Zero change"
+        ],
+        ans: "Between 10 and 100 (since X is 1 to 10 multiplied by 10)",
+        sinhala: "X හි අගය 1 සිට 10 දක්වා අහඹු ලෙස තෝරා 10න් ගුණ කරන විට 10 සිට 100 දක්වා අගයක් ලැබේ."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "A Scratch script meant to draw a rectangle gives a wrong shape because a turn block was left out and two blocks were put in the wrong order. Fixing that is called:",
+        options: [
+          "Debugging (eliminating bugs)",
+          "Formatting",
+          "Encrypting",
+          "Composing"
+        ],
+        ans: "Debugging (eliminating bugs)",
+        sinhala: "වැඩසටහනක ඇති දෝෂ (bugs) හඳුනාගෙන ඉවත් කිරීම Debugging ලෙස හැඳින්වේ."
+      },
+      {
+        topic: "u5",
+        title: "Unit 5: Programme Development",
+        type: "mcq",
+        q: "Which Scratch Control block runs one set of steps if a condition is true, and a different set of steps if it is false?",
+        options: [
+          "if ... then ... else",
+          "pen up",
+          "play sound",
+          "show variable"
+        ],
+        ans: "if ... then ... else",
+        sinhala: "කොන්දේසිය සත්‍ය නම් එක් ක්‍රියාවක්ද, අසත්‍ය නම් වෙනත් ක්‍රියාවක්ද කිරීමට 'if ... then ... else' block එක භාවිත කරයි."
+      }
+    ],
+
+    u6: [
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "How does an electronic presentation differ from a printed book according to the textbook?",
+        options: [
+          "It uses slides, can include videos/songs/links, and its content can be edited again and again",
+          "It is made of paper pages that cannot be changed after printing",
+          "It cannot show pictures or words",
+          "It only works without a computer"
+        ],
+        ans: "It uses slides, can include videos/songs/links, and its content can be edited again and again",
+        sinhala: "පොතක පිටු ඇතත් Presentation එකක Slides ඇත; videos, songs, links ඇතුළත් කළ හැකි අතර අන්තර්ගතය පහසුවෙන් වෙනස් කළ හැකියි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "Which list contains presentation software examples from Unit 6?",
+        options: [
+          "Microsoft PowerPoint, Apple Keynote, OpenOffice Impress, Corel Presentations",
+          "Google Chrome, Mozilla Firefox, Zoom, Skype",
+          "Android, iOS, Ubuntu, Windows 10",
+          "Notepad, Paint, Calculator, Snipping Tool"
+        ],
+        ans: "Microsoft PowerPoint, Apple Keynote, OpenOffice Impress, Corel Presentations",
+        sinhala: "MS PowerPoint, Apple Keynote, OpenOffice Impress සහ Corel Presentations යනු Presentation software වේ."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "Instead of starting from a blank slide, what can you pick if you want pre-made colours, shapes, and layouts right away?",
+        options: [
+          "Pre-designed slide templates / presentation models",
+          "A hard disk platter",
+          "A security password",
+          "A file extension"
+        ],
+        ans: "Pre-designed slide templates / presentation models",
+        sinhala: "කලින් සැලසුම් කළ Slide templates මගින් වර්ණ, හැඩ සහ මෝස්තර සහිත presentation පහසුවෙන් ආරම්භ කළ හැකියි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "If you try to close an unsaved presentation by clicking the close mark, what pops up?",
+        options: [
+          "A dialogue box asking whether to save changes (Yes / No / Cancel)",
+          "A new video call window",
+          "A virus warning",
+          "A keyboard layout map"
+        ],
+        ans: "A dialogue box asking whether to save changes (Yes / No / Cancel)",
+        sinhala: "Save නොකළ presentation එකක් වසා දැමීමට උත්සාහ කරන විට එය save කරන්නේදැයි අසන dialogue box එකක් පෙන්වයි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "Which slide layout in the textbook is made for showing two things side by side to compare them?",
+        options: [
+          "Comparison or double content slide",
+          "Empty slide",
+          "Title-only slide",
+          "Note pane"
+        ],
+        ans: "Comparison or double content slide",
+        sinhala: "කරුණු දෙකක් සංසන්දනය කිරීමට Comparison හෝ Double content slide භාවිත කරයි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "Where do you type words on a slide, and which formatting buttons make text thicker, slanted, or have a line underneath?",
+        options: [
+          "In the dotted/text boxes; Bold (B), Italic (I), and Underline (U)",
+          "In the title bar; Save, Open, and Close",
+          "In the note pane; Zoom and Skype",
+          "On the mouse wheel; Cut and Paste"
+        ],
+        ans: "In the dotted/text boxes; Bold (B), Italic (I), and Underline (U)",
+        sinhala: "Slide එකේ text boxes තුළ අකුරු ලියන අතර Font colour, Font size, Bold (B), Italic (I), Underline (U) භාවිත කරයි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "What are two ways mentioned in Unit 6 to put a picture onto a slide?",
+        options: [
+          "Copy-pasting a saved picture or using Clip Art (pre-designed images)",
+          "Drawing it with a marker on the monitor",
+          "Typing its name in Notepad",
+          "Deleting a slide"
+        ],
+        ans: "Copy-pasting a saved picture or using Clip Art (pre-designed images)",
+        sinhala: "සුරකින ලද පින්තූරයක් Copy-Paste කිරීමෙන් හෝ Clip Art භාවිතයෙන් slide එකට පින්තූර ඇතුළත් කළ හැකියි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "Besides images and shapes, what can you add to make a slide more lively and organized?",
+        options: [
+          "Audio, video, and tables (with rows and columns)",
+          "Only plain white space",
+          "Physical locks and keys",
+          "Hard disk platters"
+        ],
+        ans: "Audio, video, and tables (with rows and columns)",
+        sinhala: "Slide එක වඩාත් ආකර්ෂණීය කිරීමට Audio, Video සහ Tables (rows සහ columns) ඇතුළත් කළ හැකියි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "Why does the textbook warn against making slide transitions take too much time?",
+        options: [
+          "Very slow slide transitions can make the presentation tiresome for the audience",
+          "They delete all text on the slide",
+          "They turn off the projector",
+          "They lock the keyboard"
+        ],
+        ans: "Very slow slide transitions can make the presentation tiresome for the audience",
+        sinhala: "Slide transition ඉතා වැඩි කාලයක් ගන්නා ලෙස සැකසුවහොත් ප්‍රේක්ෂකයින්ට එය වෙහෙසකර (tiresome) විය හැකියි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "If you want to change the order of slides after making them, what can you do?",
+        options: [
+          "Drag and drop a selected slide to a new spot, or cut and paste it",
+          "Delete the whole presentation and start over",
+          "Hide every slide permanently",
+          "Rename the computer"
+        ],
+        ans: "Drag and drop a selected slide to a new spot, or cut and paste it",
+        sinhala: "Slides වල පිළිවෙළ වෙනස් කිරීමට Drag and drop කිරීම හෝ Cut and paste කිරීම කළ හැකියි."
+      },
+      {
+        topic: "u6",
+        title: "Unit 6: Presentation Software",
+        type: "mcq",
+        q: "What is the difference between deleting a slide and hiding a slide?",
+        options: [
+          "Hiding keeps the slide in the file without showing it now, so you can show it again later without deleting it",
+          "Hiding removes the slide forever and cannot be undone",
+          "Deleting only hides the font colour",
+          "There is no difference at all"
+        ],
+        ans: "Hiding keeps the slide in the file without showing it now, so you can show it again later without deleting it",
+        sinhala: "Slide එකක් Hide කළ විට එය නොපෙනී තිබුණත් මැකෙන්නේ නැහැ; අවශ්‍ය විට නැවත පෙන්වන්න පුළුවන්."
+      }
+    ],
+
+    u7: [
+      {
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
         q: "Two laptops in your house share a printer through Wi-Fi, while one of them also loads a YouTube video. Which label fits BOTH?",
         options: [
@@ -547,604 +1498,188 @@
           "A Web Browser connects the two laptops together"
         ],
         ans: "The home setup is a computer network; YouTube uses the Internet",
-        sinhala: "පරිගණක 2ක් හෝ වැඩි ගණනක් සම්බන්ධ වීම Computer Network එකක්. ඒ වගේ ජාල ගොඩක එකතුව තමයි Internet. වෙබ් අඩවි බලන්නේ Web Browser එකෙන්."
+        sinhala: "පරිගණක 2ක් හෝ වැඩි ගණනක් සම්බන්ධ වීම Computer Network එකක්. ඒ වගේ ජාල ගොඩක එකතුව තමයි Internet."
       },
       {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "Imagine the Internet is a giant city of roads, and the World Wide Web (WWW) is one huge library inside it. What is the URL in this picture?",
+        q: "If the Internet is a huge network of networks and the World Wide Web (WWW) is a major service on it, what is a URL?",
         options: [
-          "The librarian who opens the doors",
-          "The exact shelf-and-book address to find one specific page",
-          "The building that holds all the city's electricity",
-          "The table where you read the book"
+          "The address used to identify one specific resource on the World Wide Web",
+          "A program that types Sinhala letters",
+          "A physical camera for video calls",
+          "An email inbox folder"
         ],
-        ans: "The exact shelf-and-book address to find one specific page",
-        sinhala: "WWW (World Wide Web) කියන්නේ Internet එකේ තියෙන ප්‍රධාන සේවාවක්. URL එක කියන්නේ වෙබ් පිටුවක් හෝ සම්පතක් හරියටම හඳුනාගන්නා ලිපිනය."
+        ans: "The address used to identify one specific resource on the World Wide Web",
+        sinhala: "WWW හි ඇති එක් සම්පතක් හඳුනාගන්නා ලිපිනය URL (Uniform Resource Locator) වේ."
       },
       {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "Your friend says, 'I typed a website address into Chrome, so I opened the Internet!' Why is that slightly mixed up?",
+        q: "How do you recognize a secured website from the clues given in Unit 7?",
         options: [
-          "Chrome is a web page, not a web browser",
-          "Chrome is a Web Browser that displays websites, not the Internet itself",
-          "The Internet only works on Firefox, not Chrome",
-          "A website has no web pages inside it"
+          "The address starts with https and a security symbol appears on the address bar",
+          "It has no domain name",
+          "It opens inside Notepad",
+          "It has no web pages"
         ],
-        ans: "Chrome is a Web Browser that displays websites, not the Internet itself",
-        sinhala: "Chrome, Firefox කියන්නේ Web Browser (Application Software). ඒවායින් තමයි Websites පෙන්වන්නේ. Websites ගොඩකින් WWW හැදෙනවා."
+        ans: "The address starts with https and a security symbol appears on the address bar",
+        sinhala: "ආරක්ෂිත (secured) වෙබ් අඩවියක් හඳුනාගන්න 'https' සහ address bar එකේ සංකේතය බලන්න පුළුවන්."
       },
       {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "If a school has 15 connected computers in its lab, what does it become—and what would make it part of the Internet?",
-        options: [
-          "A Web Browser; adding a mouse connects it to the Internet",
-          "A Computer Network; connecting that network to other networks joins the Internet",
-          "The World Wide Web; adding one more computer makes it the WWW",
-          "A URL; giving the lab a name makes it a URL"
-        ],
-        ans: "A Computer Network; connecting that network to other networks joins the Internet",
-        sinhala: "පරිගණක 2කට වඩා සම්බන්ධ වීම Computer Network එකක්. එවැනි ජාල රාශියක එකතුව තමයි Internet එක."
-      },
-      {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
-        type: "mcq",
-        q: "Which pair correctly matches 'what is made of what' on the web?",
-        options: [
-          "Web pages make a Browser ➔ Browsers make a Website",
-          "Web pages make a Website ➔ Websites make the World Wide Web",
-          "URLs make a Network ➔ Networks make a Web page",
-          "Websites make a URL ➔ URLs make the Internet"
-        ],
-        ans: "Web pages make a Website ➔ Websites make the World Wide Web",
-        sinhala: "Web pages ගොඩකින් Website එකක් හැදෙනවා. Websites ගොඩකින් World Wide Web (WWW) හැදෙනවා."
-      },
-      {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
-        type: "mcq",
-        q: "Why does every website on the World Wide Web need its own URL?",
-        options: [
-          "To identify one specific resource among millions on the WWW",
-          "To turn off the computer's monitor",
-          "To replace the need for a web browser",
-          "To stop people from using search engines"
-        ],
-        ans: "To identify one specific resource among millions on the WWW",
-        sinhala: "WWW තුළ වෙබ් අඩවි මිලියන ගණනක් තියෙන නිසා එක් සම්පතක් වෙන් කර හඳුනාගන්න URL (Uniform Resource Locator) භාවිත කරනවා."
-      },
-      {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
-        type: "mcq",
-        q: "A student wants to check a live map, watch a lesson video, and buy a book online. Which single network makes all three services possible?",
-        options: [
-          "The Internet",
-          "A single offline word document",
-          "A local keyboard layout",
-          "A printed timetable"
-        ],
-        ans: "The Internet",
-        sinhala: "Internet හරහා අධ්‍යාපන තොරතුරු, වීඩියෝ, සිතියම්, ඊමේල් සහ භාණ්ඩ මිලදී ගැනීම වැනි සේවා රැසක් ලබාගත හැකියි."
-      },
-      {
-        topic: "web",
-        title: "1. Internet & Web Foundations",
-        type: "mcq",
-        q: "Which clue in a web address and address bar helps you spot a secured website?",
-        options: [
-          "Starting with https and showing the security symbol on the address bar",
-          "Having no letters in the address",
-          "Opening inside a music player",
-          "Being printed on paper"
-        ],
-        ans: "Starting with https and showing the security symbol on the address bar",
-        sinhala: "ආරක්ෂිත (secured) වෙබ් අඩවියක් හඳුනාගන්න 'https' සහ address bar එකේ පෙන්වන සංකේතය (symbol) බලන්න පුළුවන්."
-      }
-    ],
-
-    video: [
-      {
-        topic: "video",
-        title: "2. Video Conferencing",
-        type: "mcq",
-        q: "You are in Kandy and your cousin is in Jaffna. You talk live with video on Zoom. Why is this video conferencing instead of a regular phone call?",
-        options: [
-          "It uses video technology over the internet between people far apart",
-          "It requires both people to sit in the same room",
-          "It only sends text messages without sound or video",
-          "It does not need an internet connection"
-        ],
-        ans: "It uses video technology over the internet between people far apart",
-        sinhala: "දුර සිටින දෙදෙනෙකු හෝ කණ්ඩායම් දෙකක් අතර Internet හරහා Video තාක්ෂණයෙන් සාකච්ඡා කිරීම තමයි Video Conferencing."
-      },
-      {
-        topic: "video",
-        title: "2. Video Conferencing",
-        type: "mcq",
-        q: "Your team wants to run a Zoom meeting from a desktop PC that has NO built-in camera. Which item from the checklist is missing?",
-        options: [
-          "Web camera",
-          "A printed map",
-          "A CD drive",
-          "A word processor"
-        ],
-        ans: "Web camera",
-        sinhala: "Video Conference එකකට Computer, Web camera, Internet connection සහ Video conferencing software (Zoom, Skype, GoToMeeting, Webex) අවශ්‍යයි."
-      },
-      {
-        topic: "video",
-        title: "2. Video Conferencing",
-        type: "mcq",
-        q: "A science club needs to hold a quick meeting with judges in three towns before tomorrow's contest. Which advantage matters MOST here?",
-        options: [
-          "It can be quickly arranged without travel time or transport costs",
-          "It turns off the internet automatically",
-          "It replaces the need for any software",
-          "It prints paper tickets for everyone"
-        ],
-        ans: "It can be quickly arranged without travel time or transport costs",
-        sinhala: "ගමන් වියදම් සහ කාලය ඉතිරි වීම, ආරම්භක වියදම් අඩු වීම සහ ඉක්මනින් සංවිධානය කළ හැකි වීම Video Conferencing වල වාසි."
-      },
-      {
-        topic: "video",
-        title: "2. Video Conferencing",
-        type: "mcq",
-        q: "Spot the odd one out: Zoom, Skype, GoToMeeting, Webex, and Google Chrome.",
-        options: [
-          "Zoom",
-          "GoToMeeting",
-          "Webex",
-          "Google Chrome"
-        ],
-        ans: "Google Chrome",
-        sinhala: "Zoom, Skype, GoToMeeting, Webex කියන්නේ Video conferencing software උදාහරණ. Chrome කියන්නේ Web browser එකක්."
-      },
-      {
-        topic: "video",
-        title: "2. Video Conferencing",
-        type: "mcq",
-        q: "If a student has a computer, a web camera, and Zoom installed, what happens if the Wi-Fi router is switched off?",
-        options: [
-          "Video conferencing still works using the camera alone",
-          "Video conferencing over the internet cannot happen without an internet connection",
-          "Zoom turns into an offline calculator",
-          "The web camera sends video through the power cable"
-        ],
-        ans: "Video conferencing over the internet cannot happen without an internet connection",
-        sinhala: "Internet හරහා Video conferencing කරන්න Computer + Web camera + Internet connection + Software යන සියල්ල තිබිය යුතුයි."
-      },
-      {
-        topic: "video",
-        title: "2. Video Conferencing",
-        type: "mcq",
-        q: "Why does video conferencing help lower the initial cost of holding a meeting across different cities?",
-        options: [
-          "Participants don't have to travel or pay transport expenses to a single hall",
-          "It removes the need for electricity",
-          "It makes web cameras free",
-          "It stops people from speaking"
-        ],
-        ans: "Participants don't have to travel or pay transport expenses to a single hall",
-        sinhala: "එක තැනකට යාමට සිදු නොවන නිසා ප්‍රවාහන වියදම්, කාලය සහ ආරම්භක වියදම් අවම කරගත හැකියි."
-      },
-      {
-        topic: "video",
-        title: "2. Video Conferencing",
-        type: "mcq",
-        q: "Which of these is a complete set of requirements for a video conference?",
+        q: "Your team wants to hold a live video discussion with friends in another city. Which four things are required?",
         options: [
           "Computer, web camera, internet connection, and video conferencing software",
-          "Printer, scanner, ruler, and eraser",
-          "Web camera only, with no internet",
-          "Calculator, notepad, and speaker only"
+          "Printer, scanner, ruler, and pencil",
+          "Only a web camera and a chair",
+          "Only a word processor and a pen drive"
         ],
         ans: "Computer, web camera, internet connection, and video conferencing software",
-        sinhala: "Video conferencing සඳහා Computer, Web camera, Internet connection සහ Video conferencing software අවශ්‍ය වේ."
-      }
-    ],
-
-    email: [
-      {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
-        type: "mcq",
-        q: "In the email address saman@edupub.gov.lk, what would happen if someone left out the '@' sign and wrote samanedupub.gov.lk?",
-        options: [
-          "It would send twice as fast",
-          "The username and domain name wouldn't be separated properly by '@'",
-          "It would automatically go to the Trash folder",
-          "It would turn into a website URL"
-        ],
-        ans: "The username and domain name wouldn't be separated properly by '@'",
-        sinhala: "Email ලිපිනයක Username සහ Domain name එක වෙන් කරන්නේ '@' සලකුණෙන් (උදා: saman@edupub.gov.lk)."
+        sinhala: "Video conferencing සඳහා Computer, Web camera, Internet connection සහ Video conferencing software (Zoom, Skype, GoToMeeting, Webex) අවශ්‍යයි."
       },
       {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "You email a project to your teacher (To) and your partner (Cc), while secretly adding a mentor in Bcc. Who can see the mentor's email address?",
+        q: "Why is video conferencing useful for a group meeting across different places?",
         options: [
-          "Both the teacher and your partner",
-          "Only the teacher",
-          "Nobody—not even the mentor",
-          "Only the mentor (Bcc); To and Cc cannot see Bcc addresses"
+          "It lowers initial costs, saves travel time and transport expenses, and can be arranged quickly",
+          "It removes the need for any internet connection",
+          "It prints books automatically",
+          "It replaces all passwords"
         ],
-        ans: "Only the mentor (Bcc); To and Cc cannot see Bcc addresses",
-        sinhala: "Bcc (Blind Carbon Copy) හි ඇති ලිපින To සහ Cc අයට පේන්නේ නැහැ. නමුත් Bcc කෙනාට To සහ Cc ලිපින පේනවා."
+        ans: "It lowers initial costs, saves travel time and transport expenses, and can be arranged quickly",
+        sinhala: "ප්‍රවාහන වියදම් සහ කාලය ඉතිරි වීම, ආරම්භක වියදම් අඩු වීම සහ ඉක්මනින් සංවිධානය කළ හැකි වීම Video conferencing වල වාසි."
       },
       {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "You want to send a photo of your robot along with your email message. Which feature do you use?",
+        q: "In saman@edupub.gov.lk, what does '@' do, and what does '.lk' show?",
         options: [
-          "Attachment",
-          "Trash",
-          "Sent",
-          "Junk/Spam"
+          "'@' joins/separates the username and domain name; '.lk' shows it is in Sri Lanka",
+          "'@' deletes spam; '.lk' means it is a video file",
+          "'@' is the password; '.lk' means it is a printer",
+          "Neither has any meaning"
         ],
-        ans: "Attachment",
-        sinhala: "Photos, videos, audio වැනි ගොනු (files) email එකකට අමුණා යැවීමට Attachment භාවිත කරනවා."
+        ans: "'@' joins/separates the username and domain name; '.lk' shows it is in Sri Lanka",
+        sinhala: "Email ලිපිනයක Username සහ Domain name සම්බන්ධ කරන්නේ '@' සලකුණෙන්; '.lk' ශ්‍රී ලංකාව පෙන්වයි."
       },
       {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "You accidentally clicked Delete on an important email yesterday. Before it's gone for good, where should you look first?",
+        q: "In an email, you put one friend in To, a second friend in Cc, and a third in Bcc. Who can see Bcc?",
         options: [
-          "Contacts",
-          "Trash",
-          "Compose/New",
-          "Sent"
+          "Only the Bcc recipient—people in To and Cc cannot see Bcc addresses",
+          "Everyone in To and Cc",
+          "No one at all",
+          "Only the Junk folder"
         ],
-        ans: "Trash",
-        sinhala: "මකා දැමූ (deleted) emails තාවකාලිකව තැන්පත් වෙන්නේ Trash ෆෝල්ඩරයේ. Inbox = ලැබුණු ඒවා, Sent = යැවූ ඒවා, Junk/Spam = අනවශ්‍ය ඒවා."
+        ans: "Only the Bcc recipient—people in To and Cc cannot see Bcc addresses",
+        sinhala: "Bcc (Blind Carbon Copy) ලිපින To සහ Cc අයට නොපෙනෙන අතර, Bcc අයට To සහ Cc ලිපින පෙනේ."
       },
       {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "Why do people fill in the 'Subject' box before clicking Send?",
+        q: "Match the email folders to their jobs: received messages, sent messages, unwanted spam, and deleted messages.",
         options: [
-          "To store the receiver's phone number",
-          "To state the topic of the email so the reader knows what it's about",
-          "To hide the email from the Sent folder",
-          "To compress video files"
+          "Inbox, Sent, Junk/Spam, Trash",
+          "Trash, Contacts, Subject, Attachment",
+          "Sent, Inbox, Compose, Attachment",
+          "Contacts, Trash, Subject, Inbox"
         ],
-        ans: "To state the topic of the email so the reader knows what it's about",
-        sinhala: "Subject කොටසේ ලියන්නේ Email එකේ මාතෘකාව (topic). Compose/New වලින් අලුත් email එකක් ලියන්න පටන් ගන්නවා."
+        ans: "Inbox, Sent, Junk/Spam, Trash",
+        sinhala: "Inbox = ලැබුණු emails, Sent = යැවූ emails, Junk/Spam = අනවශ්‍ය emails, Trash = මකා දැමූ emails."
       },
       {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "In saman@edupub.gov.lk, which part is the domain name and what does '.lk' indicate?",
+        q: "Which shows the basic HTML document structure and tag slash rule?",
         options: [
-          "'saman' is the domain name; '.lk' means it is in Sri Lanka",
-          "'edupub.gov.lk' is the domain name; '.lk' indicates Sri Lanka",
-          "'@' is the domain name; 'saman' indicates Sri Lanka",
-          "There is no domain name in an email address"
+          "<html> ➔ <head> ➔ <body>, with tags in '<' and '>' and closing tags using '/'",
+          "<body> ➔ <head> ➔ <html>, with tags in '(' and ')'",
+          "<head> ➔ <body> ➔ <html>, with no closing tags ever",
+          "<html> only, written in a spreadsheet"
         ],
-        ans: "'edupub.gov.lk' is the domain name; '.lk' indicates Sri Lanka",
-        sinhala: "'@' සලකුණට පසුව ඇති කොටස (edupub.gov.lk) Domain name එකයි. '.lk' මගින් එය ශ්‍රී ලංකාවට අදාළ බව පෙන්වයි."
+        ans: "<html> ➔ <head> ➔ <body>, with tags in '<' and '>' and closing tags using '/'",
+        sinhala: "HTML කේත '<' සහ '>' මැද ලියන අතර අවසන් කරන tag එකට '/' යොදයි; මූලික ව්‍යුහය <html> ➔ <head> ➔ <body> වේ."
       },
       {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "When you open your email account, which messages usually appear in a darker colour first?",
+        q: "Accessing someone's computer data or network without permission is called ______, and tricking people into revealing bank or email details is called ______.",
         options: [
-          "Unopened messages in the Inbox",
-          "Messages inside Contacts",
-          "Attachments that were never created",
-          "Messages in the Subject box"
+          "Hacking; phishing attack",
+          "Phishing attack; hacking",
+          "Browsing; formatting",
+          "Copying; pasting"
         ],
-        ans: "Unopened messages in the Inbox",
-        sinhala: "Inbox හි ලැබුණු emails අතරින් තවම කියවා නැති (unopened) emails සාමාන්‍යයෙන් තද පැහැයෙන් (dark colour) පෙන්වයි."
+        ans: "Hacking; phishing attack",
+        sinhala: "අවසරයකින් තොරව දත්ත/ජාල වලට පිවිසීම Hacking වන අතර, රවටා bank/email විස්තර ලබාගැනීම Phishing attack වේ."
       },
       {
-        topic: "email",
-        title: "3. Electronic Mail (E-mail)",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "Which email characteristic lets you pass a message you received on to a classmate, or keep saved email addresses handy?",
+        q: "Why should you avoid opening suspicious email attachments, clicking pop-ups, or using pirated software?",
         options: [
-          "Forwarding messages and using the address book / Contacts",
-          "Deleting the monitor",
-          "Turning off the internet",
-          "Removing the '@' symbol"
+          "They can spread viruses/malware or cause legal/security problems",
+          "They make your screen too colourful",
+          "They speed up the hard disk permanently",
+          "They create extra folders automatically"
         ],
-        ans: "Forwarding messages and using the address book / Contacts",
-        sinhala: "ලැබුණු email එකක් වෙනත් අයෙකුට Forward කිරීමටත්, Address book / Contacts මගින් ලිපින සුරැකීමටත් හැකියි."
-      }
-    ],
-
-    html: [
-      {
-        topic: "html",
-        title: "4. HTML Web Development",
-        type: "mcq",
-        q: "What does HTML stand for, and what is it used to build?",
-        options: [
-          "HyperText Markup Language — used to create web pages",
-          "High Transfer Mail Link — used to send emails",
-          "Home Tool Media List — used for video calls",
-          "Host Terminal Main Loop — used for Wi-Fi passwords"
-        ],
-        ans: "HyperText Markup Language — used to create web pages",
-        sinhala: "HTML කියන්නේ HyperText Markup Language. වෙබ් පිටු (web pages) නිර්මාණය කිරීමට භාවිත කරන භාෂාවයි."
+        ans: "They can spread viruses/malware or cause legal/security problems",
+        sinhala: "සැක සහිත attachments, pop-ups සහ pirated software මගින් viruses/malware පැතිරීම හා ආරක්ෂක/නීතිමය ගැටලු ඇති විය හැකියි."
       },
       {
-        topic: "html",
-        title: "4. HTML Web Development",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "HTML tags sit inside '<' and '>'. Which slash symbol marks a closing tag?",
+        q: "Posting false, insulting remarks online to harass someone is ______, and protecting personal details like name, address, phone, and birthday helps prevent ______.",
         options: [
-          "Backslash (\\)",
-          "Forward slash (/)",
-          "Colon (:)",
-          "Asterisk (*)"
+          "Cyber bullying; identity data theft/misuse",
+          "Software piracy; video conferencing",
+          "Web browsing; word processing",
+          "Slide hiding; folder renaming"
         ],
-        ans: "Forward slash (/)",
-        sinhala: "HTML codes ලියන්නේ '<' සහ '>' සලකුණු මැද. අවසන් කරන (closing) tag එකක '/' සලකුණ යොදනවා."
+        ans: "Cyber bullying; identity data theft/misuse",
+        sinhala: "අපහාසාත්මක අසත්‍ය තොරතුරු පළ කිරීම Cyber bullying වන අතර, නම/ලිපිනය/දුරකථන/උපන්දිනය ආරක්ෂා කිරීමෙන් identity data අනිසි භාවිතය වළකී."
       },
       {
-        topic: "html",
-        title: "4. HTML Web Development",
+        topic: "u7",
+        title: "Unit 7: Using Internet for Information & Communication",
         type: "mcq",
-        q: "Which order shows the basic HTML page structure from the Unit 7 notes?",
+        q: "Which online safety practices are highlighted in Section 7.5.3?",
         options: [
-          "<body> ➔ <head> ➔ <html>",
-          "<html> ➔ <head> ➔ <body>",
-          "<head> ➔ <html> ➔ <body>",
-          "<html> ➔ <body> ➔ <head>"
+          "Updating antivirus and browsers, enabling updates, using strong passwords (8+ chars, mixed types), and password-protecting Wi-Fi",
+          "Sharing your password with strangers and turning off updates",
+          "Opening every pop-up link you see",
+          "Leaving Wi-Fi open without a password"
         ],
-        ans: "<html> ➔ <head> ➔ <body>",
-        sinhala: "HTML පිටුවක මූලික ව්‍යුහය: <html> ➔ <head> (සමඟ <title>) ➔ <body> (පිටුවේ පෙනෙන දේ)."
-      },
-      {
-        topic: "html",
-        title: "4. HTML Web Development",
-        type: "mcq",
-        q: "If you put text inside <head> instead of <body>, where will it NOT show up?",
-        options: [
-          "It won't show up as visible page content in the main <body> area",
-          "It won't show up in your HTML code file",
-          "It won't show up on your computer screen at all",
-          "It won't show up in a text editor"
-        ],
-        ans: "It won't show up as visible page content in the main <body> area",
-        sinhala: "වෙබ් පිටුවේ පෙනෙන ප්‍රධාන කොටස තියෙන්නේ <body> තුළ. <title> වැනි දේ <head> කොටසට අදාළයි."
-      },
-      {
-        topic: "html",
-        title: "4. HTML Web Development",
-        type: "mcq",
-        q: "A student writes <p>Hello<p> instead of closing with a slash. Why is that a classic HTML slip-up?",
-        options: [
-          "Because <p> only works inside <title>",
-          "Because closing tags use '/' (like </p>) to show where the tag ends",
-          "Because HTML tags must use square brackets [p]",
-          "Because <p> cannot hold letters"
-        ],
-        ans: "Because closing tags use '/' (like </p>) to show where the tag ends",
-        sinhala: "HTML tags වල ආරම්භය සහ අවසානය තියෙනවා. අවසන් කරන විට '/' සලකුණ සමඟ tag එක ලියනවා."
-      },
-      {
-        topic: "html",
-        title: "4. HTML Web Development",
-        type: "mcq",
-        q: "Where does the text placed inside <title> tags appear when a webpage opens?",
-        options: [
-          "On the title bar of the web page",
-          "Inside the Trash folder",
-          "On the back of the keyboard",
-          "Inside a video call"
-        ],
-        ans: "On the title bar of the web page",
-        sinhala: "<title> tag එක තුළ ලියන වෙබ් පිටුවේ මාතෘකාව පෙන්වන්නේ Web page එකේ Title bar එකේ."
-      },
-      {
-        topic: "html",
-        title: "4. HTML Web Development",
-        type: "mcq",
-        q: "Which pair of HTML codes is used for headings of different sizes and centering text?",
-        options: [
-          "<h1> to <h6> for headings; <center> to center text",
-          "<html> for video calls; <head> for deleting files",
-          "<p> for Wi-Fi passwords; <b> for scanning viruses",
-          "<u> for closing browsers; <i> for sending emails"
-        ],
-        ans: "<h1> to <h6> for headings; <center> to center text",
-        sinhala: "ශීර්ෂ (headings) ප්‍රමාණ සඳහා <h1> සිට <h6> දක්වාත්, අකුරු මැදට ගැනීමට <center> ද භාවිත කරනවා."
-      },
-      {
-        topic: "html",
-        title: "4. HTML Web Development",
-        type: "mcq",
-        q: "Which simple text-editing software is given as an example for writing basic HTML codes?",
-        options: [
-          "Notepad",
-          "Zoom",
-          "Skype",
-          "Webex"
-        ],
-        ans: "Notepad",
-        sinhala: "සරල HTML කේත ලියා වෙබ් පිටු සෑදීමට Notepad වැනි සරල text editing මෘදුකාංගයක් භාවිත කරන්න පුළුවන්."
-      }
-    ],
-
-    security: [
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Someone logs into another person's account or reads private files on a computer network without permission. What is this called?",
-        options: [
-          "Hacking",
-          "Touch typing",
-          "Formatting a slide",
-          "Composing an email"
-        ],
-        ans: "Hacking",
-        sinhala: "අවසරයකින් තොරව පරිගණකයක හෝ ජාලයක ඇති දත්ත සහ තොරතුරු වලට පිවිසීම Hacking ලෙස හැඳින්වේ."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Why does a computer virus make a computer work slowly?",
-        options: [
-          "It duplicates itself inside the computer and uses memory/time meant for other tasks",
-          "It cleans extra space on the hard disk",
-          "It lowers the screen brightness",
-          "It fixes spelling mistakes"
-        ],
-        ans: "It duplicates itself inside the computer and uses memory/time meant for other tasks",
-        sinhala: "Virus පරිගණකය තුළ පිටපත් වෙමින් (duplicate) අනෙකුත් කාර්යයන්ට අවශ්‍ය මතකය සහ කාලය ගන්නා නිසා පරිගණකය මන්දගාමී වේ."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "A pop-up window suddenly jumps onto your screen with a strange link, or an unknown sender attaches a file. What is the safe rule?",
-        options: [
-          "Do not click pop-ups or open suspicious emails and attachments",
-          "Click every pop-up to see what it offers",
-          "Turn off antivirus so the pop-up loads faster",
-          "Share your password with the sender"
-        ],
-        ans: "Do not click pop-ups or open suspicious emails and attachments",
-        sinhala: "Virus වලින් ආරක්ෂා වීමට සැක සහිත emails, attachments සහ හදිසියේ මතුවන pop-up windows click නොකළ යුතුයි."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "A classmate copies paid software and sells duplicate copies without legal permission. What is this illegal act called?",
-        options: [
-          "Software piracy",
-          "Backing up data",
-          "Video conferencing",
-          "Adding a heading"
-        ],
-        ans: "Software piracy",
-        sinhala: "නීත්‍යානුකූල අවසරයකින් තොරව මෘදුකාංග පිටපත් කිරීම, අනුපිටපත් තබා ගැනීම හෝ විකිණීම Software piracy වේ."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Before installing or downloading a software program, which step helps you stay safe from software piracy?",
-        options: [
-          "Read the licence agreement and use the producer's website or a trusted company",
-          "Download from any random link without checking",
-          "Ignore license rules completely",
-          "Sell copies to friends"
-        ],
-        ans: "Read the licence agreement and use the producer's website or a trusted company",
-        sinhala: "මෘදුකාංග ස්ථාපනයට පෙර Licence agreement කියවා, නිෂ්පාදකයාගේ නිල වෙබ් අඩවියෙන් හෝ විශ්වාසවන්ත ආයතනයකින් ලබාගත යුතුයි."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Someone posts false, insulting information or comments on social media or messages to harass a person. What is this called?",
-        options: [
-          "Cyber bullying",
-          "Encrypting a hard disk",
-          "Creating a bullet list",
-          "Using a web browser"
-        ],
-        ans: "Cyber bullying",
-        sinhala: "Social media, SMS, emails හෝ instant messages හරහා අසත්‍ය හෝ අපහාසාත්මක තොරතුරු පළ කර අපහසුතාවට පත් කිරීම Cyber bullying වේ."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Which set of details is personal identity data that can be stolen or misused online if unprotected?",
-        options: [
-          "Name, address, telephone number, and birthday",
-          "Font color, slide transition, and margins",
-          "Screen resolution and mouse pad",
-          "Web page background color"
-        ],
-        ans: "Name, address, telephone number, and birthday",
-        sinhala: "නම, ලිපිනය, දුරකථන අංකය සහ උපන්දිනය පුද්ගල අනන්‍යතාව පෙන්වන දත්ත වන අතර ඒවා අවසරයකින් තොරව අනිසි ලෙස භාවිත විය හැකියි."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "A fake message pretends to be trusted and tries to trick you into giving bank account or email details. What is this attack called?",
-        options: [
-          "Phishing attack",
-          "Word processing",
-          "Folder sorting",
-          "Zoom hosting"
-        ],
-        ans: "Phishing attack",
-        sinhala: "විශ්වාසවන්ත අයෙකු ලෙස පෙනී සිටිමින් Bank account හෝ Email විස්තර රවටා ලබාගැනීම Phishing attack ලෙස හැඳින්වේ."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Look at the example password 'kanDY#4599' in the online security notes. Why is it stronger than '123456'?",
-        options: [
-          "It is at least 8 characters long and mixes lowercase, uppercase, numbers, and symbols",
-          "It uses only one single letter",
-          "It is written on the outside of the router",
-          "It has no numbers or symbols"
-        ],
-        ans: "It is at least 8 characters long and mixes lowercase, uppercase, numbers, and symbols",
-        sinhala: "ශක්තිමත් මුරපදයක (strong password) අවම වශයෙන් අකුරු 8ක් තිබිය යුතු අතර simple, capital letters, numbers සහ special characters ($, *, #, @) මිශ්‍ර වීම වඩාත් හොඳයි."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Which combination of habits protects your device, files, and home internet connection online?",
-        options: [
-          "Updating antivirus & browsers, keeping backups, encrypting hard disk, and password-protecting Wi-Fi router",
-          "Turning off updates and leaving Wi-Fi open without a password",
-          "Clicking unknown links in emails",
-          "Sharing personal identity details on unsafe sites"
-        ],
-        ans: "Updating antivirus & browsers, keeping backups, encrypting hard disk, and password-protecting Wi-Fi router",
-        sinhala: "Antivirus සහ Browser යාවත්කාලීන කිරීම, Backups තබා ගැනීම, Hard disk encrypt කිරීම සහ Wi-Fi router එකට password යෙදීම ආරක්ෂිත පියවරයි."
-      },
-      {
-        topic: "security",
-        title: "5. Using the Internet Safely & Ethically",
-        type: "mcq",
-        q: "Through which main channels do viruses commonly enter a computer?",
-        options: [
-          "The internet, computer networks, compact disks (CDs), and USB drives",
-          "Only through a clean keyboard",
-          "Only by reading a printed book",
-          "Only by switching off the monitor"
-        ],
-        ans: "The internet, computer networks, compact disks (CDs), and USB drives",
-        sinhala: "Viruses ප්‍රධාන වශයෙන් Internet, computer networks, compact disks සහ USB drives හරහා පරිගණකයට ඇතුළු වේ."
+        ans: "Updating antivirus and browsers, enabling updates, using strong passwords (8+ chars, mixed types), and password-protecting Wi-Fi",
+        sinhala: "Antivirus/browser update කිරීම, strong password භාවිතය (අවම අකුරු 8, මිශ්‍ර අකුරු/අංක/සංකේත) සහ Wi-Fi router එකට password යෙදීම වැදගත් වේ."
       }
     ]
   };
 
   function getAllQuestions() {
     return [].concat(
-      UNIT_7_BANK.web,
-      UNIT_7_BANK.video,
-      UNIT_7_BANK.email,
-      UNIT_7_BANK.html,
-      UNIT_7_BANK.security
+      FULL_SYLLABUS_BANK.u1,
+      FULL_SYLLABUS_BANK.u2,
+      FULL_SYLLABUS_BANK.u3,
+      FULL_SYLLABUS_BANK.u4,
+      FULL_SYLLABUS_BANK.u5,
+      FULL_SYLLABUS_BANK.u6,
+      FULL_SYLLABUS_BANK.u7
     );
   }
 
@@ -1152,7 +1687,7 @@
   var userAnswers = {};
   var currentQuestions = getAllQuestions();
   var previousScreen = 'quiz';
-  var activeTutorSub = 'web';
+  var activeTutorSub = 'u1';
   var isSubmitted = false;
 
   function updateAllCounts() {
@@ -1160,10 +1695,10 @@
     var allPill = document.querySelector('.topic-pill[data-topic="all"]');
     if (allPill) allPill.textContent = 'All (' + allCount + ')';
 
-    var subs = ['web', 'video', 'email', 'html', 'security'];
+    var subs = ['u1', 'u2', 'u3', 'u4', 'u5', 'u6', 'u7'];
     subs.forEach(function(s) {
       var el = document.getElementById('count-' + s);
-      if (el) el.textContent = (UNIT_7_BANK[s] || []).length + ' Questions';
+      if (el) el.textContent = (FULL_SYLLABUS_BANK[s] || []).length + ' Questions';
     });
   }
 
@@ -1180,19 +1715,21 @@
 
     if (topic === 'all') {
       currentQuestions = getAllQuestions();
-      document.getElementById('subject-tag').innerText = 'UNIT 7 • ALL TOPICS';
-      document.getElementById('title-text').innerText = 'Internet, Communication & Security Booster';
+      document.getElementById('subject-tag').innerText = 'GRADE 7 ICT • FULL SYLLABUS';
+      document.getElementById('title-text').innerText = 'Complete Syllabus Practice Booster';
     } else {
-      currentQuestions = UNIT_7_BANK[topic] || getAllQuestions();
+      currentQuestions = FULL_SYLLABUS_BANK[topic] || getAllQuestions();
       var labelMap = {
-        web: '1. Internet & Web',
-        video: '2. Video Conferencing',
-        email: '3. E-mail',
-        html: '4. HTML',
-        security: '5. Safe & Ethical Net'
+        u1: 'Unit 1: Central Processing Unit',
+        u2: 'Unit 2: Operating System & Storage',
+        u3: 'Unit 3: Security of Computer System',
+        u4: 'Unit 4: Word Processing',
+        u5: 'Unit 5: Programme Development',
+        u6: 'Unit 6: Presentation Software',
+        u7: 'Unit 7: Internet & Communication'
       };
-      document.getElementById('subject-tag').innerText = 'UNIT 7 • ICT';
-      document.getElementById('title-text').innerText = labelMap[topic] || 'Unit 7 Practice';
+      document.getElementById('subject-tag').innerText = 'GRADE 7 ICT • SYLLABUS';
+      document.getElementById('title-text').innerText = labelMap[topic] || 'Grade 7 ICT Practice';
     }
 
     document.getElementById('screen-results').style.display = 'none';
@@ -1320,8 +1857,8 @@
     });
 
     var percentage = Math.round((correctCount / currentQuestions.length) * 100);
-    var text = "📊 *Unit 7 ICT Practice Report*\n\n" +
-               "📌 *Topic:* " + activeTopic.toUpperCase() + "\n" +
+    var text = "📊 *Grade 7 ICT Full Syllabus Report*\n\n" +
+               "📌 *Section:* " + activeTopic.toUpperCase() + "\n" +
                "🎯 *Score:* " + correctCount + "/" + currentQuestions.length + " (" + percentage + "%)\n" +
                "🏆 *Target 65%+ Status:* " + (percentage >= 65 ? "MET ✅" : "NEEDS PRACTICE ⚠️") + "\n\n";
 
@@ -1393,7 +1930,7 @@
     document.getElementById('tutor-detail-section').style.display = 'none';
     document.getElementById('tutor-qnum-section').style.display = 'block';
 
-    var list = UNIT_7_BANK[sub] || [];
+    var list = FULL_SYLLABUS_BANK[sub] || [];
     var qnumGrid = document.getElementById('tutor-qnum-grid');
     document.getElementById('tutor-qnum-label').textContent = sub.toUpperCase() + ' — Select Question (1–' + list.length + '):';
     qnumGrid.innerHTML = '';
